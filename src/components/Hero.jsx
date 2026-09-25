@@ -44,32 +44,32 @@ export default function Hero() {
 
         {/* Ambient Blue Orb on the left */}
         <motion.div
-          animate={{ scale: [1, 1.12, 1], opacity: [0.3, 0.45, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          animate={{ scale: [1, 1.18, 1], opacity: [0.65, 0.95, 0.65] }}
+          transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut' }}
           style={{
             position: 'absolute',
-            top: '30%',
-            left: '22%',
-            width: '500px',
-            height: '500px',
+            top: '28%',
+            left: '18%',
+            width: '580px',
+            height: '580px',
             borderRadius: '50%',
-            backgroundColor: 'rgba(59, 130, 246, 0.06)',
-            filter: 'blur(75px)',
+            backgroundColor: 'rgba(59, 130, 246, 0.22)',
+            filter: 'blur(80px)',
           }}
         />
 
         {/* Ambient Warm Amber Orb on the right (matching Image 1) */}
         <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.35, 0.2] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.55, 0.9, 0.55] }}
+          transition={{ duration: 8.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
           style={{
             position: 'absolute',
-            top: '32%',
-            right: '20%',
-            width: '450px',
-            height: '450px',
+            top: '30%',
+            right: '16%',
+            width: '520px',
+            height: '520px',
             borderRadius: '50%',
-            backgroundColor: 'rgba(245, 158, 11, 0.045)',
+            backgroundColor: 'rgba(245, 158, 11, 0.18)',
             filter: 'blur(85px)',
           }}
         />
@@ -130,22 +130,51 @@ export default function Hero() {
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              filter: 'contrast(1.2) brightness(1.3)',
+              filter: 'contrast(1.25) brightness(1.4) drop-shadow(0 0 35px rgba(59, 130, 246, 0.5)) drop-shadow(0 0 65px rgba(245, 158, 11, 0.35))',
             }}
           >
             WILLY
           </h1>
 
-          {/* Atmospheric Multi-color Glow Behind Letters */}
+          {/* Primary Core Vibrant Pulsating Glow Behind Letters */}
           <motion.div
-            animate={{ opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            animate={{ opacity: [0.65, 1.0, 0.65], scale: [0.99, 1.06, 0.99] }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
             style={{
               position: 'absolute',
-              inset: 0,
+              inset: '-12px',
               zIndex: -1,
-              filter: 'blur(64px)',
-              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.45) 0%, rgba(139, 92, 246, 0.25) 50%, rgba(245, 158, 11, 0.3) 100%)',
+              filter: 'blur(45px)',
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(139, 92, 246, 0.75) 45%, rgba(245, 158, 11, 0.9) 100%)',
+              pointerEvents: 'none',
+              borderRadius: '30px',
+            }}
+          />
+
+          {/* Secondary Wider Ambient Pulsing Bloom */}
+          <motion.div
+            animate={{ opacity: [0.5, 0.85, 0.5], scale: [1.02, 1.12, 1.02] }}
+            transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
+            style={{
+              position: 'absolute',
+              inset: '-45px',
+              zIndex: -2,
+              filter: 'blur(80px)',
+              background: 'radial-gradient(ellipse at 28% 50%, rgba(59, 130, 246, 0.8) 0%, transparent 65%), radial-gradient(ellipse at 75% 50%, rgba(245, 158, 11, 0.75) 0%, transparent 65%)',
+              pointerEvents: 'none',
+            }}
+          />
+
+          {/* Tertiary Broad Atmospheric Radiance */}
+          <motion.div
+            animate={{ opacity: [0.35, 0.65, 0.35], scale: [1, 1.15, 1] }}
+            transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+            style={{
+              position: 'absolute',
+              inset: '-90px',
+              zIndex: -3,
+              filter: 'blur(110px)',
+              background: 'radial-gradient(ellipse at 35% 45%, rgba(99, 102, 241, 0.55) 0%, transparent 70%), radial-gradient(ellipse at 70% 55%, rgba(245, 158, 11, 0.45) 0%, transparent 70%)',
               pointerEvents: 'none',
             }}
           />
