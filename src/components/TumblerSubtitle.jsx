@@ -18,19 +18,31 @@ const PHRASES = [
 
 /**
  * TumblerSubtitle - Number Ticker / Odometer typography animation.
- * Features clipped vertical reel slots where characters slide straight vertically
- * one by one with smooth spring ticker momentum, alternating continuously
- * between Japanese Katakana and English in Title Case.
+ * Features an initial grace period where the text sits static and calm while
+ * the website finishes opening and rendering. The ticker roll only starts
+ * after the page has fully settled, then loops continuously.
  */
 export default function TumblerSubtitle() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % PHRASES.length);
-    }, 4000); // 4 seconds interval for comfortable reading
+    let intervalTimer = null;
 
-    return () => clearInterval(timer);
+    // Give the web page and Hero entrance animations time to fully open & settle (2.6s)
+    const initialDelayTimer = setTimeout(() => {
+      // First roll after web is open: transition from Japanese to English
+      setIndex(1);
+
+      // Subsequent recurring ticker rolls every 4 seconds
+      intervalTimer = setInterval(() => {
+        setIndex((prev) => (prev + 1) % PHRASES.length);
+      }, 4000);
+    }, 2600);
+
+    return () => {
+      clearTimeout(initialDelayTimer);
+      if (intervalTimer) clearInterval(intervalTimer);
+    };
   }, []);
 
   const current = PHRASES[index];
@@ -48,7 +60,8 @@ export default function TumblerSubtitle() {
         userSelect: 'none',
       }}
     >
-      <AnimatePresence mode="wait">
+      {/* initial={false} prevents any premature or jerky character entrance on initial page load */}
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={current.text}
           style={{

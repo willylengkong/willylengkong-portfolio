@@ -80,8 +80,14 @@ export default function Hero() {
           width: '100%',
         }}
       >
-        {/* Number Ticker Subtitle (Alternating Japanese Katakana & English Title Case) */}
-        <TumblerSubtitle />
+        {/* Number Ticker Subtitle (Entrance coordinated with Hero section) */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <TumblerSubtitle />
+        </motion.div>
 
         {/* Giant Skyline Name "WILLY" */}
         <motion.div
