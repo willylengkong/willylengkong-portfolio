@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { personalInfo } from '../data/portfolioData';
+import TumblerSubtitle from './TumblerSubtitle';
 
 export default function Hero() {
   const scrollTo = (href) => {
@@ -79,22 +80,8 @@ export default function Hero() {
           width: '100%',
         }}
       >
-        {/* Japanese Katakana Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          style={{
-            color: '#a1a1aa',
-            fontSize: 'clamp(0.85rem, 1.8vw, 1.1rem)',
-            marginBottom: '24px',
-            letterSpacing: '0.3em',
-            fontWeight: 300,
-            fontFamily: 'var(--font-jp)',
-          }}
-        >
-          エンドツーエンド・データアナリスト
-        </motion.p>
+        {/* 3D Tumbler / iPhone Alarm Wheel Subtitle (Alternating Japanese & English) */}
+        <TumblerSubtitle />
 
         {/* Giant Skyline Name "WILLY" */}
         <motion.div
