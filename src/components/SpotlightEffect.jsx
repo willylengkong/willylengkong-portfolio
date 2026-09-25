@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function SpotlightEffect() {
-  const spotlightRef = useRef(null);
+  const [pos, setPos] = useState({ x: -500, y: -500 });
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let currentX = mouseX;
-    let currentY = mouseY;
-    let animId;
+    let mouseX = -500;
+    let mouseY = -500;
+    let curX = -500;
+    let curY = -500;
+    let rafId;
 
     const handleMouseMove = (e) => {
       mouseX = e.clientX;
@@ -22,32 +22,31 @@ export default function SpotlightEffect() {
     };
 
     const render = () => {
-      currentX += (mouseX - currentX) * 0.15;
-      currentY += (mouseY - currentY) * 0.15;
-
-      if (spotlightRef.current) {
-        spotlightRef.current.style.setProperty('--mouse-x', `${currentX}px`);
-        spotlightRef.current.style.setProperty('--mouse-y', `${currentY}px`);
-      }
-      animId = requestAnimationFrame(render);
+      curX += (mouseX - curX) * 0.15;
+      curY += (mouseY - curY) * 0.15;
+      setPos({ x: curX, y: curY });
+      rafId = requestAnimationFrame(render);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseleave', handleMouseLeave);
-    animId = requestAnimationFrame(render);
+    rafId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseleave', handleMouseLeave);
-      cancelAnimationFrame(animId);
+      cancelAnimationFrame(rafId);
     };
   }, [visible]);
 
   return (
     <div
-      ref={spotlightRef}
-      className="cursor-spotlight"
-      style={{ opacity: visible ? 1 : 0 }}
+      className="cursor-glow"
+      style={{
+        left: `${pos.x}px`,
+        top: `${pos.y}px`,
+        opacity: visible ? 1 : 0,
+      }}
       aria-hidden="true"
     />
   );

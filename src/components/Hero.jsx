@@ -8,260 +8,264 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="hero-atmosphere"
       style={{
         position: 'relative',
-        paddingTop: '48px',
-        paddingBottom: '96px',
+        minHeight: '85vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         overflow: 'hidden',
+        paddingTop: '80px',
+        paddingBottom: '80px',
       }}
     >
+      {/* Background layer with exact Fabian grid pattern and ambient glow orbs */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        <div
+          className="grid-pattern"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            opacity: 0.35,
+          }}
+        />
+
+        {/* Ambient Blue Orb */}
+        <motion.div
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.3, 0.45, 0.3],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          style={{
+            position: 'absolute',
+            top: '25%',
+            left: '20%',
+            width: '500px',
+            height: '500px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(59, 130, 246, 0.07)',
+            filter: 'blur(75px)',
+          }}
+        />
+
+        {/* Ambient Purple Orb */}
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.25, 0.38, 0.25],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+          style={{
+            position: 'absolute',
+            top: '30%',
+            right: '18%',
+            width: '420px',
+            height: '420px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(168, 85, 247, 0.06)',
+            filter: 'blur(85px)',
+          }}
+        />
+      </div>
+
+      {/* Decorative Technical Corner Accents */}
       <div
         style={{
-          maxWidth: '1100px',
-          margin: '0 auto',
-          padding: '0 20px',
+          position: 'absolute',
+          top: '32px',
+          left: '32px',
+          width: '48px',
+          height: '48px',
+          borderLeft: '1px solid rgba(39, 39, 42, 0.6)',
+          borderTop: '1px solid rgba(39, 39, 42, 0.6)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '32px',
+          right: '32px',
+          width: '48px',
+          height: '48px',
+          borderRight: '1px solid rgba(39, 39, 42, 0.6)',
+          borderBottom: '1px solid rgba(39, 39, 42, 0.6)',
+          pointerEvents: 'none',
+        }}
+      />
+
+      <div
+        style={{
           position: 'relative',
           zIndex: 10,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 24px',
           textAlign: 'center',
+          width: '100%',
         }}
       >
-        {/* Giant Architectural Skyline Typography "WILLY" */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+        {/* Japanese Katakana Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, delay: 0.15 }}
           style={{
-            width: '100%',
-            maxWidth: '920px',
-            userSelect: 'none',
-            margin: '12px 0 24px',
-            filter: 'drop-shadow(0 20px 35px rgba(0, 0, 0, 0.9))',
+            color: '#a1a1aa',
+            fontSize: 'clamp(0.85rem, 2vw, 1.05rem)',
+            marginBottom: '20px',
+            letterSpacing: '0.25em',
+            fontWeight: 300,
+            fontFamily: 'var(--font-jp)',
           }}
         >
-          <svg
-            viewBox="0 0 1000 320"
-            width="100%"
-            height="auto"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{ display: 'block' }}
+          エンドツーエンド・データアナリスト
+        </motion.p>
+
+        {/* Giant Architectural Skyline Typography "WILLY" */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          style={{
+            position: 'relative',
+            marginBottom: '24px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <h1
+            style={{
+              fontSize: 'clamp(4.5rem, 17vw, 18rem)',
+              fontWeight: 900,
+              lineHeight: 0.95,
+              letterSpacing: '-0.05em',
+              userSelect: 'none',
+              backgroundImage: "url('/images/city-night.svg')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center 40%',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              filter: 'contrast(1.25) brightness(1.35) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.9))',
+            }}
           >
-            <defs>
-              <mask id="willyMask">
-                <text
-                  x="500"
-                  y="275"
-                  textAnchor="middle"
-                  fill="white"
-                  fontFamily="'Plus Jakarta Sans', 'Inter', sans-serif"
-                  fontSize="315"
-                  fontWeight="900"
-                  letterSpacing="0.04em"
-                >
-                  WILLY
-                </text>
-              </mask>
-              <linearGradient id="nightSky" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0b1022" />
-                <stop offset="45%" stopColor="#121833" />
-                <stop offset="100%" stopColor="#181324" />
-              </linearGradient>
-              <linearGradient id="buildingGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#0e152e" />
-                <stop offset="100%" stopColor="#080b18" />
-              </linearGradient>
-              <linearGradient id="buildingGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#151b38" />
-                <stop offset="100%" stopColor="#0a0f24" />
-              </linearGradient>
-            </defs>
+            WILLY
+          </h1>
 
-            {/* Skyscraper cityscape masked inside WILLY */}
-            <g mask="url(#willyMask)">
-              <rect x="0" y="0" width="1000" height="320" fill="url(#nightSky)" />
-
-              {/* Skyscraper Towers */}
-              <rect x="25" y="60" width="95" height="260" fill="url(#buildingGrad1)" />
-              <rect x="110" y="90" width="85" height="230" fill="url(#buildingGrad2)" />
-              <rect x="180" y="45" width="120" height="275" fill="url(#buildingGrad1)" />
-              <rect x="290" y="110" width="100" height="210" fill="url(#buildingGrad2)" />
-              <rect x="375" y="30" width="140" height="290" fill="url(#buildingGrad1)" />
-              <rect x="500" y="70" width="95" height="250" fill="url(#buildingGrad2)" />
-              <rect x="580" y="40" width="125" height="280" fill="url(#buildingGrad1)" />
-              <rect x="690" y="95" width="110" height="225" fill="url(#buildingGrad2)" />
-              <rect x="790" y="55" width="130" height="265" fill="url(#buildingGrad1)" />
-              <rect x="910" y="35" width="90" height="285" fill="url(#buildingGrad2)" />
-
-              {/* Architectural vertical grid seams */}
-              <line x1="120" y1="0" x2="120" y2="320" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-              <line x1="205" y1="0" x2="205" y2="320" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-              <line x1="390" y1="0" x2="390" y2="320" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-              <line x1="590" y1="0" x2="590" y2="320" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-              <line x1="815" y1="0" x2="815" y2="320" stroke="rgba(255,255,255,0.06)" strokeWidth="1.5" />
-
-              {/* Warm Skyscraper Windows with flickering animations */}
-              {/* Cluster W */}
-              <rect x="140" y="80" width="5.5" height="5.5" rx="0.5" fill="#facc15" className="window-light" />
-              <rect x="152" y="80" width="5.5" height="5.5" rx="0.5" fill="#fef08a" className="window-light" />
-              <rect x="140" y="95" width="5.5" height="5.5" rx="0.5" fill="#facc15" className="window-light" />
-              <rect x="152" y="108" width="5.5" height="5.5" rx="0.5" fill="#eab308" className="window-light-alt" />
-              <rect x="210" y="90" width="5.5" height="5.5" rx="0.5" fill="#fef08a" className="window-light" />
-              <rect x="222" y="90" width="5.5" height="5.5" rx="0.5" fill="#facc15" className="window-light-alt" />
-
-              {/* Cluster I & L */}
-              <rect x="380" y="68" width="5.5" height="5.5" rx="0.5" fill="#facc15" className="window-light-alt" />
-              <rect x="380" y="84" width="5.5" height="5.5" rx="0.5" fill="#fef08a" className="window-light" />
-              <rect x="485" y="85" width="5.5" height="5.5" rx="0.5" fill="#facc15" className="window-light-fast" />
-              <rect x="498" y="85" width="5.5" height="5.5" rx="0.5" fill="#fef08a" className="window-light-alt" />
-              <rect x="485" y="102" width="5.5" height="5.5" rx="0.5" fill="#fde047" className="window-light" />
-
-              {/* Cluster L & Y */}
-              <rect x="635" y="75" width="5.5" height="5.5" rx="0.5" fill="#facc15" className="window-light-alt" />
-              <rect x="635" y="92" width="5.5" height="5.5" rx="0.5" fill="#fef08a" className="window-light" />
-              <rect x="785" y="65" width="5.5" height="5.5" rx="0.5" fill="#facc15" className="window-light-alt" />
-              <rect x="800" y="65" width="5.5" height="5.5" rx="0.5" fill="#fde047" className="window-light" />
-              <rect x="785" y="82" width="5.5" height="5.5" rx="0.5" fill="#eab308" className="window-light-alt" />
-              <rect x="840" y="95" width="5.5" height="5.5" rx="0.5" fill="#facc15" className="window-light-fast" />
-
-              {/* Cyan Aviation Beacon Lights */}
-              <circle cx="215" cy="74" r="1.5" fill="#60a5fa" />
-              <circle cx="788" cy="55" r="1.5" fill="#60a5fa" />
-            </g>
-          </svg>
+          {/* Ambient colorful glow behind the giant text */}
+          <motion.div
+            animate={{ opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              zIndex: -1,
+              filter: 'blur(64px)',
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.35) 0%, rgba(139, 92, 246, 0.25) 50%, rgba(245, 158, 11, 0.2) 100%)',
+              pointerEvents: 'none',
+            }}
+          />
         </motion.div>
 
         {/* Subtitle Line */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
           style={{
-            marginTop: '8px',
+            marginBottom: '20px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '12px',
-            fontSize: 'clamp(1.15rem, 3vw, 1.5rem)',
-            fontWeight: 800,
-            letterSpacing: '-0.02em',
-            color: '#ffffff',
+            fontSize: 'clamp(1.15rem, 2.8vw, 1.6rem)',
+            fontWeight: 400,
+            letterSpacing: '0.03em',
+            color: '#a1a1aa',
           }}
         >
-          <span>Data Analyst</span>
-          <span style={{ color: '#475569', fontWeight: 300 }}>|</span>
-          <span style={{ color: '#93c5fd' }}>AI Engineer</span>
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>Data Analyst</span>
+          <span style={{ color: '#27272a' }}>|</span>
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>AI Engineer</span>
         </motion.div>
 
         {/* Bio Paragraph */}
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           style={{
             maxWidth: '680px',
-            margin: '20px auto 0',
-            fontSize: 'clamp(0.85rem, 1.8vw, 0.95rem)',
-            color: '#94a3b8',
+            margin: '0 auto 36px',
+            fontSize: 'clamp(0.85rem, 1.8vw, 0.98rem)',
+            color: '#a1a1aa',
             lineHeight: 1.7,
             fontWeight: 400,
           }}
         >
-          <strong style={{ color: '#ffffff', fontWeight: 600 }}>End-to-end data analyst</strong> — from retail data extraction & automation, through{' '}
-          <strong style={{ color: '#ffffff', fontWeight: 600 }}>ETL pipelines</strong> into{' '}
-          <strong style={{ color: '#ffffff', fontWeight: 600 }}>PostgreSQL</strong> /{' '}
-          <strong style={{ color: '#ffffff', fontWeight: 600 }}>Tableau</strong> /{' '}
-          <strong style={{ color: '#ffffff', fontWeight: 600 }}>Looker</strong>, delivering high-impact business intelligence and automated reporting to accelerate decision-making.
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>End-to-end data analyst</span> — from retail data extraction & automation, through{' '}
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>ETL pipelines</span> into{' '}
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>PostgreSQL</span> /{' '}
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>Tableau</span> /{' '}
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>Looker</span>, delivering high-impact business intelligence and automated reporting to accelerate decision-making.
         </motion.p>
 
         {/* Social Links Buttons */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.75 }}
           style={{
-            marginTop: '36px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '16px',
+            gap: '14px',
           }}
         >
-          <Tooltip title="GitHub Profile">
+          <Tooltip title="GitHub">
             <a
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
+              className="glass"
               style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '50%',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                backgroundColor: 'rgba(30, 41, 59, 0.6)',
-                backdropFilter: 'blur(8px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#ffffff',
                 textDecoration: 'none',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4)',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#60a5fa';
-                e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
-                e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(59, 130, 246, 0.35)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                e.currentTarget.style.backgroundColor = 'rgba(30, 41, 59, 0.6)';
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4)';
               }}
             >
-              <FiGithub size={20} />
+              <FiGithub size={19} />
             </a>
           </Tooltip>
 
-          <Tooltip title="LinkedIn Profile">
+          <Tooltip title="LinkedIn">
             <a
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
+              className="glass"
               style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '50%',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                backgroundColor: 'rgba(30, 41, 59, 0.6)',
-                backdropFilter: 'blur(8px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#ffffff',
                 textDecoration: 'none',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4)',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#60a5fa';
-                e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
-                e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(59, 130, 246, 0.35)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                e.currentTarget.style.backgroundColor = 'rgba(30, 41, 59, 0.6)';
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4)';
               }}
             >
-              <FiLinkedin size={20} />
+              <FiLinkedin size={19} />
             </a>
           </Tooltip>
 
@@ -269,35 +273,19 @@ export default function Hero() {
             <a
               href="#contact"
               aria-label="Email"
+              className="glass"
               style={{
                 width: '46px',
                 height: '46px',
                 borderRadius: '50%',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                backgroundColor: 'rgba(30, 41, 59, 0.6)',
-                backdropFilter: 'blur(8px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#ffffff',
                 textDecoration: 'none',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4)',
-                transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#60a5fa';
-                e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
-                e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(59, 130, 246, 0.35)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                e.currentTarget.style.backgroundColor = 'rgba(30, 41, 59, 0.6)';
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4)';
               }}
             >
-              <FiMail size={20} />
+              <FiMail size={19} />
             </a>
           </Tooltip>
         </motion.div>

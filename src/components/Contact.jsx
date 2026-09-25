@@ -36,7 +36,8 @@ export default function Contact() {
       style={{
         paddingTop: '96px',
         paddingBottom: '96px',
-        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+        borderTop: '1px solid #27272a',
+        position: 'relative',
       }}
     >
       <div
@@ -136,8 +137,8 @@ export default function Contact() {
                     placeholder="e.g. Satoshi Nakamoto"
                     style={{
                       width: '100%',
-                      backgroundColor: '#030408',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      backgroundColor: '#0a0a0a',
+                      border: '1px solid #27272a',
                       borderRadius: '12px',
                       padding: '11px 14px',
                       fontSize: '0.8125rem',
@@ -146,7 +147,7 @@ export default function Contact() {
                       transition: 'border-color 0.2s ease',
                     }}
                     onFocus={(e) => (e.target.style.borderColor = '#3b82f6')}
-                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)')}
+                    onBlur={(e) => (e.target.style.borderColor = '#27272a')}
                   />
                 </div>
 
@@ -173,8 +174,8 @@ export default function Contact() {
                     placeholder="you@company.com"
                     style={{
                       width: '100%',
-                      backgroundColor: '#030408',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      backgroundColor: '#0a0a0a',
+                      border: '1px solid #27272a',
                       borderRadius: '12px',
                       padding: '11px 14px',
                       fontSize: '0.8125rem',
@@ -183,7 +184,7 @@ export default function Contact() {
                       transition: 'border-color 0.2s ease',
                     }}
                     onFocus={(e) => (e.target.style.borderColor = '#3b82f6')}
-                    onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)')}
+                    onBlur={(e) => (e.target.style.borderColor = '#27272a')}
                   />
                 </div>
               </div>
@@ -210,8 +211,8 @@ export default function Contact() {
                   placeholder="Data Analytics / Pipeline Automation Project"
                   style={{
                     width: '100%',
-                    backgroundColor: '#030408',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    backgroundColor: '#0a0a0a',
+                    border: '1px solid #27272a',
                     borderRadius: '12px',
                     padding: '11px 14px',
                     fontSize: '0.8125rem',
@@ -220,7 +221,7 @@ export default function Contact() {
                     transition: 'border-color 0.2s ease',
                   }}
                   onFocus={(e) => (e.target.style.borderColor = '#3b82f6')}
-                  onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)')}
+                  onBlur={(e) => (e.target.style.borderColor = '#27272a')}
                 />
               </div>
 
@@ -247,8 +248,8 @@ export default function Contact() {
                   placeholder="Tell me about your pipeline requirements, stack, or target timeline..."
                   style={{
                     width: '100%',
-                    backgroundColor: '#030408',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    backgroundColor: '#0a0a0a',
+                    border: '1px solid #27272a',
                     borderRadius: '12px',
                     padding: '11px 14px',
                     fontSize: '0.8125rem',
@@ -259,7 +260,7 @@ export default function Contact() {
                     transition: 'border-color 0.2s ease',
                   }}
                   onFocus={(e) => (e.target.style.borderColor = '#3b82f6')}
-                  onBlur={(e) => (e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)')}
+                  onBlur={(e) => (e.target.style.borderColor = '#27272a')}
                 />
               </div>
 
@@ -272,7 +273,7 @@ export default function Contact() {
                   borderRadius: '12px',
                   fontWeight: 700,
                   fontSize: '0.875rem',
-                  color: '#030408',
+                  color: '#0a0a0a',
                   backgroundColor: '#ffffff',
                   border: 'none',
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',

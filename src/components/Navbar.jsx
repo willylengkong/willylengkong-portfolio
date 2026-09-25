@@ -42,9 +42,9 @@ export default function Navbar() {
         top: 0,
         zIndex: 40,
         width: '100%',
-        backgroundColor: scrolled ? 'rgba(3, 4, 8, 0.88)' : 'rgba(3, 4, 8, 0.7)',
+        backgroundColor: scrolled ? 'rgba(10, 10, 10, 0.92)' : 'rgba(10, 10, 10, 0.75)',
         backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+        borderBottom: '1px solid #27272a',
         transition: 'all 0.3s ease',
       }}
     >
@@ -220,8 +220,8 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
             style={{
-              backgroundColor: 'rgba(7, 9, 18, 0.98)',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+              backgroundColor: 'rgba(10, 10, 10, 0.98)',
+              borderBottom: '1px solid #27272a',
               padding: '20px 24px',
               display: 'flex',
               flexDirection: 'column',

@@ -31,9 +31,9 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#030408', color: '#f8fafc', padding: '24px', textAlign: 'center', fontFamily: 'sans-serif' }}>
+        <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0a0a0a', color: '#fafafa', padding: '24px', textAlign: 'center', fontFamily: 'sans-serif' }}>
           <h2 style={{ fontSize: '1.5rem', marginBottom: '12px', color: '#f87171' }}>Something went wrong</h2>
-          <p style={{ color: '#94a3b8', maxWidth: '500px', marginBottom: '20px', fontSize: '0.9rem' }}>
+          <p style={{ color: '#a1a1aa', maxWidth: '500px', marginBottom: '20px', fontSize: '0.9rem' }}>
             {this.state.error?.message || 'An unexpected rendering error occurred.'}
           </p>
           <button
@@ -54,8 +54,21 @@ export default function App() {
     <ErrorBoundary>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div className="backdrop-grid" style={{ minHeight: '100vh', position: 'relative' }}>
-          {/* Dynamic Interactive Mouse Follower */}
+        <div style={{ backgroundColor: '#0a0a0a', color: '#fafafa', minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
+          {/* Global Ambient Grid Pattern Layer */}
+          <div
+            className="grid-pattern"
+            style={{
+              position: 'fixed',
+              inset: 0,
+              opacity: 0.18,
+              pointerEvents: 'none',
+              zIndex: 0,
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Mouse Follower Cursor Glow */}
           <SpotlightEffect />
 
           {/* Ambient Audio Toggle */}
@@ -64,8 +77,8 @@ export default function App() {
           {/* Sticky Glassmorphic Navigation */}
           <Navbar />
 
-          {/* Main Sections */}
-          <main>
+          {/* Main Content Sections */}
+          <main style={{ position: 'relative', zIndex: 10 }}>
             <Hero />
             <Projects />
             <About />

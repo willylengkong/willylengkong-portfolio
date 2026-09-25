@@ -15,7 +15,8 @@ export default function Experience() {
       style={{
         paddingTop: '96px',
         paddingBottom: '96px',
-        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+        borderTop: '1px solid #27272a',
+        position: 'relative',
       }}
     >
       <div
@@ -182,7 +183,7 @@ export default function Experience() {
                   width: '14px',
                   height: '14px',
                   borderRadius: '50%',
-                  backgroundColor: '#030408',
+                  backgroundColor: '#0a0a0a',
                   border: '2px solid #60a5fa',
                   display: 'flex',
                   alignItems: 'center',
@@ -291,7 +292,7 @@ export default function Experience() {
                   width: '14px',
                   height: '14px',
                   borderRadius: '50%',
-                  backgroundColor: '#030408',
+                  backgroundColor: '#0a0a0a',
                   border: '2px solid #64748b',
                   display: 'flex',
                   alignItems: 'center',

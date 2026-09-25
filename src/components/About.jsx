@@ -23,7 +23,8 @@ export default function About() {
       style={{
         paddingTop: '96px',
         paddingBottom: '96px',
-        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+        borderTop: '1px solid #27272a',
+        position: 'relative',
       }}
     >
       <div
@@ -111,7 +112,7 @@ export default function About() {
                 style={{
                   width: '100%',
                   height: '100%',
-                  backgroundColor: '#030408',
+                  backgroundColor: '#0a0a0a',
                   borderRadius: '18px',
                   display: 'flex',
                   alignItems: 'center',

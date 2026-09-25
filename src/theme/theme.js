@@ -4,10 +4,10 @@ export const theme = createTheme({
   palette: {
     mode: 'dark',
     background: {
-      default: '#030408',
-      paper: '#070912',
-      surface: '#0c0f1d',
-      elevated: '#12172b',
+      default: '#0a0a0a',
+      paper: '#18181b',
+      surface: '#18181b',
+      elevated: '#27272a',
     },
     primary: {
       main: '#3b82f6',
@@ -16,53 +16,44 @@ export const theme = createTheme({
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#6366f1',
-      light: '#818cf8',
-      dark: '#4338ca',
-    },
-    accent: {
-      yellow: '#facc15',
-      emerald: '#10b981',
-      cyan: '#06b6d4',
+      main: '#a855f7',
+      light: '#c084fc',
+      dark: '#7e22ce',
     },
     text: {
-      primary: '#f8fafc',
-      secondary: '#94a3b8',
-      muted: '#64748b',
+      primary: '#fafafa',
+      secondary: '#a1a1aa',
+      muted: '#71717a',
     },
-    divider: 'rgba(255, 255, 255, 0.06)',
+    divider: '#27272a',
   },
   typography: {
-    fontFamily: '"Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif',
+    fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     h1: {
       fontWeight: 900,
-      letterSpacing: '-0.03em',
+      letterSpacing: '-0.04em',
     },
     h2: {
       fontWeight: 800,
-      letterSpacing: '-0.025em',
+      letterSpacing: '-0.03em',
     },
     h3: {
-      fontWeight: 800,
+      fontWeight: 700,
       letterSpacing: '-0.02em',
     },
     h4: {
       fontWeight: 700,
-      letterSpacing: '-0.015em',
-    },
-    h5: {
-      fontWeight: 700,
-    },
-    h6: {
-      fontWeight: 600,
+      letterSpacing: '-0.01em',
     },
     body1: {
       lineHeight: 1.7,
       fontSize: '0.9375rem',
+      color: '#a1a1aa',
     },
     body2: {
       lineHeight: 1.6,
       fontSize: '0.84rem',
+      color: '#a1a1aa',
     },
     button: {
       textTransform: 'none',
@@ -80,7 +71,7 @@ export const theme = createTheme({
           borderRadius: '9999px',
           textTransform: 'none',
           fontWeight: 600,
-          transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+          transition: 'all 0.25s ease',
         },
       },
     },
@@ -88,18 +79,19 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          backgroundColor: '#070912',
-          border: '1px solid rgba(255, 255, 255, 0.07)',
+          backgroundColor: 'rgba(24, 24, 27, 0.7)',
+          border: '1px solid #27272a',
+          backdropFilter: 'blur(12px)',
         },
       },
     },
     MuiDialog: {
       styleOverrides: {
         paper: {
-          backgroundColor: '#070912',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: '#0a0a0a',
+          border: '1px solid #27272a',
           borderRadius: 20,
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.85)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.95)',
         },
       },
     },

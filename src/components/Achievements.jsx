@@ -26,7 +26,8 @@ export default function Achievements() {
       style={{
         paddingTop: '96px',
         paddingBottom: '96px',
-        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+        borderTop: '1px solid #27272a',
+        position: 'relative',
       }}
     >
       <div
@@ -157,7 +158,7 @@ export default function Achievements() {
                     width: '100%',
                     height: '110px',
                     borderRadius: '12px',
-                    backgroundColor: '#030408',
+                    backgroundColor: '#0a0a0a',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
                     padding: '8px',
                     marginBottom: '12px',

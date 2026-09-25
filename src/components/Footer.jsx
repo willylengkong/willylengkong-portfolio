@@ -10,8 +10,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: '1px solid rgba(255, 255, 255, 0.05)',
-        backgroundColor: '#030408',
+        borderTop: '1px solid #27272a',
+        backgroundColor: '#0a0a0a',
         paddingTop: '64px',
         paddingBottom: '48px',
       }}
