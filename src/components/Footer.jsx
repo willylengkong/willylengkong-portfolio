@@ -37,18 +37,13 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div
                 style={{
-                  width: '42px',
-                  height: '42px',
-                  borderRadius: '12px',
-                  backgroundColor: 'rgba(59, 130, 246, 0.08)',
-                  border: '1px solid rgba(59, 130, 246, 0.25)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  padding: '0 4px',
+                  flexShrink: 0,
                 }}
               >
-                <BrandLogo width={25} accentColor="#3b82f6" primaryColor="#ffffff" />
+                <BrandLogo width={44} height={25} accentColor="#3b82f6" primaryColor="#ffffff" />
               </div>
               <div>
                 <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.01em' }}>

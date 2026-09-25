@@ -84,38 +84,20 @@ export default function Navbar() {
             userSelect: 'none',
           }}
         >
-          {/* Brand Monogram Emblem */}
+          {/* Brand Monogram Vector Logo (Enlarged, Borderless, Dot Removed) */}
           <div
             style={{
-              position: 'relative',
-              width: '40px',
-              height: '40px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              borderRadius: '10px',
-              border: '1px solid rgba(59, 130, 246, 0.4)',
-              backgroundColor: 'rgba(59, 130, 246, 0.05)',
-              transition: 'all 0.3s ease',
-              padding: '0 4px',
+              flexShrink: 0,
             }}
           >
-            <BrandLogo width={25} accentColor="#3b82f6" primaryColor="#ffffff" />
-            <span
-              style={{
-                position: 'absolute',
-                top: '5px',
-                right: '5px',
-                width: '4px',
-                height: '4px',
-                borderRadius: '50%',
-                backgroundColor: '#3b82f6',
-              }}
-            />
+            <BrandLogo width={48} height={27} accentColor="#3b82f6" primaryColor="#ffffff" />
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-            <span style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.01em' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
+            <span style={{ fontSize: '1.18rem', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.01em' }}>
               Willy
             </span>
             <span
@@ -124,7 +106,7 @@ export default function Navbar() {
                 fontFamily: 'var(--font-jetbrains)',
                 color: '#a1a1aa',
                 letterSpacing: '0.2em',
-                marginTop: '4px',
+                marginTop: '3px',
               }}
             >
               DATA ANALYST
