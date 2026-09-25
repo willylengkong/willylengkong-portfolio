@@ -35,6 +35,120 @@ export const skillsCategories = [
   }
 ];
 
+export const automationProjects = [
+  {
+    id: "automation1",
+    title: "Python Report Automation - Perishable",
+    subtitle: "PT Indomarco Prismatama • Production",
+    badge: "Case Study",
+    punchline: "Automated daily multi-store perishable reporting pipeline replacing 3+ hours of manual Excel processing.",
+    description: "An end-to-end Python pipeline automating 11 daily perishable sales reports across nationwide store networks. Integrates master sales feeds, computes SPD/APC performance metrics, applies automated validation rules, and dispatches executive summaries via Outlook.",
+    metrics: [
+      { value: "11", label: "reports automated" },
+      { value: "~30s", label: "processing runtime" },
+      { value: "165–220m", label: "daily time saved" }
+    ],
+    builtWith: ["Python", "Pandas", "NumPy", "OpenPyXL", "Outlook COM"],
+    caseStudy: {
+      subtitle: "Nationwide Perishable Sales Reporting Engine",
+      overview: "Automated daily perishable reporting pipeline eliminating 165–220 minutes of daily manual Excel processing. Directly ingests multi-branch sales data, calculates vital store performance KPIs, and formats finalized workbooks.",
+      architecture: [
+        "Automated master data extraction and daily sales delta ingestion",
+        "Vectorized Pandas aggregation across store and product department dimensions",
+        "Dynamic target allocation rules and margin validation logic",
+        "Automated distribution through Outlook COM dispatch to retail category managers"
+      ],
+      result: "99.3% efficiency gain with runtime reduced from 3+ hours to ~30 seconds, maintaining 100% data fidelity across nationwide branch stores."
+    }
+  },
+  {
+    id: "automation2",
+    title: "Enterprise Data Pipeline & Analytics",
+    subtitle: "Planned Architecture • In Development",
+    badge: "Coming Soon",
+    punchline: "Next-generation automated telemetry aggregation and real-time retail intelligence platform.",
+    description: "Upcoming data engineering platform designed to stream multi-outlet sales indicators, evaluate store clustering models, and dynamically trigger margin rebalancing alerts.",
+    metrics: [
+      { value: "—", label: "data sources" },
+      { value: "TBD", label: "latency target" },
+      { value: "—", label: "accuracy score" }
+    ],
+    isPlaceholder: true
+  }
+];
+
+export const scrapingNicheProjects = [
+  {
+    id: "niche1",
+    tags: ["HTTP-only", "Pricing Model", "+2 more"],
+    icon: "cart",
+    title: "E-Commerce & Retail Scraper",
+    count: "—",
+    description: "Automated dynamic catalog crawling, competitor price monitoring, and SKU normalization engine across retail marketplaces.",
+    details: {
+      overview: "Scalable catalog extraction engine with automated pagination, header rotation, and pricing delta alerts."
+    }
+  },
+  {
+    id: "niche2",
+    tags: ["API Ingestion", "Telemetry", "+1 more"],
+    icon: "database",
+    title: "Supply Chain & Logistics Scraper",
+    count: "—",
+    description: "Scheduled extraction of freight schedules, warehouse stock availability, and distributor price list updates.",
+    details: {
+      overview: "Logistics tracking pipeline monitoring shipping lanes, container turnaround times, and regional hub bottlenecks."
+    }
+  },
+  {
+    id: "niche3",
+    tags: ["Market Trends", "FMCG", "+3 more"],
+    icon: "users",
+    title: "Consumer Sentiment & Review Crawler",
+    count: "—",
+    description: "Consumer feedback aggregator collecting review ratings, product sentiment signals, and competitor promotional campaigns.",
+    details: {
+      overview: "Aggregates multi-source customer reviews with sentiment classification and competitive pricing intelligence."
+    }
+  }
+];
+
+export const webDevProjects = [
+  {
+    id: "web1",
+    tags: ["React", "Next.js", "+2 more"],
+    icon: "globe",
+    title: "Executive Retail Analytics Portal",
+    count: "01",
+    description: "Modern responsive web architecture, interactive KPI dashboards, and scalable RESTful API integrations for merchandise teams.",
+    details: {
+      overview: "Executive dashboard platform delivering real-time SKU velocity charts and merchandise margin tracking."
+    }
+  },
+  {
+    id: "web2",
+    tags: ["TypeScript", "Tailwind", "+1 more"],
+    icon: "code",
+    title: "Store Inventory Management Interface",
+    count: "02",
+    description: "High-performance client interface with real-time stock status, automated reordering workflows, and secure authentication.",
+    details: {
+      overview: "Inventory monitoring interface with instant search, batch update workflows, and discrepancy alerting."
+    }
+  },
+  {
+    id: "web3",
+    tags: ["Fullstack", "PostgreSQL", "+3 more"],
+    icon: "layers",
+    title: "Automated Reporting Web Dashboard",
+    count: "03",
+    description: "End-to-end fullstack platform providing automated report generation, scheduled exports, and background pipeline monitoring.",
+    details: {
+      overview: "Web portal managing automated report triggers, audit logs, and export delivery across organizational roles."
+    }
+  }
+];
+
 export const featuredProjects = [
   {
     id: "project1",
