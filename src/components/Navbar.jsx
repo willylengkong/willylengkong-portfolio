@@ -278,18 +278,20 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Horizontal Blue Scroll Progress Bar (Fills gradually from left to right as page is scrolled) */}
+      {/* Horizontal Clean Blue Scroll Progress Bar (Non-glowing, appears when scrolled) */}
       <motion.div
         style={{
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
-          height: '2.5px',
-          background: 'linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)',
+          height: '2px',
+          backgroundColor: '#3b82f6',
           transformOrigin: '0%',
           scaleX,
-          boxShadow: '0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(96, 165, 250, 0.4)',
+          opacity: scrolled ? 1 : 0,
+          transition: 'opacity 0.25s ease',
+          pointerEvents: 'none',
           zIndex: 50,
         }}
       />
