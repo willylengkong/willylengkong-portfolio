@@ -226,12 +226,20 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Bar */}
+      {/* Full-width Divider Line & Bottom Meta Bar */}
+      <div
+        style={{
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          width: '100%',
+        }}
+      >
         <div
           style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-            paddingTop: '32px',
+            maxWidth: '1200px',
+            margin: '0 auto',
+            padding: '24px 20px 0',
             display: 'flex',
             flexDirection: 'row',
             flexWrap: 'wrap',
