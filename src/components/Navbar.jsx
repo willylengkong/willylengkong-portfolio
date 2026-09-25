@@ -36,6 +36,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   const navLinks = [
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'Projects', href: '#projects', id: 'projects' },
@@ -205,76 +217,162 @@ export default function Navbar() {
           </motion.button>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
-        <button
+        {/* Mobile Hamburger Toggle Button */}
+        <motion.button
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
           className="mobile-toggle-btn"
+          whileTap={{ scale: 0.9 }}
           style={{
             display: 'none',
-            background: 'none',
-            border: 'none',
+            background: 'rgba(24, 24, 27, 0.7)',
+            border: '1px solid #27272a',
+            borderRadius: '8px',
             color: '#ffffff',
             cursor: 'pointer',
-            padding: '4px',
+            padding: '8px',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-        </button>
+          {mobileOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+        </motion.button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Right Slide-Over Drawer & Backdrop */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            style={{
-              backgroundColor: 'rgba(10, 10, 10, 0.98)',
-              borderBottom: '1px solid #27272a',
-              padding: '20px 24px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '14px',
-            }}
-          >
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollTo(link.href)}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  textAlign: 'left',
-                  fontSize: '0.95rem',
-                  fontWeight: activeSection === link.id ? 700 : 500,
-                  color: activeSection === link.id ? '#3b82f6' : '#a1a1aa',
-                  padding: '6px 0',
-                  cursor: 'pointer',
-                }}
-              >
-                {link.name}
-              </button>
-            ))}
-            <button
-              onClick={() => scrollTo('#contact')}
+          <>
+            {/* Smooth Dark Backdrop Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.28, ease: 'easeInOut' }}
+              onClick={() => setMobileOpen(false)}
               style={{
-                marginTop: '10px',
-                padding: '10px 20px',
-                backgroundColor: '#ffffff',
-                color: '#0a0a0a',
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                borderRadius: '8px',
-                border: 'none',
-                cursor: 'pointer',
+                position: 'fixed',
+                inset: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
+                zIndex: 90,
+              }}
+            />
+
+            {/* Right Slide-Over Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 240 }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                width: '300px',
+                maxWidth: '85vw',
+                backgroundColor: 'rgba(13, 13, 16, 0.98)',
+                borderLeft: '1px solid #27272a',
+                boxShadow: '-12px 0 35px rgba(0, 0, 0, 0.75)',
+                zIndex: 100,
+                display: 'flex',
+                flexDirection: 'column',
+                padding: '24px 20px',
               }}
             >
-              Contact Me
-            </button>
-          </motion.div>
+              {/* Drawer Top Header */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  paddingBottom: '20px',
+                  marginBottom: '20px',
+                  borderBottom: '1px solid #27272a',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <BrandLogo width={36} height={20} accentColor="#3b82f6" primaryColor="#ffffff" />
+                  <span style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>Willy</span>
+                </div>
+
+                <motion.button
+                  onClick={() => setMobileOpen(false)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label="Close menu"
+                  style={{
+                    background: 'rgba(24, 24, 27, 0.8)',
+                    border: '1px solid #27272a',
+                    borderRadius: '8px',
+                    color: '#a1a1aa',
+                    cursor: 'pointer',
+                    padding: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <FiX size={18} />
+                </motion.button>
+              </div>
+
+              {/* Navigation Links */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', flex: 1 }}>
+                {navLinks.map((link, idx) => {
+                  const isActive = activeSection === link.id;
+                  return (
+                    <motion.button
+                      key={link.id}
+                      initial={{ opacity: 0, x: 25 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 * idx + 0.1, duration: 0.25 }}
+                      onClick={() => scrollTo(link.href)}
+                      style={{
+                        background: isActive ? 'rgba(59, 130, 246, 0.12)' : 'transparent',
+                        border: 'none',
+                        borderLeft: isActive ? '3px solid #3b82f6' : '3px solid transparent',
+                        borderRadius: '6px',
+                        textAlign: 'left',
+                        fontSize: '1rem',
+                        fontWeight: isActive ? 600 : 500,
+                        color: isActive ? '#ffffff' : '#a1a1aa',
+                        padding: '12px 14px',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                      }}
+                    >
+                      {link.name}
+                    </motion.button>
+                  );
+                })}
+              </div>
+
+              {/* Drawer Bottom CTA */}
+              <div style={{ paddingTop: '20px', borderTop: '1px solid #27272a' }}>
+                <button
+                  onClick={() => scrollTo('#contact')}
+                  style={{
+                    width: '100%',
+                    padding: '12px 20px',
+                    backgroundColor: '#ffffff',
+                    color: '#0a0a0a',
+                    fontSize: '0.9rem',
+                    fontWeight: 600,
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    boxShadow: '0 0 15px rgba(255, 255, 255, 0.15)',
+                    transition: 'all 0.2s ease',
+                  }}
+                >
+                  Contact Me
+                </button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
@@ -310,7 +408,7 @@ export default function Navbar() {
             display: none !important;
           }
           .mobile-toggle-btn {
-            display: block !important;
+            display: flex !important;
           }
         }
       `}</style>
