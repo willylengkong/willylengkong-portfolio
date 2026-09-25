@@ -138,14 +138,14 @@ export default function Hero() {
 
           {/* Balanced Soft Atmospheric Pulsating Glow Behind Letters */}
           <motion.div
-            animate={{ opacity: [0.22, 0.45, 0.22], scale: [0.99, 1.03, 0.99] }}
+            animate={{ opacity: [0.22, 0.54, 0.22], scale: [0.99, 1.04, 0.99] }}
             transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
             style={{
               position: 'absolute',
               inset: '-10px',
               zIndex: -1,
               filter: 'blur(65px)',
-              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.55) 0%, rgba(139, 92, 246, 0.35) 50%, rgba(245, 158, 11, 0.45) 100%)',
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.62) 0%, rgba(139, 92, 246, 0.38) 50%, rgba(245, 158, 11, 0.52) 100%)',
               pointerEvents: 'none',
               borderRadius: '24px',
             }}
