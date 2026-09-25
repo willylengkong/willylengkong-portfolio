@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiDatabase, FiMenu, FiX } from 'react-icons/fi';
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
@@ -11,7 +11,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      const sections = ['home', 'projects', 'about', 'experience', 'achievements', 'education', 'contact'];
+      const sections = ['home', 'projects', 'about', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -31,184 +31,204 @@ export default function Navbar() {
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'About', href: '#about', id: 'about' },
-    { name: 'Experience', href: '#experience', id: 'experience' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
+  const scrollTo = (href) => {
+    setMobileOpen(false);
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <header
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
       style={{
-        position: 'sticky',
+        position: 'fixed',
         top: 0,
+        left: 0,
+        right: 0,
         zIndex: 40,
-        width: '100%',
-        backgroundColor: scrolled ? 'rgba(10, 10, 10, 0.92)' : 'rgba(10, 10, 10, 0.75)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid #27272a',
         transition: 'all 0.3s ease',
+        backgroundColor: scrolled ? 'rgba(10, 10, 10, 0.85)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid #27272a' : '1px solid transparent',
       }}
     >
       <div
         style={{
-          maxWidth: '1200px',
+          maxWidth: '1280px',
           margin: '0 auto',
-          padding: '0 24px',
-          height: '76px',
+          padding: '16px 24px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
       >
         {/* Brand Logo */}
-        <a
-          href="#home"
+        <motion.div
+          onClick={() => scrollTo('#home')}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
-            textDecoration: 'none',
-            color: 'inherit',
+            cursor: 'pointer',
+            userSelect: 'none',
           }}
         >
+          {/* Cyan/Blue Database Emblem */}
           <div
             style={{
-              width: '46px',
-              height: '46px',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              backgroundColor: '#000000',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              position: 'relative',
+              width: '40px',
+              height: '40px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.6)',
-              transition: 'transform 0.2s ease, border-color 0.2s ease',
+              borderRadius: '10px',
+              border: '1px solid rgba(59, 130, 246, 0.4)',
+              backgroundColor: 'rgba(59, 130, 246, 0.05)',
+              transition: 'all 0.3s ease',
             }}
           >
-            <svg viewBox="0 0 500 500" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <rect width="500" height="500" fill="#000000" />
-              <g>
-                <rect x="110" y="173" width="37" height="150" fill="#F8F8F8" />
-                <polygon points="159,228 194,242 194,324 159,310" fill="#F8F8F8" />
-                <rect x="205" y="173" width="37" height="150" fill="#F8F8F8" />
-                <polygon points="253,169 288,183 288,217 253,203" fill="#3b82f6" />
-                <rect x="253" y="222" width="37" height="101" fill="#F8F8F8" />
-                <rect x="301" y="173" width="37" height="106" fill="#F8F8F8" />
-                <rect x="301" y="286" width="82" height="37" fill="#3b82f6" />
-              </g>
-            </svg>
+            <FiDatabase size={20} color="#3b82f6" strokeWidth={2} />
+            <span
+              style={{
+                position: 'absolute',
+                top: '5px',
+                right: '5px',
+                width: '4px',
+                height: '4px',
+                borderRadius: '50%',
+                backgroundColor: '#3b82f6',
+              }}
+            />
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em' }}>
-              Willy
+
+          <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
+            <span style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.01em' }}>
+              Willy<span style={{ color: '#3b82f6' }}>.</span>
             </span>
-            <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', color: '#60a5fa' }}>
-              Data Analyst
+            <span
+              style={{
+                fontSize: '0.625rem',
+                fontFamily: 'var(--font-jetbrains)',
+                color: '#a1a1aa',
+                letterSpacing: '0.2em',
+                marginTop: '4px',
+              }}
+            >
+              DATA ANALYST
             </span>
           </div>
-        </a>
+        </motion.div>
 
-        {/* Desktop Navigation */}
-        <nav
-          style={{
-            display: 'none',
-            alignItems: 'center',
-            gap: '32px',
-          }}
-          className="desktop-nav"
-        >
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <a
-                key={link.id}
-                href={link.href}
-                style={{
-                  position: 'relative',
-                  fontSize: '0.8125rem',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: isActive ? 600 : 500,
-                  color: isActive ? '#ffffff' : '#94a3b8',
-                  textDecoration: 'none',
-                  padding: '6px 2px',
-                  transition: 'color 0.2s ease',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
-                onMouseLeave={(e) => {
-                  if (!isActive) e.currentTarget.style.color = '#94a3b8';
-                }}
-              >
-                {link.name}
-                {isActive && (
-                  <motion.span
-                    layoutId="activeIndicator"
-                    style={{
-                      position: 'absolute',
-                      bottom: '-2px',
-                      left: 0,
-                      width: '100%',
-                      height: '2px',
-                      borderRadius: '999px',
-                      backgroundColor: '#3b82f6',
-                      boxShadow: '0 0 10px rgba(59, 130, 246, 0.7)',
-                    }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </a>
-            );
-          })}
-        </nav>
+        {/* Desktop Navigation Links & CTA */}
+        <div style={{ display: 'none', alignItems: 'center', gap: '32px' }} className="desktop-nav-group">
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+            {navLinks.map((item, idx) => {
+              const isActive = activeSection === item.id;
+              return (
+                <motion.button
+                  key={item.name}
+                  onClick={() => scrollTo(item.href)}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * idx }}
+                  whileHover={{ y: -2 }}
+                  style={{
+                    position: 'relative',
+                    background: 'none',
+                    border: 'none',
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    color: isActive ? '#ffffff' : '#a1a1aa',
+                    cursor: 'pointer',
+                    padding: '4px 0',
+                    transition: 'color 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
+                  onMouseLeave={(e) => {
+                    if (!isActive) e.currentTarget.style.color = '#a1a1aa';
+                  }}
+                >
+                  {item.name}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavIndicator"
+                      style={{
+                        position: 'absolute',
+                        bottom: '-4px',
+                        left: 0,
+                        right: 0,
+                        height: '2px',
+                        backgroundColor: '#3b82f6',
+                        borderRadius: '999px',
+                      }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                </motion.button>
+              );
+            })}
+          </nav>
 
-        {/* Right CTA Button */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <a
-            href="#contact"
-            className="contact-pill-btn"
+          {/* Contact Me Button */}
+          <motion.button
+            onClick={() => scrollTo('#contact')}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             style={{
-              padding: '9px 22px',
-              fontSize: '0.8125rem',
-              fontWeight: 700,
-              color: '#030408',
+              padding: '8px 18px',
               backgroundColor: '#ffffff',
-              borderRadius: '9999px',
-              textDecoration: 'none',
-              boxShadow: '0 0 20px rgba(255, 255, 255, 0.15)',
+              color: '#0a0a0a',
+              fontSize: '0.875rem',
+              fontWeight: 600,
+              borderRadius: '8px',
+              border: 'none',
+              cursor: 'pointer',
               transition: 'all 0.2s ease',
-              display: 'inline-flex',
-              alignItems: 'center',
+              boxShadow: '0 0 15px rgba(255, 255, 255, 0.15)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#e2e8f0';
-              e.currentTarget.style.boxShadow = '0 0 25px rgba(255, 255, 255, 0.3)';
-              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+              e.currentTarget.style.boxShadow = '0 0 25px rgba(255, 255, 255, 0.35)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.backgroundColor = '#ffffff';
-              e.currentTarget.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.15)';
-              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 0 15px rgba(255, 255, 255, 0.15)';
             }}
           >
             Contact Me
-          </a>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-            className="mobile-menu-btn"
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#94a3b8',
-              cursor: 'pointer',
-              padding: '8px',
-              display: 'none',
-            }}
-          >
-            {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
+          </motion.button>
         </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+          className="mobile-toggle-btn"
+          style={{
+            display: 'none',
+            background: 'none',
+            border: 'none',
+            color: '#ffffff',
+            cursor: 'pointer',
+            padding: '4px',
+          }}
+        >
+          {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </button>
       </div>
 
       {/* Mobile Drawer */}
@@ -229,64 +249,61 @@ export default function Navbar() {
             }}
           >
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.id}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
+                onClick={() => scrollTo(link.href)}
                 style={{
-                  fontSize: '0.875rem',
-                  fontFamily: 'var(--font-mono)',
-                  color: activeSection === link.id ? '#60a5fa' : '#94a3b8',
-                  textDecoration: 'none',
-                  padding: '6px 0',
+                  background: 'none',
+                  border: 'none',
+                  textAlign: 'left',
+                  fontSize: '0.95rem',
                   fontWeight: activeSection === link.id ? 700 : 500,
+                  color: activeSection === link.id ? '#3b82f6' : '#a1a1aa',
+                  padding: '6px 0',
+                  cursor: 'pointer',
                 }}
               >
                 {link.name}
-              </a>
+              </button>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
+            <button
+              onClick={() => scrollTo('#contact')}
               style={{
-                marginTop: '8px',
-                textAlign: 'center',
+                marginTop: '10px',
                 padding: '10px 20px',
-                fontSize: '0.875rem',
-                fontWeight: 700,
-                color: '#030408',
                 backgroundColor: '#ffffff',
-                borderRadius: '9999px',
-                textDecoration: 'none',
+                color: '#0a0a0a',
+                fontSize: '0.875rem',
+                fontWeight: 600,
+                borderRadius: '8px',
+                border: 'none',
+                cursor: 'pointer',
               }}
             >
               Contact Me
-            </a>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
         @media (min-width: 768px) {
-          .desktop-nav {
+          .desktop-nav-group {
             display: flex !important;
           }
-          .mobile-menu-btn {
+          .mobile-toggle-btn {
             display: none !important;
           }
         }
         @media (max-width: 767px) {
-          .desktop-nav {
+          .desktop-nav-group {
             display: none !important;
           }
-          .mobile-menu-btn {
+          .mobile-toggle-btn {
             display: block !important;
-          }
-          .contact-pill-btn {
-            display: none !important;
           }
         }
       `}</style>
-    </header>
+    </motion.header>
   );
 }
