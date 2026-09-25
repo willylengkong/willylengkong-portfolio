@@ -80,7 +80,7 @@ export default function Hero() {
           width: '100%',
         }}
       >
-        {/* 3D Tumbler / iPhone Alarm Wheel Subtitle (Alternating Japanese & English) */}
+        {/* Number Ticker Subtitle (Alternating Japanese Katakana & English Title Case) */}
         <TumblerSubtitle />
 
         {/* Giant Skyline Name "WILLY" */}
