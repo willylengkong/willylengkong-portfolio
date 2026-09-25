@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39 48" fill="none">
+  <!-- Bar 1 (Left Pillar, White) -->
+  <rect x="0" y="0" width="11" height="48" rx="0.5" fill="#ffffff" />
+
+  <!-- Bar 2 (Center Slanted Bar, Theme Blue #3b82f6) -->
+  <polygon points="14,18 25,22 25,46 14,42" fill="#3b82f6" />
+
+  <!-- Bar 3 (Right Pillar, White) -->
+  <rect x="28" y="0" width="11" height="48" rx="0.5" fill="#ffffff" />
+</svg>
