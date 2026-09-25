@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en" style=""><head></head><body class="bg-night-950 text-slate-300 backdrop-grid antialiased relative"><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Willy - Data Analyst &amp; Information Systems</title>
+<!-- Typography: Plus Jakarta Sans, Inter, JetBrains Mono, Noto Sans JP -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@300;400;500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            jp: ['"Noto Sans JP"', 'sans-serif'],
+          },
+          colors: {
+            night: {
+              950: '#030408',
+              900: '#070912',
+              850: '#0c0f1d',
+              800: '#12172b',
+              700: '#1a223e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Global Base Reset & Atmospheric Ambience */
+    body {
+      background-color: #030408;
+      color: #94a3b8;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    ::selection {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+    /* Subtle Spotlight Cursor Follow Effect */
+    #cursorSpotlight {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 30;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background: radial-gradient(
+        650px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+        rgba(59, 130, 246, 0.08) 0%,
+        rgba(99, 102, 241, 0.035) 30%,
+        transparent 70%
+      );
+    }
+    /* Dual Radial Atmospheric Lighting (Exact Fabian look) */
+    .hero-atmosphere {
+      position: relative;
+    }
+    .hero-atmosphere::before {
+      content: "";
+      position: absolute;
+      top: 10%;
+      left: 12%;
+      width: 55vw;
+      height: 60vh;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(99, 102, 241, 0.08) 35%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-atmosphere::after {
+      content: "";
+      position: absolute;
+      top: 25%;
+      right: 8%;
+      width: 45vw;
+      height: 55vh;
+      background: radial-gradient(circle, rgba(234, 140, 46, 0.11) 0%, rgba(180, 83, 9, 0.04) 40%, transparent 70%);
+      filter: blur(95px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Animated window flickering on skyline building letters */
+    @keyframes windowFlicker {
+      0%, 100% { opacity: 0.95; }
+      45% { opacity: 0.95; }
+      50% { opacity: 0.25; }
+      55% { opacity: 0.95; }
+      80% { opacity: 0.95; }
+      83% { opacity: 0.35; }
+      86% { opacity: 0.95; }
+    }
+    .window-light {
+      animation: windowFlicker 4s infinite ease-in-out;
+    }
+    .window-light-alt {
+      animation: windowFlicker 6s infinite 1.5s ease-in-out;
+    }
+    .window-light-fast {
+      animation: windowFlicker 3s infinite 0.7s ease-in-out;
+    }
+    /* Subtle grid line backdrop */
+    .backdrop-grid {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+  </style>
+<!-- Dynamic Cursor Spotlight Overlay -->
+<div aria-hidden="true" id="cursorSpotlight"></div>
+<!-- Fixed Bottom-Right Audio Toggle -->
+<button aria-label="Toggle Sound" class="fixed right-5 bottom-6 z-50 w-10 h-10 rounded-full bg-night-900/90 border border-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-all hover:border-slate-700 shadow-xl backdrop-blur-md active:scale-95" id="audioToggleBtn" title="Toggle Ambience Sound">
+<svg aria-hidden="true" class="lucide lucide-volume-x w-4 h-4" data-lucide="volume-x" fill="none" height="24" id="audioIcon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 4.702a.7.7 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.7.7 0 0 0 11 19.298z"></path><path d="m16.5 14.5 5-5"></path><path d="m16.5 9.5 5 5"></path></svg>
+</button>
+<!-- Navigation Header -->
+<header class="sticky top-0 z-40 w-full bg-night-950/80 backdrop-blur-xl border-b border-white/[0.04]">
+<div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+<!-- Brand Logo Left -->
+<a class="flex items-center gap-3.5 group" href="#home">
+<div class="relative flex items-center justify-center shrink-0 transition-all w-16 h-16">
+<svg class="w-full h-full" height="100%" viewbox="0 0 500 500" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#000000" height="500" width="500"></rect>
+<g>
+<rect fill="#F8F8F8" height="150" width="37" x="110" y="173"></rect>
+<polygon fill="#F8F8F8" points="159,228 194,242 194,324 159,310"></polygon>
+<rect fill="#F8F8F8" height="150" width="37" x="205" y="173"></rect>
+<polygon fill="#3b82f6" points="253,169 288,183 288,217 253,203"></polygon>
+<rect fill="#F8F8F8" height="101" width="37" x="253" y="222"></rect>
+<rect fill="#F8F8F8" height="106" width="37" x="301" y="173"></rect>
+<rect fill="#3b82f6" height="37" width="82" x="301" y="286"></rect>
+</g>
+</svg>
+</div>
+<div class="flex flex-col">
+<div class="text-sm font-bold text-white tracking-tight flex items-center">
+<span class=""><br/></span>
+</div>
+</div>
+</a>
+<!-- Desktop Nav Items -->
+<nav class="hidden md:flex items-center gap-9 text-xs font-mono">
+<a class="relative text-white font-semibold py-1" href="#home">
+          Home
+          <span class="absolute -bottom-1 left-0 w-full h-[2px] bg-blue-500 rounded-full"></span>
+</a>
+<a class="text-slate-400 hover:text-white transition-colors py-1" href="#projects">Projects</a>
+<a class="text-slate-400 hover:text-white transition-colors py-1" href="#about">About</a>
+<a class="text-slate-400 hover:text-white transition-colors py-1" href="#contact">Contact</a>
+</nav>
+<!-- Right Contact Pill Button -->
+<div class="hidden sm:flex items-center">
+<a class="px-5 py-2 text-xs font-semibold text-black bg-white hover:bg-slate-200 transition-all rounded-full shadow-[0_0_20px_rgba(255,255,255,0.15)] active:scale-95" href="#contact">
+          Contact Me
+        </a>
+</div>
+<!-- Mobile Hamburger Button -->
+<button aria-label="Open Navigation Menu" class="md:hidden text-slate-400 hover:text-white" id="mobileMenuBtn">
+<svg aria-hidden="true" class="lucide lucide-menu w-6 h-6" data-lucide="menu" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+</button>
+</div>
+<!-- Mobile Dropdown -->
+<div class="hidden md:hidden px-6 py-5 bg-night-900/95 border-b border-slate-800 space-y-3 text-xs font-mono" id="mobileMenu">
+<a class="block py-1.5 text-white font-bold" href="#home">Home</a>
+<a class="block py-1.5 text-slate-400 hover:text-white" href="#projects">Projects</a>
+<a class="block py-1.5 text-slate-400 hover:text-white" href="#about">About</a>
+<a class="block py-1.5 text-slate-400 hover:text-white" href="#contact">Contact</a>
+<a class="inline-block mt-2 px-4 py-2 text-black bg-white font-sans font-semibold rounded-full" href="#contact">Contact Me</a>
+</div>
+</header>
+<!-- Hero Section -->
+<main class="relative pt-12 pb-24 md:pt-16 md:pb-32 hero-atmosphere overflow-hidden" id="home">
+<div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
+<!-- Top Centered Japanese Katakana Subtitle -->
+<!-- Giant Architectural Skyline Typography "WILLY" -->
+<div class="w-full max-w-4xl mx-auto select-none my-2 sm:my-4 flex justify-center items-center">
+<svg class="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]" viewbox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<mask id="willyMask">
+<text fill="white" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="315" font-weight="900" letter-spacing="0.04em" text-anchor="middle" x="500" y="275">
+                WILLY
+              </text>
+</mask>
+<lineargradient id="nightSky" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#0b1022"></stop>
+<stop offset="45%" stop-color="#121833"></stop>
+<stop offset="100%" stop-color="#181324"></stop>
+</lineargradient>
+<lineargradient id="buildingGrad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#0e152e"></stop>
+<stop offset="100%" stop-color="#080b18"></stop>
+</lineargradient>
+<lineargradient id="buildingGrad2" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#151b38"></stop>
+<stop offset="100%" stop-color="#0a0f24"></stop>
+</lineargradient>
+</defs>
+<!-- Group masked by giant WILLY letters -->
+<g mask="url(#willyMask)">
+<rect fill="url(#nightSky)" height="320" width="1000" x="0" y="0"></rect>
+<!-- Skyscraper Towers -->
+<rect fill="url(#buildingGrad1)" height="260" width="95" x="25" y="60"></rect>
+<rect fill="url(#buildingGrad2)" height="230" width="85" x="110" y="90"></rect>
+<rect fill="url(#buildingGrad1)" height="275" width="120" x="180" y="45"></rect>
+<rect fill="url(#buildingGrad2)" height="210" width="100" x="290" y="110"></rect>
+<rect fill="url(#buildingGrad1)" height="290" width="140" x="375" y="30"></rect>
+<rect fill="url(#buildingGrad2)" height="250" width="95" x="500" y="70"></rect>
+<rect fill="url(#buildingGrad1)" height="280" width="125" x="580" y="40"></rect>
+<rect fill="url(#buildingGrad2)" height="225" width="110" x="690" y="95"></rect>
+<rect fill="url(#buildingGrad1)" height="265" width="130" x="790" y="55"></rect>
+<rect fill="url(#buildingGrad2)" height="285" width="90" x="910" y="35"></rect>
+<!-- Architectural seams -->
+<line stroke="rgba(255,255,255,0.06)" stroke-width="1.5" x1="120" x2="120" y1="0" y2="320"></line>
+<line stroke="rgba(255,255,255,0.06)" stroke-width="1.5" x1="205" x2="205" y1="0" y2="320"></line>
+<line stroke="rgba(255,255,255,0.06)" stroke-width="1.5" x1="390" x2="390" y1="0" y2="320"></line>
+<line stroke="rgba(255,255,255,0.06)" stroke-width="1.5" x1="590" x2="590" y1="0" y2="320"></line>
+<line stroke="rgba(255,255,255,0.06)" stroke-width="1.5" x1="815" x2="815" y1="0" y2="320"></line>
+<!-- Illuminated Warm Skyscraper Windows -->
+<!-- Cluster W -->
+<rect class="window-light" fill="#facc15" height="5.5" rx="0.5" width="5.5" x="140" y="80"></rect>
+<rect class="window-light" fill="#fef08a" height="5.5" rx="0.5" width="5.5" x="152" y="80"></rect>
+<rect class="window-light" fill="#facc15" height="5.5" rx="0.5" width="5.5" x="140" y="95"></rect>
+<rect class="window-light-alt" fill="#eab308" height="5.5" rx="0.5" width="5.5" x="152" y="108"></rect>
+<rect class="window-light" fill="#fef08a" height="5.5" rx="0.5" width="5.5" x="210" y="90"></rect>
+<rect class="window-light-alt" fill="#facc15" height="5.5" rx="0.5" width="5.5" x="222" y="90"></rect>
+<!-- Cluster I & L -->
+<rect class="window-light-alt" fill="#facc15" height="5.5" rx="0.5" width="5.5" x="380" y="68"></rect>
+<rect class="window-light" fill="#fef08a" height="5.5" rx="0.5" width="5.5" x="380" y="84"></rect>
+<rect class="window-light-fast" fill="#facc15" height="5.5" rx="0.5" width="5.5" x="485" y="85"></rect>
+<rect class="window-light-alt" fill="#fef08a" height="5.5" rx="0.5" width="5.5" x="498" y="85"></rect>
+<rect class="window-light" fill="#fde047" height="5.5" rx="0.5" width="5.5" x="485" y="102"></rect>
+<!-- Cluster L & Y -->
+<rect class="window-light-alt" fill="#facc15" height="5.5" rx="0.5" width="5.5" x="635" y="75"></rect>
+<rect class="window-light" fill="#fef08a" height="5.5" rx="0.5" width="5.5" x="635" y="92"></rect>
+<rect class="window-light-alt" fill="#facc15" height="5.5" rx="0.5" width="5.5" x="785" y="65"></rect>
+<rect class="window-light" fill="#fde047" height="5.5" rx="0.5" width="5.5" x="800" y="65"></rect>
+<rect class="window-light-alt" fill="#eab308" height="5.5" rx="0.5" width="5.5" x="785" y="82"></rect>
+<rect class="window-light-fast" fill="#facc15" height="5.5" rx="0.5" width="5.5" x="840" y="95"></rect>
+<circle cx="215" cy="74" fill="#60a5fa" r="1.5"></circle>
+<circle cx="788" cy="55" fill="#60a5fa" r="1.5"></circle>
+</g>
+</svg>
+</div>
+<!-- Subtitle Line -->
+<div class="mt-8 flex items-center justify-center gap-3 text-lg sm:text-2xl font-bold tracking-tight text-white"><span class="">Data Analyst</span><span class="text-slate-600 font-light">|</span><span class="">AI Enginer</span></div>
+<!-- Bio Paragraph with Highlighted Bold Keywords -->
+<p class="max-w-2xl mx-auto mt-5 text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+<strong class="text-white font-semibold">End-to-end data analyst</strong> - from retail data extraction &amp; automation, through <strong class="text-white font-semibold">ETL pipelines</strong> into <strong class="text-white font-semibold">PostgreSQL</strong> / <strong class="text-white font-semibold">Tableau</strong> / <strong class="text-white font-semibold">Looker</strong>, delivering high-impact business intelligence and automated reporting to accelerate decision-making.
+      </p>
+<!-- Centered Bottom Social Links Row in Hero -->
+<div class="mt-10 flex items-center justify-center gap-4 text-white"><a class="w-12 h-12 rounded-full border border-slate-700 bg-slate-800/90 hover:bg-slate-700 hover:border-blue-400 hover:scale-105 transition-all shadow-lg flex items-center justify-center text-white active:scale-95" href="https://github.com" rel="noopener noreferrer" target="_blank" title="GitHub"><svg aria-hidden="true" class="w-5 h-5 text-current" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg></a><a class="w-12 h-12 rounded-full border border-slate-700 bg-slate-800/90 hover:bg-slate-700 hover:border-blue-400 hover:scale-105 transition-all shadow-lg flex items-center justify-center text-white active:scale-95" href="https://linkedin.com" rel="noopener noreferrer" target="_blank" title="LinkedIn"><svg aria-hidden="true" class="w-4 h-4" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a class="w-12 h-12 rounded-full border border-slate-700 bg-slate-800/90 hover:bg-slate-700 hover:border-blue-400 hover:scale-105 transition-all shadow-lg flex items-center justify-center text-white active:scale-95" href="#contact" title="Email"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg></a></div>
+</div>
+</main>
+<!-- Projects Section -->
+<section class="py-24 max-w-6xl mx-auto px-4 sm:px-6 border-t border-white/[0.04]" id="projects">
+<div class="text-center mb-16">
+<div class="text-blue-400 text-xs font-mono font-semibold uppercase tracking-widest mb-2">Projects</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Featured Projects</h2>
+<p class="text-slate-400 text-xs sm:text-sm mt-3 max-w-xl mx-auto">Production retail data systems, automated ETL pipelines, and scalable enterprise applications.</p>
+</div>
+<!-- 2 Main Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<!-- Project 1 -->
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-7 flex flex-col justify-between hover:border-slate-700 transition-all duration-300 group"><div class="">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-activity w-4 h-4" data-lucide="activity" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+</span>
+<span class="text-xs font-mono text-slate-400">Data &amp; Automation Engine</span>
+</div>
+<span class="px-2.5 py-1 text-[11px] font-mono font-medium rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Production</span>
+</div>
+<h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-2">Sales Reporting Automation Engine</h3>
+<p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-5">
+An automated reporting system built to replace repetitive weekly Excel processing and manual VLOOKUP workflows. The system processes master data, automatically determines the reporting period, calculates performance metrics, generates standardized Excel reports, and distributes them through Microsoft Outlook.
+</p>
+<div class="mt-4 space-y-2.5 font-mono text-[11px]">
+<div>
+<span class="text-slate-500 text-[10px] block mb-1">Built With:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Python</span>
+<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">Pandas</span>
+<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">NumPy</span>
+<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">OpenPyXL</span>
+<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">XlsxWriter</span>
+<span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">PyWin32</span>
+</div>
+</div>
+<div>
+<span class="text-slate-500 text-[10px] block mb-1">Built With:</span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded bg-night-850 border border-slate-800 text-slate-400">Excel</span>
+<span class="px-2 py-0.5 rounded bg-night-850 border border-slate-800 text-slate-400">Outlook</span>
+<span class="px-2 py-0.5 rounded bg-night-850 border border-slate-800 text-slate-400">VS Code</span>
+<span class="px-2 py-0.5 rounded bg-night-850 border border-slate-800 text-slate-400">Looker Studio</span>
+<span class="px-2 py-0.5 rounded bg-night-850 border border-slate-800 text-slate-400">Google Slides</span>
+<span class="px-2 py-0.5 rounded bg-night-850 border border-slate-800 text-slate-400">ChatGPT</span>
+<span class="px-2 py-0.5 rounded bg-night-850 border border-slate-800 text-slate-400">Gemini</span>
+<span class="px-2 py-0.5 rounded bg-night-850 border border-slate-800 text-slate-400">Claude</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-3 border-t border-slate-800/80 flex items-center justify-between">
+<button class="text-xs font-semibold text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg flex items-center gap-1.5 transition-all" onclick="openModal('project1')">
+<span class="">Read Case Study</span>
+<svg aria-hidden="true" class="lucide lucide-arrow-up-right w-3.5 h-3.5" data-lucide="arrow-up-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+</button>
+</div></div>
+<!-- Project 2 -->
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-7 flex flex-col justify-between hover:border-slate-700 transition-all duration-300 group">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-bar-chart-3 w-4 h-4" data-lucide="bar-chart-3" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
+</span>
+<span class="text-xs font-mono text-slate-400">ANALYTICS &amp; VISUALIZATION</span>
+</div>
+<span class="px-2.5 py-1 text-[11px] font-mono font-medium rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Live Dashboard</span>
+</div>
+<h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-2">
+            Retail Trend Performance Dashboard
+          </h3>
+<p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+            Real-time merchandise velocity tracking and store-level anomaly detection engine. Integrates weekly store performance indicators, out-of-stock risk models, and historical promotion margins across 75 hyper-local outlets.
+          </p>
+<div class="grid grid-cols-3 gap-3 py-4 my-2 border-y border-slate-800/80 text-center font-mono">
+<div>
+<div class="text-lg font-bold text-white">Daily Sync</div>
+<div class="text-[10px] text-slate-500 uppercase">Delta Ingestion</div>
+</div>
+<div>
+<div class="text-lg font-bold text-blue-400">75 Stores</div>
+<div class="text-[10px] text-slate-500 uppercase">Covered Region</div>
+</div>
+<div>
+<div class="text-lg font-bold text-blue-400">100%</div>
+<div class="text-[10px] text-slate-500 uppercase">Automated Audit</div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-2 flex items-center justify-between">
+<div class="flex gap-2">
+<span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">Tableau</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">SQL</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">Looker</span>
+</div>
+<button class="text-xs font-semibold text-white bg-slate-800 hover:bg-slate-700 px-4 py-2 rounded-lg flex items-center gap-1.5 transition-all" onclick="openModal('project2')">
+<span class="">Read Case Study</span>
+<svg aria-hidden="true" class="lucide lucide-arrow-up-right w-3.5 h-3.5" data-lucide="arrow-up-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- 3 Sub Projects Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-night-900/60 border border-slate-800/60 rounded-xl p-5 hover:border-slate-700 transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-500 mb-2">
+<span class="">RETAIL INTELLIGENCE</span>
+<span class="text-blue-400">Python</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1.5">Retail Price Scraper Engine</h4>
+<p class="text-xs text-slate-400 line-clamp-2">Automated crawler benchmarking 45,000+ FMCG SKUs against major competitors with rotating proxy management.</p>
+</div>
+<a class="text-xs text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1 mt-4" href="#projects">
+<span class="">Inspect Architecture</span> <svg aria-hidden="true" class="lucide lucide-arrow-right w-3 h-3" data-lucide="arrow-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</a>
+</div>
+<div class="bg-night-900/60 border border-slate-800/60 rounded-xl p-5 hover:border-slate-700 transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-500 mb-2">
+<span class="">ECOMMERCE PLATFORM</span>
+<span class="text-blue-400">Node / PostgreSQL</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1.5">Campus Marketplace "Miky"</h4>
+<p class="text-xs text-slate-400 line-clamp-2">Peer-to-peer student delivery platform with micro-hub staging, live tracking, and secure escrow settlement.</p>
+</div>
+<a class="text-xs text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1 mt-4" href="#projects">
+<span class="">Inspect Architecture</span> <svg aria-hidden="true" class="lucide lucide-arrow-right w-3 h-3" data-lucide="arrow-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</a>
+</div>
+<div class="bg-night-900/60 border border-slate-800/60 rounded-xl p-5 hover:border-slate-700 transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between text-[11px] font-mono text-slate-500 mb-2">
+<span class="">FULLSTACK PORTAL</span>
+<span class="text-blue-400">Next.js / Prisma</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1.5">UPH News Academic Portal</h4>
+<p class="text-xs text-slate-400 line-clamp-2">Department portal unifying peer-reviewed journals, lab course schedules, and automated announcement distribution.</p>
+</div>
+<a class="text-xs text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1 mt-4" href="#projects">
+<span class="">Inspect Architecture</span> <svg aria-hidden="true" class="lucide lucide-arrow-right w-3 h-3" data-lucide="arrow-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+</a>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24 border-t border-white/[0.04]" id="about">
+<!-- Profile & Skills -->
+<div class="max-w-5xl mx-auto px-4 sm:px-6 mb-24">
+<div class="text-center mb-16">
+<div class="text-blue-400 text-xs font-mono font-semibold uppercase tracking-widest mb-2">About</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Who Is Willy?</h2>
+<p class="text-slate-400 text-xs sm:text-sm mt-3 max-w-xl mx-auto">Architecting end-to-end data pipelines, merchandising intelligence models, and enterprise analytics.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Profile Card -->
+<div class="lg:col-span-5 bg-night-900 border border-slate-800/80 rounded-2xl p-6 sm:p-7">
+<div class="relative w-28 h-28 mx-auto mb-6 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 p-0.5 shadow-[0_0_30px_rgba(59,130,246,0.25)]">
+<div class="w-full h-full bg-night-950 rounded-[14px] flex items-center justify-center overflow-hidden">
+<span class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300 font-mono">W</span>
+</div>
+<div class="absolute -bottom-2 -right-2 px-2 py-0.5 bg-blue-500/20 border border-blue-500/40 rounded-full flex items-center gap-1.5 backdrop-blur-md">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+<span class="text-[9px] font-mono text-blue-300 font-bold uppercase">Active</span>
+</div>
+</div>
+<h3 class="text-xl font-bold text-white text-center mb-1">Willy</h3>
+<p class="text-xs font-mono text-blue-400 text-center mb-5">Tangerang Selatan / Jakarta • Indonesia</p>
+<p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
+            Hi! I'm a Data Analyst &amp; Information Systems graduate bridging high-speed Python reporting automation with executive retail decision intelligence.
+          </p>
+<p class="text-slate-400 text-xs leading-relaxed mb-6">
+            Previously optimized nationwide merchandising data flows, SKU velocity tracking, and business intelligence models across retail operations.
+          </p>
+<div class="pt-4 border-t border-slate-800 text-xs text-slate-400 flex flex-col gap-2 font-mono">
+<div class="flex items-center justify-between">
+<span class="text-slate-500">Focus:</span>
+<span class="text-white">Data Analytics &amp; Pipeline Automation</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-slate-500">Status:</span>
+<span class="text-blue-400">Available for Opportunities</span>
+</div>
+</div>
+</div>
+<!-- Right Skills Cards -->
+<div class="lg:col-span-7 space-y-4">
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-6 hover:border-slate-700 transition-all">
+<div class="flex items-center gap-3 mb-3">
+<div class="p-2 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+<svg aria-hidden="true" class="lucide lucide-bar-chart-2 w-5 h-5" data-lucide="bar-chart-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M5 21v-6"></path><path d="M12 21V3"></path><path d="M19 21V9"></path></svg>
+</div>
+<div>
+<h4 class="text-base font-bold text-white">Analytics &amp; Business Intelligence</h4>
+<p class="text-xs text-slate-400">Tableau, Looker Studio, Automated KPI Dashboards</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">Tableau Desktop</span>
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">Looker Studio</span>
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">Advanced Excel</span>
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">SPD / APC / STD Models</span>
+</div>
+</div>
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-6 hover:border-slate-700 transition-all">
+<div class="flex items-center gap-3 mb-3">
+<div class="p-2 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+<svg aria-hidden="true" class="lucide lucide-database w-5 h-5" data-lucide="database" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
+</div>
+<div>
+<h4 class="text-base font-bold text-white">Data Engineering &amp; Automated Pipelines</h4>
+<p class="text-xs text-slate-400">ETL scripting, relational databases, vectorized pipelines</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">Python (pandas, openpyxl)</span>
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">PostgreSQL</span>
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">Oracle SQL</span>
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">Scheduled ETL Crons</span>
+</div>
+</div>
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-6 hover:border-slate-700 transition-all">
+<div class="flex items-center gap-3 mb-3">
+<div class="p-2 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+<svg aria-hidden="true" class="lucide lucide-layout w-5 h-5" data-lucide="layout" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+</div>
+<div>
+<h4 class="text-base font-bold text-white">Enterprise Systems &amp; Web Dev</h4>
+<p class="text-xs text-slate-400">Enterprise software modeling, fullstack frameworks</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">C# (.NET MAUI)</span>
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">JavaScript / Tailwind</span>
+<span class="text-xs px-3 py-1 rounded-lg bg-night-850 border border-slate-700/60 text-slate-300 font-mono">Git &amp; CI/CD</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Experience Timeline Tree (Indomaret Group) -->
+<div class="max-w-4xl mx-auto px-4 sm:px-6 mb-24 pt-10 border-t border-white/[0.04]" id="experience">
+<div class="flex items-center gap-3 mb-12">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+<svg aria-hidden="true" class="lucide lucide-briefcase w-5 h-5" data-lucide="briefcase" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect height="14" rx="2" width="20" x="2" y="6"></rect></svg>
+</div>
+<h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Experience</h3>
+</div>
+<!-- Company: PT Indomarco Prismatama -->
+<div class="mb-16">
+<div class="flex items-center gap-4 sm:gap-5 mb-4">
+<!-- Indomaret Logo container (Smooth Square 1:1 Aspect Ratio) -->
+<div class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white p-2.5 flex items-center justify-center shrink-0 shadow-lg border border-slate-700/60 overflow-hidden">
+<!-- High-definition SVG fallback with generous viewBox bounds -->
+<svg class="w-full h-auto" viewbox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+<text fill="#005bac" font-family="'Plus Jakarta Sans', sans-serif" font-size="64" font-style="italic" font-weight="900" x="10" y="80">Ind</text>
+<!-- Center Concentric Red Target Circle (the 'o') -->
+<circle cx="140" cy="58" fill="none" r="26" stroke="#e31b23" stroke-width="7"></circle>
+<circle cx="140" cy="58" fill="none" r="13" stroke="#e31b23" stroke-width="7"></circle>
+<circle cx="140" cy="58" fill="#e31b23" r="3"></circle>
+<text fill="#005bac" font-family="'Plus Jakarta Sans', sans-serif" font-size="64" font-style="italic" font-weight="900" x="175" y="80">maret</text>
+</svg>
+</div>
+<div>
+<h4 class="text-lg sm:text-xl font-bold text-white leading-tight">PT Indomarco Prismatama (Indomaret Group)</h4>
+<div class="text-xs font-mono text-slate-400 mt-1.5 flex flex-wrap items-center gap-2">
+<span class="text-blue-400 font-semibold">Retail Merchandising &amp; Automated Analytics</span>
+<span class="">•</span>
+<span class="">Jun 2024 – Present</span>
+<span class="">•</span>
+<span class="px-2 py-0.5 rounded-full bg-night-900 border border-slate-800 text-slate-300 text-[10px]">On-site</span>
+</div>
+</div>
+</div>
+<!-- Bordered Sub-card Overview Box -->
+<div class="ml-0 sm:ml-24 bg-night-900/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-400 leading-relaxed mb-8 backdrop-blur-sm">
+          Responsible for retail merchandising intelligence, nationwide performance reporting optimization, and engineering automated data pipelines for business decision support.
+        </div>
+<!-- Vertical Timeline Nodes -->
+<div class="relative ml-4 sm:ml-28 pl-6 sm:pl-8 border-l border-blue-500/30 space-y-12">
+<!-- Role 1: MD Strategic Analyst (Current) -->
+<div class="relative">
+<span class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full bg-night-950 border-2 border-blue-400 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+</span>
+<h5 class="text-base font-bold text-white">MD Strategic Analyst</h5>
+<div class="text-xs font-mono text-blue-400 mt-1 flex flex-wrap items-center gap-2">
+<span class="text-slate-300">Full-time</span>
+<span class="">•</span>
+<span class="">Jun 2024 — Present</span>
+</div>
+<div class="text-xs text-slate-400 flex items-center gap-1.5 mt-1 font-mono">
+<svg aria-hidden="true" class="lucide lucide-map-pin w-3 h-3 text-slate-500" data-lucide="map-pin" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span class="">Menara Indomaret, Jakarta, Indonesia</span>
+</div>
+<div class="text-xs text-blue-400 mt-1.5 font-mono">
+<span class="text-blue-300 font-semibold">Skills:</span> Python, pandas, Tableau, openpyxl, ETL, Looker Studio, Automated Data Pipelines, and 6+ other skills
+            </div>
+<div class="mt-5">
+<div class="flex items-center gap-2.5 mb-3">
+<svg aria-hidden="true" class="lucide lucide-trophy w-5 h-5 text-blue-400 shrink-0" data-lucide="trophy" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2"></path><path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2"></path><path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3"></path></svg>
+<span class="text-sm sm:text-base font-bold text-white tracking-wide">Key Achievements</span>
+</div>
+<ul class="space-y-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed list-none">
+<li class="flex items-start gap-2">
+<span class="text-blue-400 mt-1.5 text-xs">▸</span>
+<span class="">Developed the Python reporting automation pipeline for Sales Perishable reports, reducing daily manual processing time across 11 reports from 165–220 minutes to ~30 seconds (99.3% efficiency gain).</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-blue-400 mt-1.5 text-xs">▸</span>
+<span class="">Conducted comprehensive competitive analysis (O!Save vs. Indomaret) spanning 75 stores and 40 product departments using SPD, APC, and STD evaluation models.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-blue-400 mt-1.5 text-xs">▸</span>
+<span class="">Designed and implemented a multi-tier target allocation pipeline integrating historical sales trends and carton packaging rounding rules.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Role 2: Merchandising Support Staff -->
+<div class="relative">
+<span class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full bg-night-950 border-2 border-slate-600 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+</span>
+<h5 class="text-base font-bold text-slate-200">Merchandising Support Staff</h5>
+<div class="text-xs font-mono text-slate-400 mt-1 flex flex-wrap items-center gap-2">
+<span class="text-slate-300">Full-time</span>
+<span class="">•</span>
+<span class="">Oct 2022 — Jun 2024</span>
+<span class="">•</span>
+<span class="">1 yr 9 mos</span>
+</div>
+<div class="text-xs text-slate-400 flex items-center gap-1.5 mt-1 font-mono">
+<svg aria-hidden="true" class="lucide lucide-map-pin w-3 h-3 text-slate-500" data-lucide="map-pin" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span class="">Menara Indomaret, Jakarta, Indonesia</span>
+</div>
+<div class="text-xs text-blue-400 mt-1.5 font-mono">
+<span class="text-blue-300 font-semibold">Skills:</span> Oracle, Excel, Outlook
+            </div>
+<div class="mt-5">
+<div class="flex items-center gap-2.5 mb-3">
+<svg aria-hidden="true" class="lucide lucide-settings-2 w-5 h-5 text-blue-400 shrink-0" data-lucide="settings-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14 17H5"></path><path d="M19 7h-9"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
+<span class="text-sm sm:text-base font-bold text-white tracking-wide">Key Responsibilities &amp; Operations</span>
+</div>
+<ul class="space-y-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed list-none">
+<li class="flex items-start gap-2">
+<span class="text-slate-500 mt-1.5 text-xs">▸</span>
+<span class=""><strong class="text-white">Product Data Management:</strong> Managed the registration process for an average of 70 new products per month into the system, ensuring complete data accuracy before nationwide distribution across retail stores.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-slate-500 mt-1.5 text-xs">▸</span>
+<span class=""><strong class="text-white">Pricing Administration:</strong> Handled regular input and updating of product selling prices, maintaining strict alignment with prevailing retail merchandising strategy.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-slate-500 mt-1.5 text-xs">▸</span>
+<span class=""><strong class="text-white">Promotion Execution:</strong> Managed technical setup and system parameters for promotional campaigns, ensuring effective and timely execution at the store level.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-slate-500 mt-1.5 text-xs">▸</span>
+<span class=""><strong class="text-white">Product Classification &amp; Tagging:</strong> Responsible for applying product labels (tags) to categorize sales performance, identifying best-sellers (fast-moving), regular-selling items, and items slated for delisting.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Honors & Achievements Grid -->
+<div class="max-w-6xl mx-auto px-4 sm:px-6 mb-24 pt-10 border-t border-white/[0.04]" id="achievements">
+<div class="flex items-center gap-3 mb-12">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+<svg aria-hidden="true" class="lucide lucide-trophy w-5 h-5" data-lucide="trophy" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2"></path><path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2"></path><path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3"></path></svg>
+</div>
+<h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Honors &amp; Achievements</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between hover:border-blue-500/50 transition-all duration-300 group">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-award w-5 h-5" data-lucide="award" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
+</div>
+<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">NATIONAL</span>
+</div>
+<h4 class="text-sm font-bold text-white group-hover:text-blue-400 transition-colors mb-1.5">Medalist for Excellence</h4>
+<p class="text-xs text-slate-400 leading-relaxed mb-4">Awarded for high-performance database schema implementations under strict timed conditions.</p>
+</div>
+<div>
+<div class="relative w-full h-28 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 flex items-center justify-center p-2 mb-3">
+<div class="w-full h-full rounded border border-dashed border-slate-700 bg-gradient-to-br from-night-850 to-slate-900 flex flex-col items-center justify-center text-center p-2">
+<svg aria-hidden="true" class="lucide lucide-file-check-2 w-5 h-5 text-blue-400 mb-1" data-lucide="file-check-2" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="m14 20 2 2 4-4"></path></svg>
+<span class="text-[10px] font-mono text-slate-300 font-semibold">CERTIFICATE OF MERIT</span>
+</div>
+</div>
+<div class="text-[11px] font-mono text-slate-500">AWARDED: 2021</div>
+</div>
+</div>
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between hover:border-blue-500/50 transition-all duration-300 group">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-trophy w-5 h-5" data-lucide="trophy" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2"></path><path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2"></path><path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3"></path><path d="M4 22h16"></path><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"></path><path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3"></path></svg>
+</div>
+<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">REGIONAL</span>
+</div>
+<h4 class="text-sm font-bold text-white group-hover:text-blue-400 transition-colors mb-1.5">1st Place - Informatics</h4>
+<p class="text-xs text-slate-400 leading-relaxed mb-4">Championed regional challenge analyzing autonomous telemetry pipelines and data ingestion.</p>
+</div>
+<div>
+<div class="relative w-full h-28 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 flex items-center justify-center p-2 mb-3">
+<div class="w-full h-full rounded border border-dashed border-slate-700 bg-gradient-to-br from-night-850 to-blue-950/20 flex flex-col items-center justify-center text-center p-2">
+<svg aria-hidden="true" class="lucide lucide-medal w-5 h-5 text-blue-400 mb-1" data-lucide="medal" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15"></path><path d="M11 12 5.12 2.2"></path><path d="m13 12 5.88-9.8"></path><path d="M8 7h8"></path><circle cx="12" cy="17" r="5"></circle><path d="M12 18v-2h-.5"></path></svg>
+<span class="text-[10px] font-mono text-slate-300 font-semibold">1ST WINNER TROPHY</span>
+</div>
+</div>
+<div class="text-[11px] font-mono text-slate-500">AWARDED: 2021</div>
+</div>
+</div>
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between hover:border-blue-500/50 transition-all duration-300 group">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-star w-5 h-5" data-lucide="star" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+</div>
+<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">DEAN'S LIST</span>
+</div>
+<h4 class="text-sm font-bold text-white group-hover:text-blue-400 transition-colors mb-1.5">Outstanding Scholar</h4>
+<p class="text-xs text-slate-400 leading-relaxed mb-4">Honored for consistent academic excellence and database systems laboratory leadership.</p>
+</div>
+<div>
+<div class="relative w-full h-28 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 flex items-center justify-center p-2 mb-3">
+<div class="w-full h-full rounded border border-dashed border-slate-700 bg-gradient-to-br from-night-850 to-blue-950/20 flex flex-col items-center justify-center text-center p-2">
+<svg aria-hidden="true" class="lucide lucide-graduation-cap w-5 h-5 text-blue-400 mb-1" data-lucide="graduation-cap" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+<span class="text-[10px] font-mono text-slate-300 font-semibold">DEAN'S COMMENDATION</span>
+</div>
+</div>
+<div class="text-[11px] font-mono text-slate-500">ACADEMIC 2021-2022</div>
+</div>
+</div>
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between hover:border-blue-500/50 transition-all duration-300 group">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-sparkles w-5 h-5" data-lucide="sparkles" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+</div>
+<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">HACKATHON</span>
+</div>
+<h4 class="text-sm font-bold text-white group-hover:text-blue-400 transition-colors mb-1.5">Top Tier Finalist</h4>
+<p class="text-xs text-slate-400 leading-relaxed mb-4">Ranked in top 5% solving dynamic graph queries and distributed crawler problems.</p>
+</div>
+<div>
+<div class="relative w-full h-28 rounded-xl overflow-hidden bg-slate-950 border border-slate-800 flex items-center justify-center p-2 mb-3">
+<div class="w-full h-full rounded border border-dashed border-slate-700 bg-gradient-to-br from-night-850 to-blue-950/20 flex flex-col items-center justify-center text-center p-2">
+<svg aria-hidden="true" class="lucide lucide-terminal w-5 h-5 text-blue-400 mb-1" data-lucide="terminal" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 19h8"></path><path d="m4 17 6-6-6-6"></path></svg>
+<span class="text-[10px] font-mono text-slate-300 font-semibold">ALGORITHMIC CUP</span>
+</div>
+</div>
+<div class="text-[11px] font-mono text-slate-500">COMPLETED</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Education Section -->
+<div class="max-w-4xl mx-auto px-4 sm:px-6 mb-24 pt-10 border-t border-white/[0.04]" id="education">
+<div class="flex items-center gap-3 mb-12">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+<svg aria-hidden="true" class="lucide lucide-graduation-cap w-5 h-5" data-lucide="graduation-cap" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+</div>
+<h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Education</h3>
+</div>
+<!-- Institution: Universitas Pelita Harapan (UPH) -->
+<div class="mb-8">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-14 h-14 rounded-xl bg-blue-950/40 border border-blue-500/30 p-2 flex items-center justify-center flex-shrink-0 shadow-lg">
+<span class="text-[13px] font-black tracking-tight text-blue-400 font-mono">UPH</span>
+</div>
+<div>
+<h4 class="text-lg font-bold text-white leading-tight">Universitas Pelita Harapan (UPH)</h4>
+<div class="text-xs font-mono text-slate-400 mt-1 flex flex-wrap items-center gap-2">
+<span class="text-blue-400">2025 — 2029 (Expected)</span>
+<span class="">•</span>
+<span class="text-slate-300">On-campus</span>
+</div>
+</div>
+</div>
+<!-- Bordered Sub-card Overview Box -->
+<div class="ml-0 sm:ml-16 bg-night-900/80 border border-slate-800/80 rounded-xl p-4 text-xs text-slate-400 leading-relaxed mb-8 backdrop-blur-sm">
+          Universitas Pelita Harapan (UPH) | Faculty of Artificial Intelligence and Data Science. Cumulative GPA: 3.78 / 4.00. Focus: Enterprise Information Systems &amp; Data Innovation. Direct alignment between academic data engineering concepts and enterprise retail automation pipelines.
+        </div>
+<!-- Vertical Timeline Nodes -->
+<div class="relative ml-4 sm:ml-20 pl-6 sm:pl-8 border-l border-blue-500/30 space-y-12">
+<!-- Degree Node -->
+<div class="relative">
+<span class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full bg-night-950 border-2 border-blue-400 flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+</span>
+<h5 class="text-base font-bold text-white">Bachelor of Information Systems — Data Science and Data Analytics</h5>
+<div class="text-xs font-mono text-blue-400 mt-1 flex flex-wrap items-center gap-2">
+<span class="text-slate-300">Undergraduate Degree</span>
+<span class="">•</span>
+<span class="">2025 — 2029 (Expected)</span>
+<span class="">•</span>
+<span class="text-slate-400 font-semibold">Cumulative GPA: 3.78 / 4.00</span>
+</div>
+<div class="text-xs text-slate-400 flex items-center gap-1.5 mt-1 font-mono">
+<svg aria-hidden="true" class="lucide lucide-map-pin w-3 h-3 text-slate-500" data-lucide="map-pin" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span class="">Lippo Karawaci, Tangerang, Indonesia</span>
+</div>
+<div class="text-xs text-slate-400 mt-1.5 font-mono">
+<span class="text-slate-500">Focus:</span> Enterprise Information Systems &amp; Data Innovation, Applied Analytics, Pipeline Engineering
+            </div>
+<div class="mt-4">
+<div class="flex items-center gap-1.5 text-xs font-bold text-blue-300 uppercase tracking-wider mb-2.5">
+<span class="">💡 Key Academic Highlights</span>
+</div>
+<ul class="space-y-2.5 text-xs sm:text-sm text-slate-300 leading-relaxed list-none">
+<li class="flex items-start gap-2">
+<span class="text-blue-400 mt-1.5 text-xs">▸</span>
+<span class="">Academic to enterprise synergy - establishing direct alignment between theoretical data engineering concepts, database architectures, and practical enterprise retail automation pipelines.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-blue-400 mt-1.5 text-xs">▸</span>
+<span class="">High-distinction academic performance - maintained a cumulative GPA of 3.78 / 4.00 within the Faculty of Artificial Intelligence and Data Science, with emphasis on relational modeling and high-throughput data architectures.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-blue-400 mt-1.5 text-xs">▸</span>
+<span class="">Applied innovation research - actively investigating scalable automated data workflows, distributed analytical processing, and business intelligence models tailored for retail supply chains.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24 border-t border-white/[0.04]" id="contact">
+<div class="max-w-5xl mx-auto px-4 sm:px-6">
+<div class="text-center mb-16">
+<div class="text-blue-400 text-xs font-mono font-semibold uppercase tracking-widest mb-2">Connect</div>
+<h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Let's Collaborate</h2>
+<p class="text-slate-400 text-xs sm:text-sm mt-3 max-w-xl mx-auto">Open for data analytics roles, ETL automation consulting, and high-performance retail reporting pipelines.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Contact Form -->
+<div class="lg:col-span-7 bg-night-900 border border-slate-800/80 rounded-2xl p-6 sm:p-8">
+<form class="space-y-4" id="contactForm" onsubmit="handleFormSubmit(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-mono text-slate-400 mb-1.5" for="name">Full Name *</label>
+<input class="w-full bg-night-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-colors" id="name" placeholder="e.g. Satoshi Nakamoto" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-mono text-slate-400 mb-1.5" for="email">Work Email *</label>
+<input class="w-full bg-night-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-colors" id="email" placeholder="you@company.com" required="" type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-mono text-slate-400 mb-1.5" for="subject">Subject</label>
+<input class="w-full bg-night-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-colors" id="subject" placeholder="Data Analytics / Pipeline Automation Project" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-mono text-slate-400 mb-1.5" for="message">Message *</label>
+<textarea class="w-full bg-night-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-blue-500 transition-colors" id="message" placeholder="Tell me about your pipeline requirements, stack, or target timeline..." required="" rows="4"></textarea>
+</div>
+<button class="w-full py-3 px-6 rounded-xl font-semibold text-xs sm:text-sm text-black bg-white hover:bg-slate-200 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.15)] active:scale-95" type="submit">
+<svg aria-hidden="true" class="lucide lucide-send w-4 h-4" data-lucide="send" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+<span class="">Send Message</span>
+</button>
+</form>
+<div class="hidden mt-4 p-3 bg-blue-500/10 border border-blue-500/30 rounded-xl text-blue-400 text-xs text-center font-mono" id="formSuccessMessage">
+            Message dispatched successfully! I will get back to you shortly.
+          </div>
+</div>
+<!-- Contact Info Side -->
+<div class="lg:col-span-5 space-y-4">
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+<span class="text-xs font-mono uppercase text-blue-400 font-bold">Available for Work</span>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Open to Data Analytics roles, retail BI pipeline optimization, and enterprise dashboard architecture.
+            </p>
+</div>
+<div class="bg-night-900 border border-slate-800/80 rounded-2xl p-6 space-y-4">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-mail w-4 h-4" data-lucide="mail" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect height="16" rx="2" width="20" x="2" y="4"></rect></svg>
+</div>
+<div>
+<span class="text-[10px] font-mono text-slate-500 uppercase">Direct Email</span>
+<span class="text-xs font-mono text-white block">contact@willylengkong.com</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-map-pin w-4 h-4" data-lucide="map-pin" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+</div>
+<div>
+<span class="text-[10px] font-mono text-slate-500 uppercase">Location</span>
+<span class="text-xs font-mono text-white block">Tangerang Selatan / Jakarta, Indonesia</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="border-t border-slate-900 bg-night-950 py-16">
+<div class="max-w-6xl mx-auto px-4 sm:px-6">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+<!-- Column 1: Profile & Social (5/12) in Footer -->
+<div class="md:col-span-5 space-y-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-blue-950/40 border border-blue-500/20 flex items-center justify-center text-blue-400">
+<svg aria-hidden="true" class="lucide lucide-database w-5 h-5" data-lucide="database" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
+</div>
+<div>
+<h4 class="text-white font-semibold tracking-wide text-base">Willy</h4>
+<p class="text-xs font-mono text-slate-400 tracking-wider">DATA ANALYST • INFORMATION SYSTEMS</p>
+</div>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+            End-to-end data analyst — from automated retail pipeline engineering &amp; ETL pipelines to interactive dashboards and decision support platforms.
+          </p>
+<!-- 3 Square Social Buttons with Authentic SVGs -->
+<div class="flex items-center gap-2 pt-1">
+<a class="w-9 h-9 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 hover:text-white text-slate-400 flex items-center justify-center transition-all" href="https://github.com" rel="noopener noreferrer" target="_blank" title="GitHub">
+<svg class="w-4 h-4 fill-currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="w-9 h-9 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 hover:text-blue-400 text-slate-400 flex items-center justify-center transition-all" href="https://linkedin.com" rel="noopener noreferrer" target="_blank" title="LinkedIn">
+<svg class="w-4 h-4 fill-currentColor" viewbox="0 0 24 24">
+<path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+</svg>
+</a>
+<a class="w-9 h-9 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 hover:text-white text-slate-400 flex items-center justify-center transition-all" href="#contact" title="Email">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="16" rx="2" width="20" x="2" y="4"></rect>
+<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+</svg>
+</a>
+</div>
+</div>
+<!-- Column 2: Navigation (3/12) -->
+<div class="md:col-span-3 space-y-4">
+<h5 class="text-white text-sm font-semibold tracking-wide">Navigation</h5>
+<ul class="space-y-2.5 text-xs">
+<li class=""><a class="hover:text-white transition-colors" href="#home">Home</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#projects">Projects</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#about">About</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#contact">Contact</a></li>
+</ul>
+</div>
+<!-- Column 3: Contact (4/12) -->
+<div class="md:col-span-4 space-y-4">
+<h5 class="text-white text-sm font-semibold tracking-wide">Contact</h5>
+<ul class="space-y-2.5 text-xs text-slate-400 font-mono">
+<li class="">
+<a class="hover:text-white transition-colors" href="mailto:contact@willylengkong.com">contact@willylengkong.com</a>
+</li>
+<li class="">
+<a class="hover:text-white transition-colors" href="https://github.com" target="_blank">github.com/willylengkong</a>
+</li>
+<li class="text-slate-500">
+              Tangerang Selatan, Indonesia
+            </li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="border-t border-slate-900/90 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
+<div class="">
+          © 2026 Willy. Built with <span class="text-rose-500">❤️</span> in Indonesia
+        </div>
+<div class="">
+          v1.0.0 • Last updated 2026
+        </div>
+<div>
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white transition-all text-xs" href="#home">
+<svg aria-hidden="true" class="lucide lucide-chevron-up w-3.5 h-3.5" data-lucide="chevron-up" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m18 15-6-6-6 6"></path></svg>
+            Back to Top
+          </a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Case Study Dialog Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-all duration-300 opacity-0 pointer-events-none" id="projectModal">
+<div class="bg-night-900 border border-slate-800 rounded-2xl max-w-xl w-full p-6 relative shadow-2xl">
+<button aria-label="Close dialog" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg" onclick="closeModal()">
+<svg aria-hidden="true" class="lucide lucide-x w-5 h-5" data-lucide="x" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</button>
+<div id="modalContent">
+<div class="mb-4">
+<span class="text-[10px] font-mono text-blue-400 uppercase tracking-widest font-semibold">Enterprise Retail Merchandising Pipeline</span>
+<h3 class="text-lg font-bold text-white mt-1">Sales Reporting Automation Engine</h3>
+</div>
+<div class="flex flex-wrap gap-1.5 mb-4">
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Python</span><span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Pandas</span><span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Kafka</span><span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">ETL</span><span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">OpenPyXL</span>
+</div>
+<p class="text-xs text-slate-300 mb-4 leading-relaxed">
+            Consolidates high-volume branch sales spreadsheets into vectorized delta pipelines, dropping manual report collation from 220 minutes to 30 seconds daily.
+          </p>
+<div class="bg-night-950 p-3.5 rounded-xl border border-slate-800 text-xs font-mono mb-4 text-slate-300">
+<strong>Key Architecture:</strong>
+<ul class="list-disc ml-4 mt-1.5 space-y-1 text-slate-400">
+<li class="">In-memory data frame consolidation using vectorized Pandas routines</li>
+<li class="">Automated schema drift validation and exception logger</li>
+<li class="">Final formatted output delivered via automated scheduled cron jobs</li>
+</ul>
+</div>
+<div class="text-blue-400 font-mono text-xs font-bold">
+            Result: 99.3% efficiency gain with zero downtime.
+          </div>
+</div>
+</div>
+</div>
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Subtle Cursor Follow Spotlight Implementation
+    const cursorSpotlight = document.getElementById('cursorSpotlight');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let currentX = mouseX;
+    let currentY = mouseY;
+    let isMoving = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isMoving && cursorSpotlight) {
+        cursorSpotlight.style.opacity = '1';
+        isMoving = true;
+      }
+    });
+
+    window.addEventListener('mouseleave', () => {
+      if (cursorSpotlight) {
+        cursorSpotlight.style.opacity = '0';
+      }
+    });
+
+    function renderSpotlight() {
+      // Smooth lerp interpolation for silky motion
+      currentX += (mouseX - currentX) * 0.15;
+      currentY += (mouseY - currentY) * 0.15;
+
+      if (cursorSpotlight) {
+        cursorSpotlight.style.setProperty('--mouse-x', `${currentX}px`);
+        cursorSpotlight.style.setProperty('--mouse-y', `${currentY}px`);
+      }
+      requestAnimationFrame(renderSpotlight);
+    }
+    requestAnimationFrame(renderSpotlight);
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    }
+
+    // Audio Mute Toggle Button Simulation
+    let isMuted = true;
+    const audioBtn = document.getElementById('audioToggleBtn');
+    const audioIcon = document.getElementById('audioIcon');
+    if (audioBtn && audioIcon) {
+      audioBtn.addEventListener('click', () => {
+        isMuted = !isMuted;
+        if (isMuted) {
+          audioIcon.setAttribute('data-lucide', 'volume-x');
+          audioBtn.classList.remove('text-blue-400', 'border-blue-500/40');
+        } else {
+          audioIcon.setAttribute('data-lucide', 'volume-2');
+          audioBtn.classList.add('text-blue-400', 'border-blue-500/40');
+        }
+        lucide.createIcons();
+      });
+    }
+
+    // Modal Case Study Content
+    const caseStudies = {
+      project1: {
+        title: "Sales Reporting Automation Engine",
+        subtitle: "Enterprise Retail Merchandising Pipeline",
+        tags: ["Python", "Pandas", "Kafka", "ETL", "OpenPyXL"],
+        body: `
+          <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+            Consolidates high-volume branch sales spreadsheets into vectorized delta pipelines, dropping manual report collation from 220 minutes to 30 seconds daily.
+          </p>
+          <div class="bg-night-950 p-3.5 rounded-xl border border-slate-800 text-xs font-mono mb-4 text-slate-300">
+            <strong>Key Architecture:</strong>
+            <ul class="list-disc ml-4 mt-1.5 space-y-1 text-slate-400">
+              <li>In-memory data frame consolidation using vectorized Pandas routines</li>
+              <li>Automated schema drift validation and exception logger</li>
+              <li>Final formatted output delivered via automated scheduled cron jobs</li>
+            </ul>
+          </div>
+          <div class="text-blue-400 font-mono text-xs font-bold">
+            Result: 99.3% efficiency gain with zero downtime.
+          </div>
+        `
+      },
+      project2: {
+        title: "Retail Trend Performance Dashboard",
+        subtitle: "Regional Store Performance Tracking",
+        tags: ["Tableau", "SQL", "Looker", "PostgreSQL"],
+        body: `
+          <p class="text-xs text-slate-300 mb-4 leading-relaxed">
+            Unified data feeds across 75 physical locations to evaluate SKU velocity (SPD), Average Purchase per Customer (APC), and Standard Transaction Density (STD).
+          </p>
+          <div class="bg-night-950 p-3.5 rounded-xl border border-slate-800 text-xs font-mono mb-4 text-slate-300">
+            <strong>Key Metrics Monitored:</strong>
+            <ul class="list-disc ml-4 mt-1.5 space-y-1 text-slate-400">
+              <li>Real-time shelf velocity detection across 40 FMCG categories</li>
+              <li>Historical promotional margin elasticity comparisons</li>
+            </ul>
+          </div>
+          <div class="text-blue-400 font-mono text-xs font-bold">
+            Result: Enabled direct strategic price adjustments across high-velocity perishables.
+          </div>
+        `
+      }
+    };
+
+    function openModal(projectId) {
+      const modal = document.getElementById('projectModal');
+      const content = document.getElementById('modalContent');
+      const data = caseStudies[projectId];
+      if (!data || !modal || !content) return;
+      content.innerHTML = `
+        <div class="mb-4">
+          <span class="text-[10px] font-mono text-blue-400 uppercase tracking-widest font-semibold">${data.subtitle}</span>
+          <h3 class="text-lg font-bold text-white mt-1">${data.title}</h3>
+        </div>
+        <div class="flex flex-wrap gap-1.5 mb-4">
+          ${data.tags.map(t => `<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">${t}</span>`).join('')}
+        </div>
+        ${data.body}
+      `;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('projectModal');
+      if (!modal) return;
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100');
+    }
+
+    const modalEl = document.getElementById('projectModal');
+    if (modalEl) {
+      modalEl.addEventListener('click', (e) => {
+        if (e.target.id === 'projectModal') closeModal();
+      });
+    }
+
+    // Form Handling
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccessMessage');
+      if (success) success.classList.remove('hidden');
+      if (form) form.reset();
+      setTimeout(() => {
+        if (success) success.classList.add('hidden');
+      }, 5000);
+    }
+  </script>
+</body></html>

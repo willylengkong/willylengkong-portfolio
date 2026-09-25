@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg-night-950: #030408;
+  --bg-night-900: #070912;
+  --bg-night-850: #0c0f1d;
+  --bg-night-800: #12172b;
+  --bg-night-700: #1a223e;
+  --primary-blue: #3b82f6;
+  --primary-light: #60a5fa;
+  --accent-amber: #facc15;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-card: rgba(255, 255, 255, 0.08);
+  --font-sans: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-jp: 'Noto Sans JP', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-night-950);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030408;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Grid Backdrop */
+.backdrop-grid {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Dual Radial Atmospheric Lighting */
+.hero-atmosphere {
+  position: relative;
+}
+
+.hero-atmosphere::before {
+  content: "";
+  position: absolute;
+  top: 8%;
+  left: 10%;
+  width: 55vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(99, 102, 241, 0.07) 35%, transparent 70%);
+  filter: blur(85px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-atmosphere::after {
+  content: "";
+  position: absolute;
+  top: 22%;
+  right: 6%;
+  width: 45vw;
+  height: 55vh;
+  background: radial-gradient(circle, rgba(234, 140, 46, 0.10) 0%, rgba(180, 83, 9, 0.04) 40%, transparent 70%);
+  filter: blur(95px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Animated window flickering on skyline building letters */
+@keyframes windowFlicker {
+  0%, 100% { opacity: 0.95; }
+  45% { opacity: 0.95; }
+  50% { opacity: 0.25; }
+  55% { opacity: 0.95; }
+  80% { opacity: 0.95; }
+  83% { opacity: 0.35; }
+  86% { opacity: 0.95; }
+}
+
+.window-light {
+  animation: windowFlicker 4s infinite ease-in-out;
+}
+
+.window-light-alt {
+  animation: windowFlicker 6s infinite 1.5s ease-in-out;
+}
+
+.window-light-fast {
+  animation: windowFlicker 3s infinite 0.7s ease-in-out;
+}
+
+/* Dynamic Spotlight Follower */
+.cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    650px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh),
+    rgba(59, 130, 246, 0.08) 0%,
+    rgba(99, 102, 241, 0.035) 30%,
+    transparent 70%
+  );
+}
+
+/* Monospace font utility */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Card hover glow transitions */
+.glass-card {
+  background: rgba(7, 9, 18, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(59, 130, 246, 0.1);
+}
