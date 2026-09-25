@@ -17,7 +17,6 @@ export default function Projects() {
         margin: '0 auto',
         paddingLeft: '20px',
         paddingRight: '20px',
-        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
         position: 'relative',
       }}
     >
