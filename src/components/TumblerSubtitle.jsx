@@ -6,20 +6,21 @@ const PHRASES = [
     text: 'エンドツーエンド・データアナリスト',
     lang: 'ja',
     font: 'var(--font-jp)',
-    spacing: '0.3em',
+    spacing: '0.28em',
   },
   {
-    text: 'END-TO-END DATA ANALYST',
+    text: 'End-to-End Data Analyst',
     lang: 'en',
-    font: 'var(--font-jetbrains)',
-    spacing: '0.22em',
+    font: 'var(--font-inter)',
+    spacing: '0.12em',
   },
 ];
 
 /**
- * TumblerSubtitle - iPhone alarm wheel / slot-drum 3D rolling typography animation.
- * Continuously loops between Japanese and English, rolling characters one-by-one
- * with 3D cylindrical perspective like an iOS picker wheel.
+ * TumblerSubtitle - Number Ticker / Odometer typography animation.
+ * Features clipped vertical reel slots where characters slide straight vertically
+ * one by one with smooth spring ticker momentum, alternating continuously
+ * between Japanese Katakana and English in Title Case.
  */
 export default function TumblerSubtitle() {
   const [index, setIndex] = useState(0);
@@ -27,7 +28,7 @@ export default function TumblerSubtitle() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % PHRASES.length);
-    }, 4000); // 4 seconds interval gives comfortable reading time
+    }, 4000); // 4 seconds interval for comfortable reading
 
     return () => clearInterval(timer);
   }, []);
@@ -43,7 +44,6 @@ export default function TumblerSubtitle() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        perspective: '1000px',
         overflow: 'hidden',
         userSelect: 'none',
       }}
@@ -55,60 +55,62 @@ export default function TumblerSubtitle() {
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            transformStyle: 'preserve-3d',
             fontFamily: current.font,
             letterSpacing: current.spacing,
             color: '#a1a1aa',
             fontSize: 'clamp(0.85rem, 1.8vw, 1.05rem)',
             fontWeight: 300,
+            lineHeight: 1.4,
           }}
         >
           {current.text.split('').map((char, i) => (
-            <motion.span
+            <span
               key={`${current.lang}-${i}-${char}`}
-              custom={i}
-              variants={{
-                initial: {
-                  opacity: 0,
-                  y: '85%',
-                  rotateX: 80,
-                  filter: 'blur(3px)',
-                },
-                animate: (i) => ({
-                  opacity: 1,
-                  y: '0%',
-                  rotateX: 0,
-                  filter: 'blur(0px)',
-                  transition: {
-                    duration: 0.45,
-                    delay: i * 0.022,
-                    ease: [0.16, 1, 0.3, 1], // Smooth iOS spring curve
-                  },
-                }),
-                exit: (i) => ({
-                  opacity: 0,
-                  y: '-85%',
-                  rotateX: -80,
-                  filter: 'blur(3px)',
-                  transition: {
-                    duration: 0.35,
-                    delay: i * 0.015,
-                    ease: [0.45, 0, 0.55, 1],
-                  },
-                }),
-              }}
-              initial="initial"
-              animate="animate"
-              exit="exit"
               style={{
                 display: 'inline-block',
-                transformOrigin: '50% 50% -14px', // 3D cylindrical drum radius
-                whiteSpace: 'pre',
-                backfaceVisibility: 'hidden',
+                overflow: 'hidden',
+                verticalAlign: 'bottom',
+                height: '1.4em',
+                lineHeight: '1.4em',
               }}
             >
-              {char === ' ' ? '\u00A0' : char}
-            </motion.span>
+              <motion.span
+                custom={i}
+                variants={{
+                  initial: {
+                    y: '100%',
+                    opacity: 0,
+                  },
+                  animate: (i) => ({
+                    y: '0%',
+                    opacity: 1,
+                    transition: {
+                      duration: 0.42,
+                      delay: i * 0.022,
+                      ease: [0.16, 1, 0.3, 1], // Smooth odometer ticker spring easing
+                    },
+                  }),
+                  exit: (i) => ({
+                    y: '-100%',
+                    opacity: 0,
+                    transition: {
+                      duration: 0.3,
+                      delay: i * 0.015,
+                      ease: [0.45, 0, 0.55, 1],
+                    },
+                  }),
+                }}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                style={{
+                  display: 'inline-block',
+                  whiteSpace: 'pre',
+                }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            </span>
           ))}
         </motion.div>
       </AnimatePresence>
