@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiDatabase, FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX } from 'react-icons/fi';
+import BrandLogo from './BrandLogo';
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
@@ -83,7 +84,7 @@ export default function Navbar() {
             userSelect: 'none',
           }}
         >
-          {/* Cyan/Blue Database Emblem */}
+          {/* Brand Monogram Emblem */}
           <div
             style={{
               position: 'relative',
@@ -96,9 +97,10 @@ export default function Navbar() {
               border: '1px solid rgba(59, 130, 246, 0.4)',
               backgroundColor: 'rgba(59, 130, 246, 0.05)',
               transition: 'all 0.3s ease',
+              padding: '0 4px',
             }}
           >
-            <FiDatabase size={20} color="#3b82f6" strokeWidth={2} />
+            <BrandLogo width={25} accentColor="#3b82f6" primaryColor="#ffffff" />
             <span
               style={{
                 position: 'absolute',
@@ -114,7 +116,7 @@ export default function Navbar() {
 
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
             <span style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.01em' }}>
-              Willy<span style={{ color: '#3b82f6' }}>.</span>
+              Willy
             </span>
             <span
               style={{

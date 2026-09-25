@@ -1,6 +1,7 @@
 import React from 'react';
-import { FiDatabase, FiGithub, FiLinkedin, FiMail, FiChevronUp, FiHeart } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiChevronUp, FiHeart } from 'react-icons/fi';
 import { personalInfo } from '../data/portfolioData';
+import BrandLogo from './BrandLogo';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -39,15 +40,15 @@ export default function Footer() {
                   width: '42px',
                   height: '42px',
                   borderRadius: '12px',
-                  backgroundColor: 'rgba(59, 130, 246, 0.12)',
+                  backgroundColor: 'rgba(59, 130, 246, 0.08)',
                   border: '1px solid rgba(59, 130, 246, 0.25)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#60a5fa',
+                  padding: '0 4px',
                 }}
               >
-                <FiDatabase size={20} />
+                <BrandLogo width={25} accentColor="#3b82f6" primaryColor="#ffffff" />
               </div>
               <div>
                 <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.01em' }}>
@@ -248,7 +249,7 @@ export default function Footer() {
           }}
         >
           <div>
-            © 2026 Willy. Built with <FiHeart size={12} style={{ color: '#f43f5e', verticalAlign: 'middle' }} /> in Indonesia
+            © 2026 Willy • Built with <FiHeart size={12} style={{ color: '#f43f5e', verticalAlign: 'middle' }} /> in Indonesia
           </div>
 
           <div>v1.0.0 • Last updated 2026</div>
