@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
 import BrandLogo from './BrandLogo';
 
@@ -7,6 +7,14 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Smooth scroll progress tracking (0 to 1 as page is scrolled)
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -269,6 +277,22 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Horizontal Blue Scroll Progress Bar (Fills gradually from left to right as page is scrolled) */}
+      <motion.div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '2.5px',
+          background: 'linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)',
+          transformOrigin: '0%',
+          scaleX,
+          boxShadow: '0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(96, 165, 250, 0.4)',
+          zIndex: 50,
+        }}
+      />
 
       <style>{`
         @media (min-width: 768px) {
