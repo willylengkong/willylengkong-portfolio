@@ -50,7 +50,7 @@ export default function Achievements() {
               justifyContent: 'center',
             }}
           >
-            <FiTrophy size={22} />
+            <LuTrophy size={22} />
           </div>
           <h3
             style={{
