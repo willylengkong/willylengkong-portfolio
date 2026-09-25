@@ -23,7 +23,6 @@ export default function About() {
       style={{
         paddingTop: '96px',
         paddingBottom: '96px',
-        borderTop: '1px solid #27272a',
         position: 'relative',
       }}
     >
@@ -32,6 +31,8 @@ export default function About() {
           maxWidth: '1100px',
           margin: '0 auto',
           padding: '0 20px',
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          paddingTop: '48px',
         }}
       >
         {/* Header */}

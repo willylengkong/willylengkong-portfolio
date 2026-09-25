@@ -15,7 +15,6 @@ export default function Experience() {
       style={{
         paddingTop: '96px',
         paddingBottom: '96px',
-        borderTop: '1px solid #27272a',
         position: 'relative',
       }}
     >
@@ -28,30 +27,27 @@ export default function Experience() {
       >
         {/* Section Header */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '48px' }}>
-          <div
-            style={{
-              padding: '10px',
-              borderRadius: '12px',
-              backgroundColor: 'rgba(59, 130, 246, 0.12)',
-              border: '1px solid rgba(59, 130, 246, 0.25)',
-              color: '#60a5fa',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <FiBriefcase size={22} />
-          </div>
+          <FiBriefcase size={26} style={{ color: '#60a5fa', flexShrink: 0 }} />
           <h3
             style={{
               fontSize: 'clamp(1.8rem, 3.5vw, 2.3rem)',
               fontWeight: 800,
               color: '#ffffff',
               letterSpacing: '-0.025em',
+              whiteSpace: 'nowrap',
             }}
           >
             Experience
           </h3>
+          <div
+            style={{
+              flex: 1,
+              height: '1px',
+              backgroundColor: 'rgba(255, 255, 255, 0.08)',
+              marginLeft: '8px',
+              minWidth: '20px',
+            }}
+          />
         </div>
 
         {/* Company Card Block */}

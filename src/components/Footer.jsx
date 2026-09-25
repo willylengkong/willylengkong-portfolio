@@ -11,9 +11,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        borderTop: '1px solid #27272a',
         backgroundColor: '#0a0a0a',
-        paddingTop: '64px',
+        paddingTop: '32px',
         paddingBottom: '48px',
       }}
     >
@@ -22,6 +21,8 @@ export default function Footer() {
           maxWidth: '1200px',
           margin: '0 auto',
           padding: '0 20px',
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          paddingTop: '48px',
         }}
       >
         <div
