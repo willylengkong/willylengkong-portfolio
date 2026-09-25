@@ -1,28 +1,28 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiAward, FiFileText, FiStar, FiTerminal } from 'react-icons/fi';
-import { LuTrophy } from 'react-icons/lu';
+import { LuBadgeCheck, LuFileBadge, LuAward, LuShieldCheck } from 'react-icons/lu';
+import { TbCertificate } from 'react-icons/tb';
 import { honorsAndAchievements } from '../data/portfolioData';
 
 export default function Achievements() {
   const getIcon = (iconName) => {
     switch (iconName) {
+      case 'badge':
+        return <LuBadgeCheck size={20} />;
+      case 'file':
+        return <LuFileBadge size={20} />;
+      case 'shield':
+        return <LuShieldCheck size={20} />;
       case 'award':
-        return <FiAward size={20} />;
-      case 'trophy':
-        return <LuTrophy size={20} />;
-      case 'scholar':
-        return <FiStar size={20} />;
-      case 'terminal':
-        return <FiTerminal size={20} />;
+        return <LuAward size={20} />;
       default:
-        return <FiAward size={20} />;
+        return <TbCertificate size={20} />;
     }
   };
 
   return (
     <section
-      id="achievements"
+      id="certifications"
       style={{
         paddingTop: '96px',
         paddingBottom: '96px',
@@ -30,6 +30,7 @@ export default function Achievements() {
         position: 'relative',
       }}
     >
+      <span id="achievements" style={{ position: 'absolute', top: 0, opacity: 0, pointerEvents: 'none' }} />
       <div
         style={{
           maxWidth: '1200px',
@@ -38,7 +39,7 @@ export default function Achievements() {
         }}
       >
         {/* Section Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '48px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '48px' }}>
           <div
             style={{
               padding: '10px',
@@ -51,7 +52,7 @@ export default function Achievements() {
               justifyContent: 'center',
             }}
           >
-            <LuTrophy size={22} />
+            <TbCertificate size={24} />
           </div>
           <h3
             style={{
@@ -61,7 +62,7 @@ export default function Achievements() {
               letterSpacing: '-0.025em',
             }}
           >
-            Honors &amp; Achievements
+            Certifications
           </h3>
         </div>
 
@@ -172,16 +173,31 @@ export default function Achievements() {
                       width: '100%',
                       height: '100%',
                       borderRadius: '8px',
-                      border: '1px dashed rgba(255, 255, 255, 0.12)',
-                      background: 'linear-gradient(135deg, rgba(12, 15, 29, 0.8) 0%, rgba(30, 41, 59, 0.3) 100%)',
+                      border: '1px dashed rgba(59, 130, 246, 0.25)',
+                      background: 'linear-gradient(135deg, rgba(12, 15, 29, 0.85) 0%, rgba(30, 41, 59, 0.35) 100%)',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: '6px',
+                      gap: '8px',
+                      padding: '8px',
                     }}
                   >
-                    <FiFileText size={20} style={{ color: '#60a5fa' }} />
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(59, 130, 246, 0.12)',
+                        border: '1px solid rgba(59, 130, 246, 0.25)',
+                        color: '#60a5fa',
+                      }}
+                    >
+                      <TbCertificate size={18} />
+                    </div>
                     <span
                       style={{
                         fontSize: '0.625rem',
@@ -189,6 +205,8 @@ export default function Achievements() {
                         fontWeight: 700,
                         color: '#e2e8f0',
                         letterSpacing: '0.05em',
+                        textAlign: 'center',
+                        lineHeight: 1.2,
                       }}
                     >
                       {item.certTitle}

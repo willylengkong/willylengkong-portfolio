@@ -198,42 +198,44 @@ export const experienceData = [
 
 export const honorsAndAchievements = [
   {
-    id: "honor1",
-    badge: "NATIONAL",
-    title: "Medalist for Excellence",
-    description: "Awarded for high-performance database schema implementations under strict timed conditions.",
-    certTitle: "CERTIFICATE OF MERIT",
-    awarded: "AWARDED: 2021",
+    id: "cert1",
+    badge: "GOOGLE",
+    title: "Google Data Analytics Professional",
+    description: "Hands-on competency in data preparation, SQL queries, data cleaning, Tableau visualization, and statistical modeling.",
+    certTitle: "OFFICIAL PROFESSIONAL CERTIFICATE",
+    awarded: "ISSUED: 2023",
+    icon: "badge"
+  },
+  {
+    id: "cert2",
+    badge: "TABLEAU",
+    title: "Tableau Desktop Specialist",
+    description: "Core validation in foundational business intelligence dashboards, visual analytics, calculated fields, and interactive chart systems.",
+    certTitle: "VERIFIED CREDENTIAL",
+    awarded: "ISSUED: 2022",
+    icon: "file"
+  },
+  {
+    id: "cert3",
+    badge: "DATABASE",
+    title: "Advanced SQL & Database Systems",
+    description: "Accreditation in PostgreSQL query optimization, complex CTEs, indexing, analytical window functions, and relational data architecture.",
+    certTitle: "POSTGRESQL SPECIALIST",
+    awarded: "ISSUED: 2022",
+    icon: "shield"
+  },
+  {
+    id: "cert4",
+    badge: "PYTHON",
+    title: "Python for Data Science & Automation",
+    description: "Specialized training in automated data extraction, Pandas/NumPy pipelines, web scraping workflows, and automated reporting.",
+    certTitle: "DATA PIPELINE SPECIALIST",
+    awarded: "ISSUED: 2021",
     icon: "award"
-  },
-  {
-    id: "honor2",
-    badge: "REGIONAL",
-    title: "1st Place - Informatics",
-    description: "Championed regional challenge analyzing autonomous telemetry pipelines and data ingestion.",
-    certTitle: "1ST WINNER TROPHY",
-    awarded: "AWARDED: 2021",
-    icon: "trophy"
-  },
-  {
-    id: "honor3",
-    badge: "DEAN'S LIST",
-    title: "Outstanding Scholar",
-    description: "Honored for consistent academic excellence and database systems laboratory leadership.",
-    certTitle: "DEAN'S COMMENDATION",
-    awarded: "ACADEMIC 2021-2022",
-    icon: "scholar"
-  },
-  {
-    id: "honor4",
-    badge: "HACKATHON",
-    title: "Top Tier Finalist",
-    description: "Ranked in top 5% solving dynamic graph queries and distributed crawler problems.",
-    certTitle: "ALGORITHMIC CUP",
-    awarded: "COMPLETED",
-    icon: "terminal"
   }
 ];
+
+export const certifications = honorsAndAchievements;
 
 export const educationData = {
   institution: "Universitas Pelita Harapan (UPH)",
