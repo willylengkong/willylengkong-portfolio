@@ -31,16 +31,8 @@ export default function Hero() {
         paddingBottom: '80px',
       }}
     >
-      {/* Background Grid Pattern & Ambient Glow Orbs */}
+      {/* Ambient Glow Orbs in Hero */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-        <div
-          className="grid-pattern"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            opacity: 0.3,
-          }}
-        />
 
         {/* Ambient Blue Orb on the left */}
         <motion.div
