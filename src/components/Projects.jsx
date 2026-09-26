@@ -426,28 +426,41 @@ export default function Projects() {
             }}
           >
             <div>
-              {/* Top Row: Tags + Icon */}
+              {/* Top Row: Tags + Icon (anchored top-right with first line of tags) */}
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'flex-start',
                   justifyContent: 'space-between',
                   gap: '12px',
+                  paddingBottom: '16px',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
                   marginBottom: '16px',
                 }}
               >
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', maxWidth: '78%' }}>
+                <div
+                  style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '6px',
+                    minWidth: 0,
+                    paddingRight: '6px',
+                  }}
+                >
                   {item.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
                       style={{
-                        fontSize: '0.625rem',
+                        fontSize: '0.65rem',
                         fontFamily: 'var(--font-mono)',
-                        padding: '3px 8px',
-                        borderRadius: '6px',
+                        padding: '3px 10px',
+                        borderRadius: '9999px',
                         backgroundColor: '#0c0f1d',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
                         color: '#94a3b8',
+                        whiteSpace: 'nowrap',
+                        lineHeight: 1.4,
                       }}
                     >
                       {tag}
@@ -456,9 +469,9 @@ export default function Projects() {
                 </div>
                 <div
                   style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '10px',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '12px',
                     backgroundColor: '#0c0f1d',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
                     display: 'flex',
@@ -466,13 +479,14 @@ export default function Projects() {
                     justifyContent: 'center',
                     color: '#60a5fa',
                     flexShrink: 0,
+                    alignSelf: 'flex-start',
                   }}
                 >
                   {getNicheIcon(item.icon)}
                 </div>
               </div>
 
-              {/* Title & Count Row */}
+              {/* Title & Badge Count Row */}
               <div
                 style={{
                   display: 'flex',
@@ -483,21 +497,22 @@ export default function Projects() {
               >
                 <h4
                   style={{
-                    fontSize: '0.95rem',
+                    fontSize: '1rem',
                     fontWeight: 700,
                     color: '#ffffff',
                     lineHeight: 1.3,
+                    margin: 0,
                   }}
                 >
                   {item.title}
                 </h4>
                 <span
                   style={{
-                    fontSize: '0.75rem',
+                    fontSize: '0.8125rem',
                     fontFamily: 'var(--font-mono)',
-                    color: '#64748b',
+                    color: '#71717a',
                     fontWeight: 600,
-                    marginLeft: '8px',
+                    marginLeft: '12px',
                     flexShrink: 0,
                   }}
                 >
@@ -519,7 +534,7 @@ export default function Projects() {
             </div>
 
             {/* Bottom 2 Buttons */}
-            <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+            <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
               <button
                 onClick={() =>
                   setSelectedProject({
@@ -558,7 +573,7 @@ export default function Projects() {
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f4f4f5')}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#ffffff')}
               >
-                <FiEye size={13} />
+                <FiLayers size={13} />
                 <span>View Details</span>
               </button>
               <button
@@ -677,28 +692,41 @@ export default function Projects() {
             }}
           >
             <div>
-              {/* Top Row: Tags + Icon */}
+              {/* Top Row: Tags + Icon (anchored top-right with first line of tags) */}
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'flex-start',
                   justifyContent: 'space-between',
                   gap: '12px',
+                  paddingBottom: '16px',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
                   marginBottom: '16px',
                 }}
               >
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', maxWidth: '78%' }}>
+                <div
+                  style={{
+                    flex: 1,
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '6px',
+                    minWidth: 0,
+                    paddingRight: '6px',
+                  }}
+                >
                   {item.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
                       style={{
-                        fontSize: '0.625rem',
+                        fontSize: '0.65rem',
                         fontFamily: 'var(--font-mono)',
-                        padding: '3px 8px',
-                        borderRadius: '6px',
+                        padding: '3px 10px',
+                        borderRadius: '9999px',
                         backgroundColor: '#0c0f1d',
                         border: '1px solid rgba(255, 255, 255, 0.08)',
                         color: '#94a3b8',
+                        whiteSpace: 'nowrap',
+                        lineHeight: 1.4,
                       }}
                     >
                       {tag}
@@ -707,9 +735,9 @@ export default function Projects() {
                 </div>
                 <div
                   style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '10px',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '12px',
                     backgroundColor: '#0c0f1d',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
                     display: 'flex',
@@ -717,13 +745,14 @@ export default function Projects() {
                     justifyContent: 'center',
                     color: '#60a5fa',
                     flexShrink: 0,
+                    alignSelf: 'flex-start',
                   }}
                 >
                   {getNicheIcon(item.icon)}
                 </div>
               </div>
 
-              {/* Title & Count Row */}
+              {/* Title & Badge Count Row */}
               <div
                 style={{
                   display: 'flex',
@@ -734,21 +763,22 @@ export default function Projects() {
               >
                 <h4
                   style={{
-                    fontSize: '0.95rem',
+                    fontSize: '1rem',
                     fontWeight: 700,
                     color: '#ffffff',
                     lineHeight: 1.3,
+                    margin: 0,
                   }}
                 >
                   {item.title}
                 </h4>
                 <span
                   style={{
-                    fontSize: '0.75rem',
+                    fontSize: '0.8125rem',
                     fontFamily: 'var(--font-mono)',
-                    color: '#64748b',
+                    color: '#71717a',
                     fontWeight: 600,
-                    marginLeft: '8px',
+                    marginLeft: '12px',
                     flexShrink: 0,
                   }}
                 >
@@ -770,7 +800,7 @@ export default function Projects() {
             </div>
 
             {/* Bottom 2 Buttons */}
-            <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+            <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
               <button
                 onClick={() =>
                   setSelectedProject({
@@ -809,7 +839,7 @@ export default function Projects() {
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f4f4f5')}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#ffffff')}
               >
-                <FiEye size={13} />
+                <FiLayers size={13} />
                 <span>View Details</span>
               </button>
               <button

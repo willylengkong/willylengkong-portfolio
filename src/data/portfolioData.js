@@ -80,33 +80,33 @@ export const automationProjects = [
 export const scrapingNicheProjects = [
   {
     id: "niche1",
-    tags: ["HTTP-only", "Pricing Model", "+2 more"],
+    tags: ["HTTP-only", "TLS Impersonation", "GraphQL Persisted-Query", "Apollo SSR Cache", "MTOP Signed", "+3 more"],
     icon: "cart",
-    title: "E-Commerce & Retail Scraper",
-    count: "—",
-    description: "Automated dynamic catalog crawling, competitor price monitoring, and SKU normalization engine across retail marketplaces.",
+    title: "E-Commerce & Marketplace",
+    count: "43",
+    description: "The largest niche in the roster - AliExpress, Alibaba, Shopee, Amazon, Walmart, eBay, Etsy, DHgate, and competitor retail feeds.",
     details: {
       overview: "Scalable catalog extraction engine with automated pagination, header rotation, and pricing delta alerts."
     }
   },
   {
     id: "niche2",
-    tags: ["API Ingestion", "Telemetry", "+1 more"],
+    tags: ["Apollo Persisted-Query", "Per-Size Orderbook", "Solid-Comps Extraction", "Price-Spread Diffing", "+1 more"],
     icon: "database",
-    title: "Supply Chain & Logistics Scraper",
-    count: "—",
-    description: "Scheduled extraction of freight schedules, warehouse stock availability, and distributor price list updates.",
+    title: "Resale, Sneakers & Collectibles",
+    count: "17",
+    description: "Secondary-market pricing intelligence - StockX, GOAT, Grailed, Poshmark, Vinted, Whatnot, and real-time bid/ask telemetry.",
     details: {
       overview: "Logistics tracking pipeline monitoring shipping lanes, container turnaround times, and regional hub bottlenecks."
     }
   },
   {
     id: "niche3",
-    tags: ["Market Trends", "FMCG", "+3 more"],
+    tags: ["Warm-page Bootstrap", "doc_id Snapshot", "Guest Token Bundle", "atproto / XRPC", "+4 more"],
     icon: "users",
-    title: "Consumer Sentiment & Review Crawler",
-    count: "—",
-    description: "Consumer feedback aggregator collecting review ratings, product sentiment signals, and competitor promotional campaigns.",
+    title: "Social Media & Creator Platforms",
+    count: "58",
+    description: "Crawlers across 18+ platforms - Instagram, TikTok, YouTube, X/Twitter, Facebook, Threads, Reddit, and creator commerce.",
     details: {
       overview: "Aggregates multi-source customer reviews with sentiment classification and competitive pricing intelligence."
     }
@@ -116,10 +116,10 @@ export const scrapingNicheProjects = [
 export const webDevProjects = [
   {
     id: "web1",
-    tags: ["React", "Next.js", "+2 more"],
+    tags: ["React 19", "Next.js 15", "TypeScript", "Tailwind CSS", "RESTful API", "+2 more"],
     icon: "globe",
     title: "Executive Retail Analytics Portal",
-    count: "01",
+    count: "42",
     description: "Modern responsive web architecture, interactive KPI dashboards, and scalable RESTful API integrations for merchandise teams.",
     details: {
       overview: "Executive dashboard platform delivering real-time SKU velocity charts and merchandise margin tracking."
@@ -127,10 +127,10 @@ export const webDevProjects = [
   },
   {
     id: "web2",
-    tags: ["TypeScript", "Tailwind", "+1 more"],
+    tags: ["Vite", "Zustand State", "Dynamic BI", "Responsive UI", "+3 more"],
     icon: "code",
     title: "Store Inventory Management Interface",
-    count: "02",
+    count: "18",
     description: "High-performance client interface with real-time stock status, automated reordering workflows, and secure authentication.",
     details: {
       overview: "Inventory monitoring interface with instant search, batch update workflows, and discrepancy alerting."
@@ -138,10 +138,10 @@ export const webDevProjects = [
   },
   {
     id: "web3",
-    tags: ["Fullstack", "PostgreSQL", "+3 more"],
+    tags: ["Node.js", "PostgreSQL", "Docker", "Prisma ORM", "Redis Cache", "+1 more"],
     icon: "layers",
     title: "Automated Reporting Web Dashboard",
-    count: "03",
+    count: "29",
     description: "End-to-end fullstack platform providing automated report generation, scheduled exports, and background pipeline monitoring.",
     details: {
       overview: "Web portal managing automated report triggers, audit logs, and export delivery across organizational roles."
