@@ -324,49 +324,39 @@ export const subProjects = [
 export const experienceData = [
   {
     company: "PT Indomarco Prismatama (Indomaret Group)",
-    division: "Retail Merchandising & Automated Analytics",
-    period: "Jun 2024 – Present",
+    duration: "3 years 11 months",
     type: "On-site",
-    overview: "Responsible for retail merchandising intelligence, nationwide performance reporting optimization, and engineering automated data pipelines for business decision support.",
+    website: "https://www.indomaret.co.id/",
+    overview: "Indomaret Group is a leading Indonesian retail company operating a nationwide network of 23,000+ Indomaret stores.",
     roles: [
       {
         title: "MD Strategic Analyst",
         employmentType: "Full-time",
-        period: "Jun 2024 — Present",
+        period: "Jun 2024 – Present",
         isCurrent: true,
         location: "Menara Indomaret, Jakarta, Indonesia",
-        skills: ["Python", "Pandas", "Tableau", "OpenPyXL", "ETL", "Looker Studio", "Automated Data Pipelines", "SQL"],
+        skills: "Python, pandas, Microsoft Excel, Tableau, Looker Studio, IMBI, QlikView, and 3+ other skills",
         achievements: [
-          "Developed the Python reporting automation pipeline for Sales Perishable reports, reducing daily manual processing time across 11 reports from 165–220 minutes to ~30 seconds (99.3% efficiency gain).",
-          "Conducted comprehensive competitive analysis (O!Save vs. Indomaret) spanning 75 stores and 40 product departments using SPD, APC, and STD evaluation models.",
-          "Designed and implemented a multi-tier target allocation pipeline integrating historical sales trends and carton packaging rounding rules."
+          "Analyze sales, stock, store performance, and retail metrics to provide insights for merchandising evaluation and business decision-making.",
+          "Develop and maintain Python-based reporting automation for recurring merchandising reports, reducing daily manual processing across 11 reports from 165–220 minutes to ~30 seconds (99.3% efficiency gain).",
+          "Conduct competitive analysis (OI Save vs. Indomaret) across 75 stores and 40 product departments, using SPD, APC, and STD evaluation metrics.",
+          "Develop store-level target allocation models using historical sales trends and carton-packaging rules to support nationwide merchandising initiatives.",
+          "Transform data from internal tools, Looker Studio, Tableau, and other sources into structured analysis and actionable business insights.",
+          "Collaborate with stakeholders to translate business requirements into analytical solutions, reporting improvements, and automated workflows."
         ]
       },
       {
         title: "Merchandising Support Staff",
         employmentType: "Full-time",
-        period: "Oct 2022 — Jun 2024",
-        duration: "1 yr 9 mos",
+        period: "Oct 2022 - Jun 2024 · 1 yr 9 mos",
         isCurrent: false,
         location: "Menara Indomaret, Jakarta, Indonesia",
-        skills: ["Oracle", "Excel", "Outlook", "Retail Operations", "Inventory Tagging"],
-        responsibilities: [
-          {
-            highlight: "Product Data Management",
-            text: "Managed the registration process for an average of 70 new products per month into the system, ensuring complete data accuracy before nationwide distribution across retail stores."
-          },
-          {
-            highlight: "Pricing Administration",
-            text: "Handled regular input and updating of product selling prices, maintaining strict alignment with prevailing retail merchandising strategy."
-          },
-          {
-            highlight: "Promotion Execution",
-            text: "Managed technical setup and system parameters for promotional campaigns, ensuring effective and timely execution at the store level."
-          },
-          {
-            highlight: "Product Classification & Tagging",
-            text: "Responsible for applying product labels (tags) to categorize sales performance, identifying best-sellers (fast-moving), regular-selling items, and items slated for delisting."
-          }
+        skills: "Oracle, Excel, Outlook, SSO",
+        achievements: [
+          "Product Data Management: Managed the registration process for an average of 70 new products per month into the system, ensuring complete data accuracy before nationwide distribution across retail stores.",
+          "Pricing Administration: Handled regular input and updating of product selling prices, maintaining strict alignment with prevailing retail merchandising strategy.",
+          "Promotion Execution: Managed technical setup and system parameters for promotional campaigns, ensuring effective and timely execution at the store level.",
+          "Product Classification & Tagging: Responsible for applying product labels (tags) to categorize sales performance, identifying best-sellers (fast-moving), regular-selling items, and items slated for delisting."
         ]
       }
     ]

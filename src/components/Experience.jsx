@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiBriefcase, FiMapPin, FiSettings } from 'react-icons/fi';
+import { FiBriefcase, FiMapPin, FiExternalLink } from 'react-icons/fi';
 import { LuTrophy } from 'react-icons/lu';
 import { experienceData } from '../data/portfolioData';
 
@@ -52,100 +52,128 @@ export default function Experience() {
 
         {/* Company Card Block */}
         <div>
+          {/* Header Row: Logo + Company Info + CTA Button */}
           <div
             style={{
               display: 'flex',
-              alignItems: 'center',
-              gap: '20px',
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+              gap: '16px',
               marginBottom: '20px',
               flexWrap: 'wrap',
             }}
           >
-            {/* Indomaret Logo Badge */}
-            <div
-              style={{
-                width: '74px',
-                height: '74px',
-                borderRadius: '16px',
-                backgroundColor: '#ffffff',
-                padding: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-              }}
-            >
-              <svg viewBox="0 0 320 120" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-                <text x="10" y="80" fill="#005bac" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="64" fontWeight="900" fontStyle="italic">
-                  Ind
-                </text>
-                <circle cx="140" cy="58" r="26" fill="none" stroke="#e31b23" strokeWidth="7" />
-                <circle cx="140" cy="58" r="13" fill="none" stroke="#e31b23" strokeWidth="7" />
-                <circle cx="140" cy="58" r="3" fill="#e31b23" />
-                <text x="175" y="80" fill="#005bac" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="64" fontWeight="900" fontStyle="italic">
-                  maret
-                </text>
-              </svg>
-            </div>
-
-            <div>
-              <h4
-                style={{
-                  fontSize: 'clamp(1.1rem, 2.5vw, 1.35rem)',
-                  fontWeight: 800,
-                  color: '#ffffff',
-                  lineHeight: 1.3,
-                }}
-              >
-                {company.company}
-              </h4>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
+              {/* Indomaret Logo Badge */}
               <div
                 style={{
-                  fontSize: '0.75rem',
-                  fontFamily: 'var(--font-mono)',
-                  color: '#94a3b8',
-                  marginTop: '6px',
+                  width: '68px',
+                  height: '68px',
+                  borderRadius: '16px',
+                  backgroundColor: '#ffffff',
+                  padding: '8px',
                   display: 'flex',
-                  flexWrap: 'wrap',
                   alignItems: 'center',
-                  gap: '8px',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
                 }}
               >
-                <span style={{ color: '#60a5fa', fontWeight: 600 }}>{company.division}</span>
-                <span>•</span>
-                <span>{company.period}</span>
-                <span>•</span>
-                <span
+                <svg viewBox="0 0 320 120" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                  <text x="10" y="80" fill="#005bac" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="64" fontWeight="900" fontStyle="italic">
+                    Ind
+                  </text>
+                  <circle cx="140" cy="58" r="26" fill="none" stroke="#e31b23" strokeWidth="7" />
+                  <circle cx="140" cy="58" r="13" fill="none" stroke="#e31b23" strokeWidth="7" />
+                  <circle cx="140" cy="58" r="3" fill="#e31b23" />
+                  <text x="175" y="80" fill="#005bac" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="64" fontWeight="900" fontStyle="italic">
+                    maret
+                  </text>
+                </svg>
+              </div>
+
+              <div>
+                <h4
                   style={{
-                    padding: '2px 8px',
-                    borderRadius: '999px',
-                    backgroundColor: '#070912',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    fontSize: '0.625rem',
-                    color: '#cbd5e1',
+                    fontSize: 'clamp(1.2rem, 2.5vw, 1.45rem)',
+                    fontWeight: 800,
+                    color: '#ffffff',
+                    lineHeight: 1.25,
+                    letterSpacing: '-0.02em',
+                    margin: 0,
                   }}
                 >
-                  {company.type}
-                </span>
+                  {company.company}
+                </h4>
+                <div
+                  style={{
+                    fontSize: '0.8rem',
+                    fontFamily: 'var(--font-mono)',
+                    color: '#94a3b8',
+                    marginTop: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                  }}
+                >
+                  <span>{company.duration}</span>
+                  <span>•</span>
+                  <span>{company.type}</span>
+                </div>
               </div>
             </div>
+
+            {/* Small CTA Button in corner */}
+            <a
+              href={company.website || 'https://www.indomaret.co.id/'}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '7px 14px',
+                borderRadius: '8px',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                color: '#cbd5e1',
+                fontSize: '0.75rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 600,
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap',
+                marginTop: '4px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
+                e.currentTarget.style.color = '#ffffff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.04)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                e.currentTarget.style.color = '#cbd5e1';
+              }}
+            >
+              <span>Visit Website</span>
+              <FiExternalLink size={12} style={{ color: '#60a5fa' }} />
+            </a>
           </div>
 
-          {/* Overview Callout */}
+          {/* Overview Callout matching reference */}
           <div
             className="experience-overview"
             style={{
-              backgroundColor: 'rgba(7, 9, 18, 0.75)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              borderRadius: '14px',
+              backgroundColor: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid rgba(255, 255, 255, 0.07)',
+              borderRadius: '12px',
               padding: '16px 20px',
-              fontSize: '0.82rem',
+              fontSize: '0.85rem',
               color: '#94a3b8',
               lineHeight: 1.65,
-              marginBottom: '36px',
-              backdropFilter: 'blur(8px)',
+              marginBottom: '40px',
             }}
           >
             {company.overview}
@@ -156,7 +184,7 @@ export default function Experience() {
             className="timeline-container"
             style={{
               position: 'relative',
-              borderLeft: '2px solid rgba(59, 130, 246, 0.35)',
+              borderLeft: '2px solid rgba(59, 130, 246, 0.4)',
               display: 'flex',
               flexDirection: 'column',
               gap: '48px',
@@ -170,62 +198,59 @@ export default function Experience() {
               transition={{ duration: 0.6 }}
               style={{ position: 'relative' }}
             >
-              {/* Pulsing indicator node */}
+              {/* Hollow Blue Ring Node (matching reference image) */}
               <span
+                className="timeline-node"
                 style={{
                   position: 'absolute',
                   left: '-39px',
-                  top: '4px',
+                  top: '5px',
                   width: '14px',
                   height: '14px',
                   borderRadius: '50%',
-                  backgroundColor: '#0a0a0a',
-                  border: '2px solid #60a5fa',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 0 10px rgba(59, 130, 246, 0.8)',
+                  backgroundColor: '#070913',
+                  border: '2px solid #3b82f6',
+                  display: 'block',
+                  boxSizing: 'border-box',
+                }}
+              />
+
+              <h5
+                style={{
+                  fontSize: '1.2rem',
+                  fontWeight: 800,
+                  color: '#ffffff',
+                  letterSpacing: '-0.015em',
+                  margin: 0,
+                  lineHeight: 1.25,
                 }}
               >
-                <span
-                  style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    backgroundColor: '#60a5fa',
-                  }}
-                />
-              </span>
-
-              <h5 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.01em' }}>
                 {role1.title}
               </h5>
 
+              {/* Blue Monospace Meta */}
               <div
                 style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.78rem',
                   fontFamily: 'var(--font-mono)',
                   color: '#60a5fa',
-                  marginTop: '4px',
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: '8px',
+                  fontWeight: 600,
+                  marginTop: '6px',
+                  letterSpacing: '0.02em',
                 }}
               >
-                <span style={{ color: '#cbd5e1' }}>{role1.employmentType}</span>
-                <span>•</span>
-                <span>{role1.period}</span>
+                {role1.employmentType} · {role1.period}
               </div>
 
+              {/* Location */}
               <div
                 style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.76rem',
                   color: '#94a3b8',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
-                  marginTop: '4px',
+                  marginTop: '5px',
                   fontFamily: 'var(--font-mono)',
                 }}
               >
@@ -233,41 +258,73 @@ export default function Experience() {
                 <span>{role1.location}</span>
               </div>
 
+              {/* Skills */}
               <div
                 style={{
-                  fontSize: '0.75rem',
-                  color: '#93c5fd',
-                  marginTop: '8px',
-                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.8rem',
+                  color: '#cbd5e1',
+                  marginTop: '10px',
+                  lineHeight: 1.5,
                 }}
               >
-                <span style={{ color: '#60a5fa', fontWeight: 600 }}>Skills: </span>
-                {role1.skills.join(', ')}
+                <span style={{ color: '#60a5fa', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>Skills: </span>
+                <span>{role1.skills}</span>
               </div>
 
-              {/* Achievements Box */}
-              <div
-                style={{
-                  marginTop: '20px',
-                  backgroundColor: 'rgba(7, 9, 18, 0.6)',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
-                  borderRadius: '14px',
-                  padding: '18px 20px',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                  <LuTrophy size={18} style={{ color: '#60a5fa', flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.01em' }}>
+              {/* Key Achievements (Clean list, NO nested card) */}
+              <div style={{ marginTop: '18px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+                  <LuTrophy size={16} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.92rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.01em' }}>
                     Key Achievements
                   </span>
                 </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {role1.achievements.map((item, idx) => (
-                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.84rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                      <span style={{ color: '#60a5fa', marginTop: '2px' }}>▸</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
+                <ul
+                  style={{
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                  }}
+                >
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      Analyze <strong style={{ color: '#ffffff', fontWeight: 600 }}>sales, stock, store performance, and retail metrics</strong> to provide insights for <strong style={{ color: '#ffffff', fontWeight: 600 }}>merchandising evaluation and business decision-making</strong>.
+                    </span>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      Develop and maintain <strong style={{ color: '#ffffff', fontWeight: 600 }}>Python-based reporting automation</strong> for recurring merchandising reports, reducing daily manual processing across <strong style={{ color: '#ffffff', fontWeight: 600 }}>11 reports from 165–220 minutes to ~30 seconds (99.3% efficiency gain)</strong>.
+                    </span>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      Conduct competitive analysis (<strong style={{ color: '#ffffff', fontWeight: 600 }}>OI Save vs. Indomaret</strong>) across <strong style={{ color: '#ffffff', fontWeight: 600 }}>75 stores and 40 product departments</strong>, using <strong style={{ color: '#ffffff', fontWeight: 600 }}>SPD, APC, and STD evaluation metrics</strong>.
+                    </span>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      Develop <strong style={{ color: '#ffffff', fontWeight: 600 }}>store-level target allocation models</strong> using <strong style={{ color: '#ffffff', fontWeight: 600 }}>historical sales trends and carton-packaging rules</strong> to support nationwide merchandising initiatives.
+                    </span>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      Transform data from <strong style={{ color: '#ffffff', fontWeight: 600 }}>internal tools, Looker Studio, Tableau</strong>, and other sources into <strong style={{ color: '#ffffff', fontWeight: 600 }}>structured analysis and actionable business insights</strong>.
+                    </span>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      Collaborate with stakeholders to translate business requirements into <strong style={{ color: '#ffffff', fontWeight: 600 }}>analytical solutions, reporting improvements, and automated workflows</strong>.
+                    </span>
+                  </li>
                 </ul>
               </div>
             </motion.div>
@@ -280,62 +337,59 @@ export default function Experience() {
               transition={{ duration: 0.6, delay: 0.15 }}
               style={{ position: 'relative' }}
             >
+              {/* Hollow Blue Ring Node (matching reference image) */}
               <span
+                className="timeline-node"
                 style={{
                   position: 'absolute',
                   left: '-39px',
-                  top: '4px',
+                  top: '5px',
                   width: '14px',
                   height: '14px',
                   borderRadius: '50%',
-                  backgroundColor: '#0a0a0a',
-                  border: '2px solid #64748b',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  backgroundColor: '#070913',
+                  border: '2px solid #3b82f6',
+                  display: 'block',
+                  boxSizing: 'border-box',
+                }}
+              />
+
+              <h5
+                style={{
+                  fontSize: '1.2rem',
+                  fontWeight: 800,
+                  color: '#ffffff',
+                  letterSpacing: '-0.015em',
+                  margin: 0,
+                  lineHeight: 1.25,
                 }}
               >
-                <span
-                  style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    backgroundColor: '#64748b',
-                  }}
-                />
-              </span>
-
-              <h5 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#e2e8f0', letterSpacing: '-0.01em' }}>
                 {role2.title}
               </h5>
 
+              {/* Blue Monospace Meta */}
               <div
                 style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.78rem',
                   fontFamily: 'var(--font-mono)',
-                  color: '#94a3b8',
-                  marginTop: '4px',
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: '8px',
+                  color: '#60a5fa',
+                  fontWeight: 600,
+                  marginTop: '6px',
+                  letterSpacing: '0.02em',
                 }}
               >
-                <span style={{ color: '#cbd5e1' }}>{role2.employmentType}</span>
-                <span>•</span>
-                <span>{role2.period}</span>
-                <span>•</span>
-                <span>{role2.duration}</span>
+                {role2.period}
               </div>
 
+              {/* Location */}
               <div
                 style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.76rem',
                   color: '#94a3b8',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
-                  marginTop: '4px',
+                  marginTop: '5px',
                   fontFamily: 'var(--font-mono)',
                 }}
               >
@@ -343,44 +397,61 @@ export default function Experience() {
                 <span>{role2.location}</span>
               </div>
 
+              {/* Skills */}
               <div
                 style={{
-                  fontSize: '0.75rem',
-                  color: '#93c5fd',
-                  marginTop: '8px',
-                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.8rem',
+                  color: '#cbd5e1',
+                  marginTop: '10px',
+                  lineHeight: 1.5,
                 }}
               >
-                <span style={{ color: '#60a5fa', fontWeight: 600 }}>Skills: </span>
-                {role2.skills.join(', ')}
+                <span style={{ color: '#60a5fa', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>Skills: </span>
+                <span>{role2.skills}</span>
               </div>
 
-              {/* Responsibilities Box */}
-              <div
-                style={{
-                  marginTop: '20px',
-                  backgroundColor: 'rgba(7, 9, 18, 0.6)',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
-                  borderRadius: '14px',
-                  padding: '18px 20px',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-                  <FiSettings size={18} style={{ color: '#60a5fa', flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.01em' }}>
-                    Key Responsibilities & Operations
+              {/* Key Achievements (Clean list, NO nested card) */}
+              <div style={{ marginTop: '18px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+                  <LuTrophy size={16} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.92rem', fontWeight: 700, color: '#ffffff', letterSpacing: '0.01em' }}>
+                    Key Achievements
                   </span>
                 </div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {role2.responsibilities.map((resp, idx) => (
-                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.84rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-                      <span style={{ color: '#64748b', marginTop: '2px' }}>▸</span>
-                      <span>
-                        <strong style={{ color: '#ffffff', fontWeight: 600 }}>{resp.highlight}: </strong>
-                        {resp.text}
-                      </span>
-                    </li>
-                  ))}
+                <ul
+                  style={{
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                  }}
+                >
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      <strong style={{ color: '#ffffff', fontWeight: 600 }}>Product Data Management:</strong> Managed the registration process for an average of <strong style={{ color: '#ffffff', fontWeight: 600 }}>70 new products per month</strong> into the system, ensuring complete data accuracy before nationwide distribution across retail stores.
+                    </span>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      <strong style={{ color: '#ffffff', fontWeight: 600 }}>Pricing Administration:</strong> Handled regular input and updating of <strong style={{ color: '#ffffff', fontWeight: 600 }}>product selling prices</strong>, maintaining strict alignment with prevailing retail merchandising strategy.
+                    </span>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      <strong style={{ color: '#ffffff', fontWeight: 600 }}>Promotion Execution:</strong> Managed technical setup and system parameters for <strong style={{ color: '#ffffff', fontWeight: 600 }}>promotional campaigns</strong>, ensuring effective and timely execution at the store level.
+                    </span>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.85rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                    <span style={{ color: '#60a5fa', marginTop: '2px', flexShrink: 0, fontSize: '0.85rem' }}>▸</span>
+                    <span>
+                      <strong style={{ color: '#ffffff', fontWeight: 600 }}>Product Classification & Tagging:</strong> Responsible for applying product labels (tags) to categorize sales performance, identifying <strong style={{ color: '#ffffff', fontWeight: 600 }}>best-sellers (fast-moving), regular-selling items</strong>, and items slated for delisting.
+                    </span>
+                  </li>
                 </ul>
               </div>
             </motion.div>
@@ -391,11 +462,14 @@ export default function Experience() {
       <style>{`
         @media (min-width: 640px) {
           .experience-overview {
-            margin-left: 94px !important;
+            margin-left: 86px !important;
           }
           .timeline-container {
-            margin-left: 104px !important;
+            margin-left: 96px !important;
             padding-left: 32px !important;
+          }
+          .timeline-node {
+            left: -39px !important;
           }
         }
         @media (max-width: 639px) {
@@ -403,8 +477,11 @@ export default function Experience() {
             margin-left: 0 !important;
           }
           .timeline-container {
-            margin-left: 20px !important;
+            margin-left: 14px !important;
             padding-left: 24px !important;
+          }
+          .timeline-node {
+            left: -31px !important;
           }
         }
       `}</style>
