@@ -154,7 +154,7 @@ export default function Hero() {
           >
             <span style={{ color: '#ffffff', fontWeight: 600 }}>Data Analyst</span>
             <span style={{ margin: '0 16px', color: '#27272a' }}>|</span>
-            <span style={{ color: '#ffffff', fontWeight: 600 }}>AI Engineer</span>
+            <span style={{ color: '#ffffff', fontWeight: 600 }}>Retail Analytics</span>
           </h2>
         </motion.div>
 
@@ -171,11 +171,9 @@ export default function Hero() {
             lineHeight: 1.7,
           }}
         >
-          <span style={{ color: '#ffffff', fontWeight: 600 }}>End-to-end data analyst</span> — from retail data extraction & automation, through{' '}
-          <span style={{ color: '#ffffff', fontWeight: 600 }}>ETL pipelines</span> into{' '}
-          <span style={{ color: '#ffffff', fontWeight: 600 }}>PostgreSQL</span> /{' '}
-          <span style={{ color: '#ffffff', fontWeight: 600 }}>Tableau</span> /{' '}
-          <span style={{ color: '#ffffff', fontWeight: 600 }}>Looker</span>, delivering high-impact business intelligence and automated reporting to accelerate decision-making.
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>End-to-end Data Analyst</span> — from extracting data from{' '}
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>Looker Studio, Tableau, and internal tools</span>, through{' '}
+          <span style={{ color: '#ffffff', fontWeight: 600 }}>data processing, analysis, and automation</span>, to delivering actionable business insights that support data-driven decision-making.
         </motion.p>
 
         {/* 2 CTA Buttons (Matching Image 1) */}

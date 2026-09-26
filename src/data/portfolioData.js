@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Willy",
-  title: "Data Analyst | AI Engineer",
+  title: "Data Analyst | Retail Analytics",
   shortTitle: "Data Analyst • Information Systems",
   location: "Tangerang Selatan / Jakarta • Indonesia",
   fullLocation: "Tangerang Selatan / Jakarta, Indonesia",
@@ -9,7 +9,7 @@ export const personalInfo = {
   linkedin: "https://linkedin.com/in/willylengkong",
   availability: "Available for Opportunities",
   focus: "Data Analytics & Pipeline Automation",
-  bioHeadline: "End-to-end data analyst — from retail data extraction & automation, through ETL pipelines into PostgreSQL / Tableau / Looker, delivering high-impact business intelligence and automated reporting to accelerate decision-making.",
+  bioHeadline: "End-to-end Data Analyst — from extracting data from Looker Studio, Tableau, and internal tools, through data processing, analysis, and automation, to delivering actionable business insights that support data-driven decision-making.",
   aboutBio1: "Hi! I'm a Data Analyst & Information Systems graduate bridging high-speed Python reporting automation with executive retail decision intelligence.",
   aboutBio2: "Previously optimized nationwide merchandising data flows, SKU velocity tracking, and business intelligence models across retail operations."
 };
