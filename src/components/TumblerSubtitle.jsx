@@ -60,8 +60,12 @@ export default function TumblerSubtitle() {
     const targetPhrase = PHRASES[targetIndex];
     const targetChars = targetPhrase.text.split('');
     const totalChars = targetChars.length;
-    const duration = 1200; // 1.2s smooth decryption sweep
+    const duration = 2400; // 2.4s cinematic slow-mo decryption sweep
     const startTime = performance.now();
+    let lastGlyphTime = 0;
+    let cachedGlyphs = targetChars.map(() =>
+      KATAKANA_GLYPHS[Math.floor(Math.random() * KATAKANA_GLYPHS.length)]
+    );
 
     setIsScrambling(true);
     setPhraseIndex(targetIndex);
@@ -69,9 +73,18 @@ export default function TumblerSubtitle() {
     const tick = (now) => {
       const elapsed = now - startTime;
       const progress = Math.min(1, elapsed / duration);
-      // Ease out cubic: fast initial scramble, smooth deceleration into final lock
-      const eased = 1 - Math.pow(1 - progress, 3);
+      // Gentle sine ease-out: steady, graceful wave sweep with a soft landing
+      const eased = Math.sin((progress * Math.PI) / 2);
       const currentResolvedPos = eased * totalChars;
+
+      // Throttle Katakana glyph mutation to ~60ms
+      // This prevents high-frequency blur and lets viewers clearly perceive the Katakana characters in slow-mo
+      if (now - lastGlyphTime >= 60) {
+        cachedGlyphs = targetChars.map(() =>
+          KATAKANA_GLYPHS[Math.floor(Math.random() * KATAKANA_GLYPHS.length)]
+        );
+        lastGlyphTime = now;
+      }
 
       const nextItems = targetChars.map((targetChar, idx) => {
         if (targetChar === ' ') {
@@ -80,9 +93,7 @@ export default function TumblerSubtitle() {
         if (idx < currentResolvedPos) {
           return { char: targetChar, isResolved: true };
         }
-        // Active scrambling character: pick random Katakana glyph
-        const randomGlyph = KATAKANA_GLYPHS[Math.floor(Math.random() * KATAKANA_GLYPHS.length)];
-        return { char: randomGlyph, isResolved: false };
+        return { char: cachedGlyphs[idx] || 'ア', isResolved: false };
       });
 
       setDisplayedItems(nextItems);
@@ -103,23 +114,23 @@ export default function TumblerSubtitle() {
   useEffect(() => {
     let active = true;
 
-    // Grace period for initial page load and hero entrance (2.2s)
+    // Grace period for initial page load and hero entrance (2.6s)
     const initialDelay = setTimeout(() => {
       if (!active) return;
       // First scramble: Japanese (0) -> English (1)
       startScramble(1);
 
-      // Automated recurring cycle every 4.8 seconds
+      // Automated recurring cycle every 7.2 seconds (2.4s slow-mo scramble + 4.8s calm reading time)
       const interval = setInterval(() => {
         if (!active) return;
         if (!isScramblingRef.current) {
           const next = (phraseIndexRef.current + 1) % PHRASES.length;
           startScramble(next);
         }
-      }, 4800);
+      }, 7200);
 
       timerRef.current = interval;
-    }, 2200);
+    }, 2600);
 
     return () => {
       active = false;
@@ -179,7 +190,7 @@ export default function TumblerSubtitle() {
                 ? 'none'
                 : '0 0 10px rgba(96, 165, 250, 0.85), 0 0 20px rgba(56, 189, 248, 0.4)',
               transform: item.isResolved ? 'scale(1)' : 'scale(1.06)',
-              transition: 'color 0.12s ease, transform 0.12s ease',
+              transition: 'color 0.28s ease, transform 0.22s ease, text-shadow 0.28s ease',
             }}
           >
             {item.char === ' ' ? '\u00A0' : item.char}
