@@ -180,6 +180,16 @@ export default function Projects() {
                   </div>
                   <div style={{ minWidth: 0 }}>
                     <h3
+                      className="project-card-title"
+                      onClick={() =>
+                        !card.isPlaceholder &&
+                        setSelectedProject({
+                          title: card.title,
+                          category: card.category,
+                          builtWith: card.builtWith,
+                          caseStudy: card.caseStudy,
+                        })
+                      }
                       style={{
                         fontSize: '1.05rem',
                         fontWeight: 700,
@@ -486,6 +496,25 @@ export default function Projects() {
                 }}
               >
                 <h4
+                  className="project-card-title"
+                  onClick={() =>
+                    setSelectedProject({
+                      title: item.title,
+                      category: 'Scraping Architecture',
+                      builtWith: item.tags,
+                      caseStudy: {
+                        subtitle: item.title,
+                        overview: item.description,
+                        architecture: [
+                          'Modular crawler service with dynamic proxy rotation and header emulation',
+                          'Schema normalization pipeline parsing unstructured DOM into sanitized data models',
+                          'Real-time webhook notification delivering delta alerts on competitor changes',
+                        ],
+                        result:
+                          'Architecture blueprint prepared for enterprise retail ingestion and competitive benchmarking.',
+                      },
+                    })
+                  }
                   style={{
                     fontSize: '1rem',
                     fontWeight: 700,
@@ -734,6 +763,25 @@ export default function Projects() {
 
               {/* Title */}
               <h4
+                className="project-card-title"
+                onClick={() =>
+                  setSelectedProject({
+                    title: item.title,
+                    category: 'Web Architecture',
+                    builtWith: item.tags,
+                    caseStudy: {
+                      subtitle: item.title,
+                      overview: item.description,
+                      architecture: [
+                        'Modular UI components following atomic design principles and responsive layouts',
+                        'Client-side state management with resilient async data fetching',
+                        'Optimized asset bundling with sub-second core web vitals performance',
+                      ],
+                      result:
+                        'Architecture blueprint verified for enterprise portal scaling and high concurrent users.',
+                    },
+                  })
+                }
                 style={{
                   fontSize: '1rem',
                   fontWeight: 700,
