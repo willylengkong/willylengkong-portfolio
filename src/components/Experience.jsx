@@ -62,34 +62,19 @@ export default function Experience() {
               flexWrap: 'wrap',
             }}
           >
-            {/* Indomaret Logo Badge */}
-            <div
-              style={{
-                width: '98px',
-                height: '58px',
-                borderRadius: '14px',
-                backgroundColor: '#ffffff',
-                padding: '5px 8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                overflow: 'hidden',
-              }}
+            {/* Indomaret Logo Badge (with subtle hover zoom micro-animation) */}
+            <a
+              href={company.website || 'https://www.indomaret.co.id/'}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit Indomaret Website"
+              className="company-logo-badge"
             >
               <img
-                src="/images/indomaret-logo.png"
+                src="/images/indomaret-logo-only.png"
                 alt="Indomaret Logo"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'contain',
-                  display: 'block',
-                }}
               />
-            </div>
+            </a>
 
             <div>
               <h4
@@ -470,12 +455,48 @@ export default function Experience() {
       </div>
 
       <style>{`
+        .company-logo-badge {
+          width: 96px;
+          height: 64px;
+          border-radius: 16px;
+          background-color: #ffffff;
+          padding: 8px 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          overflow: hidden;
+          text-decoration: none;
+          cursor: pointer;
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+        }
+
+        .company-logo-badge:hover {
+          transform: translateY(-2px) scale(1.05);
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.25);
+          border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .company-logo-badge img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .company-logo-badge:hover img {
+          transform: scale(1.08);
+        }
+
         @media (min-width: 640px) {
           .experience-overview {
-            margin-left: 116px !important;
+            margin-left: 114px !important;
           }
           .timeline-container {
-            margin-left: 126px !important;
+            margin-left: 124px !important;
             padding-left: 32px !important;
           }
           .timeline-node {
