@@ -16,22 +16,88 @@ export const personalInfo = {
 
 export const skillsCategories = [
   {
-    id: "analytics",
-    title: "Analytics & Business Intelligence",
-    description: "Tableau, Looker Studio, Automated KPI Dashboards",
-    skills: ["Tableau Desktop", "Looker Studio", "Advanced Excel", "SPD / APC / STD Models", "Power BI", "Data Storytelling"]
+    id: "data-automation",
+    title: "Data & Automation",
+    icon: "cpu",
+    skills: [
+      "Python",
+      "pandas",
+      "openpyxl",
+      "xlsxwriter",
+      "Data Pipelines",
+      "Workflow Automation",
+      "Data Processing"
+    ]
   },
   {
-    id: "engineering",
-    title: "Data Engineering & Automated Pipelines",
-    description: "ETL scripting, relational databases, vectorized pipelines",
-    skills: ["Python (Pandas, NumPy)", "OpenPyXL & XlsxWriter", "PostgreSQL", "Oracle SQL", "Scheduled ETL Crons", "Data Cleansing"]
+    id: "analytics-retail",
+    title: "Analytics & Retail Intelligence",
+    icon: "trending-up",
+    skills: [
+      "SPD / APC / STD Analysis",
+      "Sales Analysis",
+      "Stock Analysis",
+      "Competitive Analysis",
+      "Store Performance",
+      "Business Analysis",
+      "Target Allocation",
+      "Retail Metrics"
+    ]
   },
   {
-    id: "systems",
-    title: "Enterprise Systems & Web Dev",
-    description: "Enterprise software modeling, fullstack frameworks",
-    skills: ["C# (.NET MAUI)", "JavaScript / React", "CSS & Responsive UI", "Git & CI/CD", "RESTful APIs", "Process Automation"]
+    id: "excel-bi",
+    title: "Excel, BI & Data Transformation",
+    icon: "grid",
+    skills: [
+      "Advanced Excel",
+      "Power Query",
+      "PivotTable",
+      "Advanced Formulas",
+      "Data Transformation",
+      "Power BI",
+      "Looker Studio",
+      "QlikView"
+    ]
+  },
+  {
+    id: "database-query",
+    title: "Database & Query",
+    icon: "database",
+    skills: [
+      "SQL",
+      "SQLite",
+      "Data Modeling",
+      "Data Cleaning"
+    ]
+  },
+  {
+    id: "software-dev",
+    title: "Software Development",
+    icon: "code",
+    skills: [
+      "HTML",
+      "CSS",
+      "PHP",
+      "Laravel",
+      "C#",
+      ".NET MAUI"
+    ]
+  },
+  {
+    id: "dev-ai-tools",
+    title: "Development & AI Tools",
+    icon: "tool",
+    skills: [
+      "VS Code",
+      "Git",
+      "Jupyter Notebook",
+      "Google Sheets",
+      "Outlook API",
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "Antigravity"
+    ]
   }
 ];
 
