@@ -418,85 +418,155 @@ export default function Projects() {
             className="glass-card"
             style={{
               borderRadius: '16px',
-              padding: '22px',
+              overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              backgroundColor: 'rgba(7, 9, 18, 0.65)',
+              backgroundColor: 'rgba(7, 9, 18, 0.75)',
+              padding: 0,
             }}
           >
-            <div>
-              {/* Top Row: Tags + Icon (anchored top-right with first line of tags) */}
+            {/* Top Chamber: Tags + Icon (subtly lighter background, full-width border) */}
+            <div
+              style={{
+                padding: '20px 22px 18px 22px',
+                backgroundColor: 'rgba(255, 255, 255, 0.035)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'space-between',
+                gap: '12px',
+              }}
+            >
               <div
                 style={{
+                  flex: 1,
                   display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'space-between',
-                  gap: '12px',
-                  paddingBottom: '16px',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-                  marginBottom: '16px',
+                  flexWrap: 'wrap',
+                  gap: '6px',
+                  minWidth: 0,
+                  paddingRight: '6px',
                 }}
               >
-                <div
-                  style={{
-                    flex: 1,
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '6px',
-                    minWidth: 0,
-                    paddingRight: '6px',
-                  }}
-                >
-                  {item.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      style={{
-                        fontSize: '0.65rem',
-                        fontFamily: 'var(--font-mono)',
-                        padding: '3px 10px',
-                        borderRadius: '9999px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                        border: '1px solid rgba(255, 255, 255, 0.09)',
-                        color: tag.startsWith('+') ? '#94a3b8' : '#cbd5e1',
-                        whiteSpace: 'nowrap',
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div
-                  style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '12px',
-                    backgroundColor: '#0c0f1d',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#60a5fa',
-                    flexShrink: 0,
-                    alignSelf: 'flex-start',
-                  }}
-                >
-                  {getNicheIcon(item.icon)}
-                </div>
+                {item.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    style={{
+                      fontSize: '0.65rem',
+                      fontFamily: 'var(--font-mono)',
+                      padding: '3px 10px',
+                      borderRadius: '9999px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                      border: '1px solid rgba(255, 255, 255, 0.09)',
+                      color: tag.startsWith('+') ? '#94a3b8' : '#cbd5e1',
+                      whiteSpace: 'nowrap',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
-
-              {/* Title & Badge Count Row */}
               <div
                 style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '12px',
+                  backgroundColor: '#0c0f1d',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginBottom: '8px',
+                  justifyContent: 'center',
+                  color: '#60a5fa',
+                  flexShrink: 0,
+                  alignSelf: 'flex-start',
                 }}
               >
-                <h4
-                  className="project-card-title"
+                {getNicheIcon(item.icon)}
+              </div>
+            </div>
+
+            {/* Bottom Chamber: Title, Description & Action Buttons (differentiated background) */}
+            <div
+              style={{
+                padding: '20px 22px 22px 22px',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                backgroundColor: 'rgba(0, 0, 0, 0.22)',
+              }}
+            >
+              <div>
+                {/* Title & Badge Count Row */}
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '8px',
+                  }}
+                >
+                  <h4
+                    className="project-card-title"
+                    onClick={() =>
+                      setSelectedProject({
+                        title: item.title,
+                        category: 'Scraping Architecture',
+                        builtWith: item.tags,
+                        caseStudy: {
+                          subtitle: item.title,
+                          overview: item.description,
+                          architecture: [
+                            'Modular crawler service with dynamic proxy rotation and header emulation',
+                            'Schema normalization pipeline parsing unstructured DOM into sanitized data models',
+                            'Real-time webhook notification delivering delta alerts on competitor changes',
+                          ],
+                          result:
+                            'Architecture blueprint prepared for enterprise retail ingestion and competitive benchmarking.',
+                        },
+                      })
+                    }
+                    style={{
+                      fontSize: '1rem',
+                      fontWeight: 700,
+                      color: '#ffffff',
+                      lineHeight: 1.3,
+                      margin: 0,
+                    }}
+                  >
+                    {item.title}
+                  </h4>
+                  <span
+                    style={{
+                      fontSize: '0.8125rem',
+                      fontFamily: 'var(--font-mono)',
+                      color: '#71717a',
+                      fontWeight: 600,
+                      marginLeft: '12px',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.count}
+                  </span>
+                </div>
+
+                {/* Description */}
+                <p
+                  style={{
+                    fontSize: '0.78rem',
+                    color: '#94a3b8',
+                    lineHeight: 1.6,
+                    marginBottom: '20px',
+                  }}
+                >
+                  {item.description}
+                </p>
+              </div>
+
+              {/* Bottom 2 Buttons */}
+              <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
+                <button
                   onClick={() =>
                     setSelectedProject({
                       title: item.title,
@@ -516,133 +586,76 @@ export default function Projects() {
                     })
                   }
                   style={{
-                    fontSize: '1rem',
+                    flex: 1,
+                    padding: '9px 12px',
+                    borderRadius: '10px',
+                    backgroundColor: '#ffffff',
+                    color: '#09090b',
                     fontWeight: 700,
-                    color: '#ffffff',
-                    lineHeight: 1.3,
-                    margin: 0,
+                    fontSize: '0.75rem',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    transition: 'all 0.2s ease',
                   }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f4f4f5')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#ffffff')}
                 >
-                  {item.title}
-                </h4>
-                <span
+                  <FiLayers size={13} />
+                  <span>View Details</span>
+                </button>
+                <button
+                  onClick={() =>
+                    setSelectedProject({
+                      title: `${item.title} • Live Pipeline`,
+                      category: 'Live Demo',
+                      builtWith: item.tags,
+                      caseStudy: {
+                        subtitle: `${item.title} Telemetry Engine`,
+                        overview: item.details?.overview || item.description,
+                        architecture: [
+                          'Ingress webhook streaming target endpoints into queuing worker nodes',
+                          'Automated retry and fallback exponential backoff routines',
+                          'Post-processing validation checking schema sanity before DB commit',
+                        ],
+                        result: 'Demonstration pipeline ready for deployment in testing environment.',
+                      },
+                    })
+                  }
                   style={{
-                    fontSize: '0.8125rem',
-                    fontFamily: 'var(--font-mono)',
-                    color: '#71717a',
+                    flex: 1,
+                    padding: '9px 12px',
+                    borderRadius: '10px',
+                    backgroundColor: '#0c0f1d',
+                    color: '#cbd5e1',
                     fontWeight: 600,
-                    marginLeft: '12px',
-                    flexShrink: 0,
+                    fontSize: '0.75rem',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1e293b';
+                    e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
+                    e.currentTarget.style.color = '#ffffff';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#0c0f1d';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                    e.currentTarget.style.color = '#cbd5e1';
                   }}
                 >
-                  {item.count}
-                </span>
+                  <FiArrowUpRight size={13} />
+                  <span>Demo</span>
+                </button>
               </div>
-
-              {/* Description */}
-              <p
-                style={{
-                  fontSize: '0.78rem',
-                  color: '#94a3b8',
-                  lineHeight: 1.6,
-                  marginBottom: '20px',
-                }}
-              >
-                {item.description}
-              </p>
-            </div>
-
-            {/* Bottom 2 Buttons */}
-            <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
-              <button
-                onClick={() =>
-                  setSelectedProject({
-                    title: item.title,
-                    category: 'Scraping Architecture',
-                    builtWith: item.tags,
-                    caseStudy: {
-                      subtitle: item.title,
-                      overview: item.description,
-                      architecture: [
-                        'Modular crawler service with dynamic proxy rotation and header emulation',
-                        'Schema normalization pipeline parsing unstructured DOM into sanitized data models',
-                        'Real-time webhook notification delivering delta alerts on competitor changes',
-                      ],
-                      result:
-                        'Architecture blueprint prepared for enterprise retail ingestion and competitive benchmarking.',
-                    },
-                  })
-                }
-                style={{
-                  flex: 1,
-                  padding: '9px 12px',
-                  borderRadius: '10px',
-                  backgroundColor: '#ffffff',
-                  color: '#09090b',
-                  fontWeight: 700,
-                  fontSize: '0.75rem',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f4f4f5')}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#ffffff')}
-              >
-                <FiLayers size={13} />
-                <span>View Details</span>
-              </button>
-              <button
-                onClick={() =>
-                  setSelectedProject({
-                    title: `${item.title} • Live Pipeline`,
-                    category: 'Live Demo',
-                    builtWith: item.tags,
-                    caseStudy: {
-                      subtitle: `${item.title} Telemetry Engine`,
-                      overview: item.details?.overview || item.description,
-                      architecture: [
-                        'Ingress webhook streaming target endpoints into queuing worker nodes',
-                        'Automated retry and fallback exponential backoff routines',
-                        'Post-processing validation checking schema sanity before DB commit',
-                      ],
-                      result: 'Demonstration pipeline ready for deployment in testing environment.',
-                    },
-                  })
-                }
-                style={{
-                  flex: 1,
-                  padding: '9px 12px',
-                  borderRadius: '10px',
-                  backgroundColor: '#0c0f1d',
-                  color: '#cbd5e1',
-                  fontWeight: 600,
-                  fontSize: '0.75rem',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#1e293b';
-                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
-                  e.currentTarget.style.color = '#ffffff';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#0c0f1d';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                  e.currentTarget.style.color = '#cbd5e1';
-                }}
-              >
-                <FiArrowUpRight size={13} />
-                <span>Demo</span>
-              </button>
             </div>
           </motion.div>
         ))}
@@ -693,210 +706,223 @@ export default function Projects() {
             className="glass-card"
             style={{
               borderRadius: '16px',
-              padding: '22px',
+              overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
-              backgroundColor: 'rgba(7, 9, 18, 0.65)',
+              backgroundColor: 'rgba(7, 9, 18, 0.75)',
+              padding: 0,
             }}
           >
-            <div>
-              {/* Top Row: Tags + Icon (anchored top-right with first line of tags) */}
+            {/* Top Chamber: Tags + Icon (subtly lighter background, full-width border) */}
+            <div
+              style={{
+                padding: '20px 22px 18px 22px',
+                backgroundColor: 'rgba(255, 255, 255, 0.035)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                display: 'flex',
+                alignItems: 'flex-start',
+                justifyContent: 'space-between',
+                gap: '12px',
+              }}
+            >
               <div
                 style={{
+                  flex: 1,
                   display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'space-between',
-                  gap: '12px',
-                  paddingBottom: '16px',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-                  marginBottom: '16px',
+                  flexWrap: 'wrap',
+                  gap: '6px',
+                  minWidth: 0,
+                  paddingRight: '6px',
                 }}
               >
-                <div
+                {item.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    style={{
+                      fontSize: '0.65rem',
+                      fontFamily: 'var(--font-mono)',
+                      padding: '3px 10px',
+                      borderRadius: '9999px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                      border: '1px solid rgba(255, 255, 255, 0.09)',
+                      color: tag.startsWith('+') ? '#94a3b8' : '#cbd5e1',
+                      whiteSpace: 'nowrap',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '12px',
+                  backgroundColor: '#0c0f1d',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#60a5fa',
+                  flexShrink: 0,
+                  alignSelf: 'flex-start',
+                }}
+              >
+                {getNicheIcon(item.icon)}
+              </div>
+            </div>
+
+            {/* Bottom Chamber: Title, Description & Action Buttons (differentiated background) */}
+            <div
+              style={{
+                padding: '20px 22px 22px 22px',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                backgroundColor: 'rgba(0, 0, 0, 0.22)',
+              }}
+            >
+              <div>
+                {/* Title */}
+                <h4
+                  className="project-card-title"
+                  onClick={() =>
+                    setSelectedProject({
+                      title: item.title,
+                      category: 'Web Architecture',
+                      builtWith: item.tags,
+                      caseStudy: {
+                        subtitle: item.title,
+                        overview: item.description,
+                        architecture: [
+                          'Modular UI components following atomic design principles and responsive layouts',
+                          'Client-side state management with resilient async data fetching',
+                          'Optimized asset bundling with sub-second core web vitals performance',
+                        ],
+                        result:
+                          'Architecture blueprint verified for enterprise portal scaling and high concurrent users.',
+                      },
+                    })
+                  }
                   style={{
-                    flex: 1,
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '6px',
-                    minWidth: 0,
-                    paddingRight: '6px',
+                    fontSize: '1rem',
+                    fontWeight: 700,
+                    color: '#ffffff',
+                    lineHeight: 1.3,
+                    margin: '0 0 8px 0',
                   }}
                 >
-                  {item.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      style={{
-                        fontSize: '0.65rem',
-                        fontFamily: 'var(--font-mono)',
-                        padding: '3px 10px',
-                        borderRadius: '9999px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                        border: '1px solid rgba(255, 255, 255, 0.09)',
-                        color: tag.startsWith('+') ? '#94a3b8' : '#cbd5e1',
-                        whiteSpace: 'nowrap',
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div
+                  {item.title}
+                </h4>
+
+                {/* Description */}
+                <p
                   style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '12px',
-                    backgroundColor: '#0c0f1d',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    fontSize: '0.78rem',
+                    color: '#94a3b8',
+                    lineHeight: 1.6,
+                    marginBottom: '20px',
+                  }}
+                >
+                  {item.description}
+                </p>
+              </div>
+
+              {/* Bottom 2 Buttons */}
+              <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
+                <button
+                  onClick={() =>
+                    setSelectedProject({
+                      title: item.title,
+                      category: 'Web Architecture',
+                      builtWith: item.tags,
+                      caseStudy: {
+                        subtitle: item.title,
+                        overview: item.description,
+                        architecture: [
+                          'Modular UI components following atomic design principles and responsive layouts',
+                          'Client-side state management with resilient async data fetching',
+                          'Optimized asset bundling with sub-second core web vitals performance',
+                        ],
+                        result:
+                          'Architecture blueprint verified for enterprise portal scaling and high concurrent users.',
+                      },
+                    })
+                  }
+                  style={{
+                    flex: 1,
+                    padding: '9px 12px',
+                    borderRadius: '10px',
+                    backgroundColor: '#ffffff',
+                    color: '#09090b',
+                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    border: 'none',
+                    cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#60a5fa',
-                    flexShrink: 0,
-                    alignSelf: 'flex-start',
+                    gap: '6px',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f4f4f5')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#ffffff')}
+                >
+                  <FiLayers size={13} />
+                  <span>View Details</span>
+                </button>
+                <button
+                  onClick={() =>
+                    setSelectedProject({
+                      title: `${item.title} • Live Demo`,
+                      category: 'Live Demo',
+                      builtWith: item.tags,
+                      caseStudy: {
+                        subtitle: `${item.title} Live Interface`,
+                        overview: item.details?.overview || item.description,
+                        architecture: [
+                          'Server-side rendered hydration layer for rapid initial content paint',
+                          'Integrated telemetry analytics logging user interaction events',
+                          'Automated CI/CD build verifying accessibility and responsiveness',
+                        ],
+                        result: 'Live demonstration application ready for stakeholder review.',
+                      },
+                    })
+                  }
+                  style={{
+                    flex: 1,
+                    padding: '9px 12px',
+                    borderRadius: '10px',
+                    backgroundColor: '#0c0f1d',
+                    color: '#cbd5e1',
+                    fontWeight: 600,
+                    fontSize: '0.75rem',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    transition: 'all 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = '#1e293b';
+                    e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
+                    e.currentTarget.style.color = '#ffffff';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = '#0c0f1d';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                    e.currentTarget.style.color = '#cbd5e1';
                   }}
                 >
-                  {getNicheIcon(item.icon)}
-                </div>
+                  <FiArrowUpRight size={13} />
+                  <span>Demo</span>
+                </button>
               </div>
-
-              {/* Title */}
-              <h4
-                className="project-card-title"
-                onClick={() =>
-                  setSelectedProject({
-                    title: item.title,
-                    category: 'Web Architecture',
-                    builtWith: item.tags,
-                    caseStudy: {
-                      subtitle: item.title,
-                      overview: item.description,
-                      architecture: [
-                        'Modular UI components following atomic design principles and responsive layouts',
-                        'Client-side state management with resilient async data fetching',
-                        'Optimized asset bundling with sub-second core web vitals performance',
-                      ],
-                      result:
-                        'Architecture blueprint verified for enterprise portal scaling and high concurrent users.',
-                    },
-                  })
-                }
-                style={{
-                  fontSize: '1rem',
-                  fontWeight: 700,
-                  color: '#ffffff',
-                  lineHeight: 1.3,
-                  margin: '0 0 8px 0',
-                }}
-              >
-                {item.title}
-              </h4>
-
-              {/* Description */}
-              <p
-                style={{
-                  fontSize: '0.78rem',
-                  color: '#94a3b8',
-                  lineHeight: 1.6,
-                  marginBottom: '20px',
-                }}
-              >
-                {item.description}
-              </p>
-            </div>
-
-            {/* Bottom 2 Buttons */}
-            <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
-              <button
-                onClick={() =>
-                  setSelectedProject({
-                    title: item.title,
-                    category: 'Web Architecture',
-                    builtWith: item.tags,
-                    caseStudy: {
-                      subtitle: item.title,
-                      overview: item.description,
-                      architecture: [
-                        'Modular UI components following atomic design principles and responsive layouts',
-                        'Client-side state management with resilient async data fetching',
-                        'Optimized asset bundling with sub-second core web vitals performance',
-                      ],
-                      result:
-                        'Architecture blueprint verified for enterprise portal scaling and high concurrent users.',
-                    },
-                  })
-                }
-                style={{
-                  flex: 1,
-                  padding: '9px 12px',
-                  borderRadius: '10px',
-                  backgroundColor: '#ffffff',
-                  color: '#09090b',
-                  fontWeight: 700,
-                  fontSize: '0.75rem',
-                  border: 'none',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#f4f4f5')}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#ffffff')}
-              >
-                <FiLayers size={13} />
-                <span>View Details</span>
-              </button>
-              <button
-                onClick={() =>
-                  setSelectedProject({
-                    title: `${item.title} • Live Demo`,
-                    category: 'Live Demo',
-                    builtWith: item.tags,
-                    caseStudy: {
-                      subtitle: `${item.title} Live Interface`,
-                      overview: item.details?.overview || item.description,
-                      architecture: [
-                        'Server-side rendered hydration layer for rapid initial content paint',
-                        'Integrated telemetry analytics logging user interaction events',
-                        'Automated CI/CD build verifying accessibility and responsiveness',
-                      ],
-                      result: 'Live demonstration application ready for stakeholder review.',
-                    },
-                  })
-                }
-                style={{
-                  flex: 1,
-                  padding: '9px 12px',
-                  borderRadius: '10px',
-                  backgroundColor: '#0c0f1d',
-                  color: '#cbd5e1',
-                  fontWeight: 600,
-                  fontSize: '0.75rem',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '6px',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#1e293b';
-                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
-                  e.currentTarget.style.color = '#ffffff';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#0c0f1d';
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                  e.currentTarget.style.color = '#cbd5e1';
-                }}
-              >
-                <FiArrowUpRight size={13} />
-                <span>Demo</span>
-              </button>
             </div>
           </motion.div>
         ))}
