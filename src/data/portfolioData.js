@@ -439,6 +439,10 @@ export const certifications = honorsAndAchievements;
 export const educationData = {
   institution: "Universitas Pelita Harapan (UPH)",
   acronym: "UPH",
+  timelineTitle: "UPH",
+  website: "https://www.uph.edu/",
+  logo: "/images/uph-logo.png",
+  isActive: true,
   period: "2025 — 2029 (Expected)",
   mode: "On-campus",
   faculty: "Faculty of Artificial Intelligence and Data Science",
