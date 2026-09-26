@@ -456,8 +456,8 @@ export default function Experience() {
 
       <style>{`
         .company-logo-badge {
-          width: 96px;
-          height: 64px;
+          width: 116px;
+          height: 70px;
           border-radius: 16px;
           background-color: #ffffff;
           padding: 8px 12px;
@@ -493,10 +493,10 @@ export default function Experience() {
 
         @media (min-width: 640px) {
           .experience-overview {
-            margin-left: 114px !important;
+            margin-left: 134px !important;
           }
           .timeline-container {
-            margin-left: 124px !important;
+            margin-left: 144px !important;
             padding-left: 32px !important;
           }
           .timeline-node {
