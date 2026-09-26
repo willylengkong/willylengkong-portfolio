@@ -323,10 +323,42 @@ export const subProjects = [
 
 export const experienceData = [
   {
+    id: "apify",
+    company: "Freelance - Web Scraping",
+    brand: "Apify Marketplace",
+    timelineTitle: "APIFY",
+    duration: "2 mos · Remote",
+    type: "Remote",
+    website: "https://apify.com/",
+    logo: "/images/apify-logo.png",
+    isActive: true,
+    overview: "Independent freelance work delivering production scraping engines and end-to-end data pipelines to clients worldwide - both via the Apify Marketplace under @wyle and direct engagements.",
+    roles: [
+      {
+        title: "Apify Actor Developer",
+        employmentType: "Self-employed",
+        period: "Aug 2026 - Present · 7 mos",
+        isCurrent: true,
+        location: "Remote (Worldwide)",
+        skills: "Python, curl_cffi, primp, scrapling, Apify SDK, MCP",
+        achievements: [
+          "Architected and deployed 200+ production scraping engines on Apify Marketplace under @xtracto.",
+          "Custom client engagements - bespoke HTTP-only engines for marketplaces (Tokopedia, Shopee, AliExpress), news publishers, and social platforms.",
+          "End-to-end delivery: anti-bot reverse engineering → Apify deployment → monetization."
+        ]
+      }
+    ]
+  },
+  {
+    id: "indomaret",
     company: "PT Indomarco Prismatama (Indomaret Group)",
+    brand: "Indomaret Group",
+    timelineTitle: "INDOMARET",
     duration: "3 years 11 months",
     type: "On-site",
     website: "https://www.indomaret.co.id/",
+    logo: "/images/indomaret-official-cropped.png",
+    isActive: true,
     overview: "Indomaret Group is a leading Indonesian retail company operating a nationwide network of 23,000+ Indomaret stores.",
     roles: [
       {
@@ -348,7 +380,7 @@ export const experienceData = [
       {
         title: "Merchandising Support Staff",
         employmentType: "Full-time",
-        period: "Oct 2022 - Jun 2024 · 1 yr 9 mos",
+        period: "Aug 2021 – May 2024",
         isCurrent: false,
         location: "Menara Indomaret, Jakarta, Indonesia",
         skills: "Oracle, Excel, Outlook, SSO",
