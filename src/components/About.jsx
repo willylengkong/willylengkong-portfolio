@@ -236,8 +236,8 @@ export default function About() {
                 Hi! I'm <strong style={{ color: '#ffffff', fontWeight: 600 }}>Willy Lengkong</strong>, a{' '}
                 <strong style={{ color: '#ffffff', fontWeight: 600 }}>Data Analyst at PT Indomarco Prismatama (Indomaret Group)</strong>{' '}
                 within the <strong style={{ color: '#ffffff', fontWeight: 600 }}>Merchandising Division, Strategic Analyst Department</strong>,{' '}
-                while also pursuing my degree in{' '}
-                <strong style={{ color: '#ffffff', fontWeight: 600 }}>Information Systems at Universitas Pelita Harapan (UPH)</strong> as a third-semester student.
+                and a third-semester <strong style={{ color: '#ffffff', fontWeight: 600 }}>Information Systems</strong> student at{' '}
+                <strong style={{ color: '#ffffff', fontWeight: 600 }}>Universitas Pelita Harapan (UPH)</strong>.
               </p>
 
               <p
@@ -248,9 +248,9 @@ export default function About() {
                   margin: 0,
                 }}
               >
-                I have been working at Indomaret Group since{' '}
-                <strong style={{ color: '#ffffff', fontWeight: 600 }}>2022</strong>, focusing on data processing and analysis to support business needs within the merchandising area. My work involves handling various types of data related to{' '}
-                <strong style={{ color: '#ffffff', fontWeight: 600 }}>sales, stock, store performance, retail metrics, as well as product and store analysis</strong>, which are used to support business evaluation and decision-making.
+                I work end-to-end with retail data — from extracting data through{' '}
+                <strong style={{ color: '#ffffff', fontWeight: 600 }}>Looker Studio, Tableau, and internal tools</strong>, to processing and analyzing{' '}
+                <strong style={{ color: '#ffffff', fontWeight: 600 }}>sales, stock, store performance, and product data</strong>, turning them into actionable business insights for decision-making.
               </p>
 
               <p
@@ -261,11 +261,8 @@ export default function About() {
                   margin: 0,
                 }}
               >
-                I am experienced in using{' '}
-                <strong style={{ color: '#ffffff', fontWeight: 600 }}>Microsoft Excel, Looker Studio, Tableau, and various data tools</strong>{' '}
-                for data processing, analysis, and reporting, helping transform data into more structured and meaningful information. I also develop{' '}
-                <strong style={{ color: '#ffffff', fontWeight: 600 }}>data automation solutions</strong> using{' '}
-                <strong style={{ color: '#ffffff', fontWeight: 600 }}>Python, pandas, openpyxl, and Jupyter Notebook</strong> to simplify repetitive tasks and improve reporting efficiency.
+                I also build data automation solutions using{' '}
+                <strong style={{ color: '#ffffff', fontWeight: 600 }}>Python, pandas, openpyxl, and Jupyter Notebook</strong> to streamline repetitive data processing and reporting workflows.
               </p>
 
               <p
@@ -276,20 +273,8 @@ export default function About() {
                   margin: 0,
                 }}
               >
-                Beyond data analysis, I am interested in how technology can be applied to solve business problems. Through my Information Systems studies and various projects, I continue to develop my skills in{' '}
-                <strong style={{ color: '#ffffff', fontWeight: 600 }}>SQL, databases, data processing, and software development</strong>.
-              </p>
-
-              <p
-                style={{
-                  fontSize: '0.86rem',
-                  color: '#94a3b8',
-                  lineHeight: 1.7,
-                  margin: 0,
-                }}
-              >
-                By combining my professional experience with my academic background in Information Systems, I aim to continue growing as a{' '}
-                <strong style={{ color: '#ffffff', fontWeight: 600 }}>Data Analyst</strong> who can not only analyze data, but also understand business contexts and build more effective solutions through technology.
+                Alongside my professional work, I continue exploring{' '}
+                <strong style={{ color: '#ffffff', fontWeight: 600 }}>SQL, databases, and software development</strong> through my Information Systems studies and personal projects.
               </p>
             </div>
           </motion.div>
