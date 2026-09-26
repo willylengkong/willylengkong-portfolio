@@ -52,79 +52,105 @@ export default function Experience() {
 
         {/* Company Card Block */}
         <div>
-          {/* Header Row: Logo + Company Info + CTA Button */}
+          {/* Header Row: Logo + Company Info */}
           <div
             style={{
               display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'space-between',
-              gap: '16px',
+              alignItems: 'center',
+              gap: '18px',
               marginBottom: '20px',
               flexWrap: 'wrap',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
-              {/* Indomaret Logo Badge */}
-              <div
+            {/* Indomaret Logo Badge */}
+            <div
+              style={{
+                width: '98px',
+                height: '58px',
+                borderRadius: '14px',
+                backgroundColor: '#ffffff',
+                padding: '5px 8px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                overflow: 'hidden',
+              }}
+            >
+              <img
+                src="/images/indomaret-logo.png"
+                alt="Indomaret Logo"
                 style={{
-                  width: '68px',
-                  height: '68px',
-                  borderRadius: '16px',
-                  backgroundColor: '#ffffff',
-                  padding: '8px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.4)',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'contain',
+                  display: 'block',
                 }}
-              >
-                <svg viewBox="0 0 320 120" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
-                  <text x="10" y="80" fill="#005bac" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="64" fontWeight="900" fontStyle="italic">
-                    Ind
-                  </text>
-                  <circle cx="140" cy="58" r="26" fill="none" stroke="#e31b23" strokeWidth="7" />
-                  <circle cx="140" cy="58" r="13" fill="none" stroke="#e31b23" strokeWidth="7" />
-                  <circle cx="140" cy="58" r="3" fill="#e31b23" />
-                  <text x="175" y="80" fill="#005bac" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="64" fontWeight="900" fontStyle="italic">
-                    maret
-                  </text>
-                </svg>
-              </div>
-
-              <div>
-                <h4
-                  style={{
-                    fontSize: 'clamp(1.2rem, 2.5vw, 1.45rem)',
-                    fontWeight: 800,
-                    color: '#ffffff',
-                    lineHeight: 1.25,
-                    letterSpacing: '-0.02em',
-                    margin: 0,
-                  }}
-                >
-                  {company.company}
-                </h4>
-                <div
-                  style={{
-                    fontSize: '0.8rem',
-                    fontFamily: 'var(--font-mono)',
-                    color: '#94a3b8',
-                    marginTop: '6px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                  }}
-                >
-                  <span>{company.duration}</span>
-                  <span>•</span>
-                  <span>{company.type}</span>
-                </div>
-              </div>
+              />
             </div>
 
-            {/* Small CTA Button in corner */}
+            <div>
+              <h4
+                style={{
+                  fontSize: 'clamp(1.2rem, 2.5vw, 1.45rem)',
+                  fontWeight: 800,
+                  color: '#ffffff',
+                  lineHeight: 1.25,
+                  letterSpacing: '-0.02em',
+                  margin: 0,
+                }}
+              >
+                {company.company}
+              </h4>
+              <div
+                style={{
+                  fontSize: '0.8rem',
+                  fontFamily: 'var(--font-mono)',
+                  color: '#94a3b8',
+                  marginTop: '6px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                }}
+              >
+                <span>{company.duration}</span>
+                <span>•</span>
+                <span>{company.type}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Overview Callout with Visit CTA at bottom right */}
+          <div
+            className="experience-overview"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid rgba(255, 255, 255, 0.07)',
+              borderRadius: '12px',
+              padding: '16px 20px',
+              marginBottom: '40px',
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              gap: '16px',
+              flexWrap: 'wrap',
+            }}
+          >
+            <div
+              style={{
+                flex: 1,
+                minWidth: '260px',
+                fontSize: '0.85rem',
+                color: '#94a3b8',
+                lineHeight: 1.65,
+              }}
+            >
+              {company.overview}
+            </div>
+
+            {/* Small CTA Button: Visit */}
             <a
               href={company.website || 'https://www.indomaret.co.id/'}
               target="_blank"
@@ -133,7 +159,7 @@ export default function Experience() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                padding: '7px 14px',
+                padding: '6px 14px',
                 borderRadius: '8px',
                 backgroundColor: 'rgba(255, 255, 255, 0.04)',
                 border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -144,10 +170,11 @@ export default function Experience() {
                 textDecoration: 'none',
                 transition: 'all 0.2s ease',
                 whiteSpace: 'nowrap',
-                marginTop: '4px',
+                flexShrink: 0,
+                marginLeft: 'auto',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.12)';
+                e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.14)';
                 e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
                 e.currentTarget.style.color = '#ffffff';
               }}
@@ -157,26 +184,9 @@ export default function Experience() {
                 e.currentTarget.style.color = '#cbd5e1';
               }}
             >
-              <span>Visit Website</span>
+              <span>Visit</span>
               <FiExternalLink size={12} style={{ color: '#60a5fa' }} />
             </a>
-          </div>
-
-          {/* Overview Callout matching reference */}
-          <div
-            className="experience-overview"
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.02)',
-              border: '1px solid rgba(255, 255, 255, 0.07)',
-              borderRadius: '12px',
-              padding: '16px 20px',
-              fontSize: '0.85rem',
-              color: '#94a3b8',
-              lineHeight: 1.65,
-              marginBottom: '40px',
-            }}
-          >
-            {company.overview}
           </div>
 
           {/* Vertical Timeline Nodes */}
@@ -462,10 +472,10 @@ export default function Experience() {
       <style>{`
         @media (min-width: 640px) {
           .experience-overview {
-            margin-left: 86px !important;
+            margin-left: 116px !important;
           }
           .timeline-container {
-            margin-left: 96px !important;
+            margin-left: 126px !important;
             padding-left: 32px !important;
           }
           .timeline-node {
