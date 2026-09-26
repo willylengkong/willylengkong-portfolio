@@ -168,7 +168,6 @@ export default function Education() {
                       <div className="card-badges-row">
                         {/* Education Badge */}
                         <span className="badge-education">
-                          <span className="badge-dot-emerald" />
                           🎓 Education
                         </span>
 
@@ -862,14 +861,22 @@ export default function Education() {
  * Helper to highlight key academic terms and performance metrics
  */
 function formatHighlightText(text) {
-  const regex = /(\b3\.78\s*\/\s*4\.00\b|\bGPA:\s*3\.78\b|Faculty of Artificial Intelligence and Data Science|Universitas Pelita Harapan \(UPH\)|Enterprise Information Systems & Data Innovation|Bachelor of Information Systems|retail supply chains|retail automation pipelines)/gi;
+  // Support markdown **bold** syntax as well as automated key term highlighting
+  const regex = /(\*\*.*?\*\*|\b3\.78\s*\/\s*4\.00\b|\bGPA:\s*3\.78\b|database management|systems analysis and design|data analytics|enterprise systems|digital transformation|scalable business solutions|data-driven decision making|process automation|business intelligence|enterprise information systems|information systems, data, technology, and business processes)/gi;
   const parts = text.split(regex);
   return (
     <span>
       {parts.map((part, i) => {
         if (!part) return null;
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return (
+            <strong key={i} style={{ color: '#ffffff', fontWeight: 600 }}>
+              {part.slice(2, -2)}
+            </strong>
+          );
+        }
         if (
-          /^(?:3\.78\s*\/\s*4\.00|GPA:\s*3\.78|Faculty of Artificial Intelligence and Data Science|Universitas Pelita Harapan \(UPH\)|Enterprise Information Systems & Data Innovation|Bachelor of Information Systems|retail supply chains|retail automation pipelines)$/i.test(
+          /^(?:3\.78\s*\/\s*4\.00|GPA:\s*3\.78|database management|systems analysis and design|data analytics|enterprise systems|digital transformation|scalable business solutions|data-driven decision making|process automation|business intelligence|enterprise information systems|information systems, data, technology, and business processes)$/i.test(
             part
           )
         ) {

@@ -444,17 +444,16 @@ export const educationData = {
   logo: "/images/uph-logo.png",
   isActive: true,
   period: "2025 — 2029 (Expected)",
-  mode: "On-campus",
+  mode: "Hybrid",
   faculty: "Faculty of Artificial Intelligence and Data Science",
   degree: "Bachelor of Information Systems — Data Science and Data Analytics",
   type: "Undergraduate Degree",
   gpa: "3.78 / 4.00",
   location: "Lippo Karawaci, Tangerang, Indonesia",
   focus: "Enterprise Information Systems & Data Innovation, Applied Analytics, Pipeline Engineering",
-  overview: "Universitas Pelita Harapan (UPH) | Faculty of Artificial Intelligence and Data Science. Cumulative GPA: 3.78 / 4.00. Focus: Enterprise Information Systems & Data Innovation. Direct alignment between academic data engineering concepts and enterprise retail automation pipelines.",
+  overview: "**Universitas Pelita Harapan (UPH)** is a private university in Indonesia with a multidisciplinary academic environment spanning technology, business, and various fields of study.",
   highlights: [
-    "Academic to enterprise synergy — establishing direct alignment between theoretical data engineering concepts, database architectures, and practical enterprise retail automation pipelines.",
-    "High-distinction academic performance — maintained a cumulative GPA of 3.78 / 4.00 within the Faculty of Artificial Intelligence and Data Science, with emphasis on relational modeling and high-throughput data architectures.",
-    "Applied innovation research — actively investigating scalable automated data workflows, distributed analytical processing, and business intelligence models tailored for retail supply chains."
+    "Focused on the intersection of information systems, data, technology, and business processes, with academic exposure to database management, systems analysis and design, programming, data analytics, enterprise systems, and digital transformation.",
+    "Developed practical understanding of how technology and data can be structured into scalable business solutions, with particular interest in data-driven decision making, process automation, business intelligence, and enterprise information systems."
   ]
 };
