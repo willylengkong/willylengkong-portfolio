@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FiBriefcase, FiMapPin, FiExternalLink } from 'react-icons/fi';
+import { FiBriefcase, FiMapPin, FiExternalLink, FiGlobe } from 'react-icons/fi';
 import { LuTrophy } from 'react-icons/lu';
 import { experienceData } from '../data/portfolioData';
 
@@ -323,8 +323,9 @@ export default function Experience() {
                             whileHover={{ scale: 1.03 }}
                             className="visit-action-btn"
                           >
-                            <span>Visit</span>
-                            <FiExternalLink size={13} style={{ color: '#60a5fa' }} />
+                            <FiGlobe size={14} style={{ color: '#60a5fa', flexShrink: 0 }} />
+                            <span>Visit Website</span>
+                            <FiExternalLink size={12} style={{ color: '#60a5fa', opacity: 0.85 }} />
                           </motion.a>
                         </div>
                       )}
@@ -762,13 +763,25 @@ export default function Experience() {
           margin-top: 2px;
         }
 
-        /* Overview Text (Clean, No Card Enclosure) */
+        /* Overview Card (Thin Transparent Glass, Matching jesky.dev) */
         .overview-callout-box {
-          margin-top: 18px;
-          margin-bottom: 4px;
-          color: #94a3b8;
-          font-size: 0.88rem;
-          line-height: 1.7;
+          margin-top: 20px;
+          margin-bottom: 20px;
+          padding: 14px 18px;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.035);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          color: #e2e8f0;
+          font-size: 0.85rem;
+          line-height: 1.65;
+          transition: background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .overview-callout-box:hover {
+          background: rgba(255, 255, 255, 0.055);
+          border-color: rgba(255, 255, 255, 0.16);
         }
 
         .overview-callout-box p {
@@ -964,13 +977,13 @@ export default function Experience() {
         .visit-action-btn {
           display: inline-flex;
           align-items: center;
-          gap: 7px;
-          padding: 6px 16px;
-          border-radius: 8px;
-          background: linear-gradient(135deg, rgba(59, 130, 246, 0.14), rgba(168, 85, 247, 0.14));
+          gap: 8px;
+          padding: 8px 18px;
+          border-radius: 9px;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(168, 85, 247, 0.16));
           border: 1px solid rgba(59, 130, 246, 0.35);
-          color: #93c5fd;
-          font-size: 0.76rem;
+          color: #e2e8f0;
+          font-size: 0.78rem;
           font-family: var(--font-mono, monospace);
           font-weight: 600;
           text-decoration: none;
@@ -980,9 +993,9 @@ export default function Experience() {
         }
 
         .visit-action-btn:hover {
-          border-color: rgba(96, 165, 250, 0.65);
-          background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(168, 85, 247, 0.25));
-          box-shadow: 0 0 16px rgba(59, 130, 246, 0.3);
+          border-color: rgba(96, 165, 250, 0.7);
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.28), rgba(168, 85, 247, 0.28));
+          box-shadow: 0 0 16px rgba(59, 130, 246, 0.35);
           color: #ffffff;
         }
 
