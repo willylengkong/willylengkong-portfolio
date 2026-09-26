@@ -47,6 +47,77 @@ export default function About() {
           padding: '0 20px',
         }}
       >
+        {/* Header Section matching reference image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5 }}
+          style={{
+            textAlign: 'center',
+            marginBottom: '60px',
+          }}
+        >
+          {/* Badge: About Me */}
+          <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
+            <span
+              style={{
+                fontSize: '0.75rem',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 600,
+                color: '#60a5fa',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                border: '1px solid rgba(59, 130, 246, 0.25)',
+                borderRadius: '9999px',
+                padding: '6px 18px',
+                letterSpacing: '0.02em',
+              }}
+            >
+              About Me
+            </span>
+          </div>
+
+          {/* Heading: Who is Willy? (Solid white, NO blue gradient) */}
+          <h2
+            style={{
+              fontSize: 'clamp(2.4rem, 5vw, 3.4rem)',
+              fontWeight: 900,
+              color: '#ffffff',
+              letterSpacing: '-0.03em',
+              margin: '0 0 14px 0',
+              lineHeight: 1.15,
+            }}
+          >
+            Who is Willy?
+          </h2>
+
+          {/* Subtitle / Focus description */}
+          <p
+            style={{
+              fontSize: 'clamp(0.95rem, 2vw, 1.05rem)',
+              color: '#cbd5e1',
+              maxWidth: '680px',
+              margin: '0 auto',
+              lineHeight: 1.6,
+            }}
+          >
+            Data Analyst focused on retail analytics, business insights, and data automation.
+          </p>
+
+          {/* Italic playful quote */}
+          <p
+            style={{
+              fontSize: '0.875rem',
+              color: '#71717a',
+              fontStyle: 'italic',
+              marginTop: '12px',
+              marginBottom: 0,
+            }}
+          >
+            “Sometimes, understanding data is easier than understanding her.”
+          </p>
+        </motion.div>
+
         {/* Two-Column Layout matching reference image */}
         <div className="about-grid">
           {/* ========================================================= */}
