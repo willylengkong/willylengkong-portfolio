@@ -58,23 +58,19 @@ export default function About() {
             marginBottom: '60px',
           }}
         >
-          {/* Badge: About Me */}
-          <div style={{ display: 'inline-flex', marginBottom: '16px' }}>
-            <span
-              style={{
-                fontSize: '0.75rem',
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 600,
-                color: '#60a5fa',
-                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                border: '1px solid rgba(59, 130, 246, 0.25)',
-                borderRadius: '9999px',
-                padding: '6px 18px',
-                letterSpacing: '0.02em',
-              }}
-            >
-              About Me
-            </span>
+          {/* Section Eyebrow: About Me */}
+          <div
+            style={{
+              color: '#60a5fa',
+              fontSize: '0.75rem',
+              fontFamily: 'var(--font-mono)',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.15em',
+              marginBottom: '12px',
+            }}
+          >
+            About Me
           </div>
 
           {/* Heading: Who is Willy? (Solid white, NO blue gradient) */}
@@ -248,7 +244,7 @@ export default function About() {
                   margin: 0,
                 }}
               >
-                I work end-to-end with retail data — from extracting data through{' '}
+                I work end-to-end with retail data from extracting data through{' '}
                 <strong style={{ color: '#ffffff', fontWeight: 600 }}>Looker Studio, Tableau, and internal tools</strong>, to processing and analyzing{' '}
                 <strong style={{ color: '#ffffff', fontWeight: 600 }}>sales, stock, store performance, and product data</strong>, turning them into actionable business insights for decision-making.
               </p>
