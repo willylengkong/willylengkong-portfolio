@@ -172,7 +172,6 @@ export default function Experience() {
                           <div className="card-badges-row">
                             {/* Work Badge */}
                             <span className="badge-work">
-                              <span className="badge-dot-blue" />
                               💼 Work
                             </span>
 

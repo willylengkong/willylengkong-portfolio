@@ -365,7 +365,7 @@ export const experienceData = [
         title: "MD Strategic Analyst",
         employmentType: "Full-time",
         period: "Jun 2024 – Present",
-        isCurrent: true,
+        isCurrent: false,
         location: "Menara Indomaret, Jakarta, Indonesia",
         skills: "Python, pandas, Microsoft Excel, Tableau, Looker Studio, IMBI, QlikView, and 3+ other skills",
         achievements: [
