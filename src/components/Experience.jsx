@@ -635,9 +635,7 @@ export default function Experience() {
         .card-main-title {
           font-size: clamp(1.3rem, 2.4vw, 1.7rem);
           font-weight: 800;
-          background: linear-gradient(135deg, #ffffff 40%, #93c5fd 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: #ffffff;
           line-height: 1.25;
           margin: 0;
         }

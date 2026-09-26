@@ -351,7 +351,7 @@ export const experienceData = [
   },
   {
     id: "indomaret",
-    company: "PT Indomarco Prismatama (Indomaret Group)",
+    company: "PT Indomarco Prismatama",
     brand: "Indomaret Group",
     timelineTitle: "INDOMARET",
     duration: "3 years 11 months",
