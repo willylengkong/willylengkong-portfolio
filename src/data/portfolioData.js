@@ -119,7 +119,6 @@ export const webDevProjects = [
     tags: ["React 19", "Next.js 15", "TypeScript", "Tailwind CSS", "RESTful API", "+2 more"],
     icon: "globe",
     title: "Executive Retail Analytics Portal",
-    count: "42",
     description: "Modern responsive web architecture, interactive KPI dashboards, and scalable RESTful API integrations for merchandise teams.",
     details: {
       overview: "Executive dashboard platform delivering real-time SKU velocity charts and merchandise margin tracking."
@@ -130,7 +129,6 @@ export const webDevProjects = [
     tags: ["Vite", "Zustand State", "Dynamic BI", "Responsive UI", "+3 more"],
     icon: "code",
     title: "Store Inventory Management Interface",
-    count: "18",
     description: "High-performance client interface with real-time stock status, automated reordering workflows, and secure authentication.",
     details: {
       overview: "Inventory monitoring interface with instant search, batch update workflows, and discrepancy alerting."
@@ -141,7 +139,6 @@ export const webDevProjects = [
     tags: ["Node.js", "PostgreSQL", "Docker", "Prisma ORM", "Redis Cache", "+1 more"],
     icon: "layers",
     title: "Automated Reporting Web Dashboard",
-    count: "29",
     description: "End-to-end fullstack platform providing automated report generation, scheduled exports, and background pipeline monitoring.",
     details: {
       overview: "Web portal managing automated report triggers, audit logs, and export delivery across organizational roles."

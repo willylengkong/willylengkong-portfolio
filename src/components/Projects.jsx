@@ -363,20 +363,10 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Section Divider 1 -> 2 */}
-      <div
-        style={{
-          height: '1px',
-          backgroundColor: 'rgba(255, 255, 255, 0.08)',
-          marginTop: '48px',
-          marginBottom: '48px',
-        }}
-      />
-
       {/* ========================================================= */}
       {/* SECTION 2: SCRAPING ENGINES BY NICHE                      */}
       {/* ========================================================= */}
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: '56px', marginBottom: '24px' }}>
         <span
           style={{
             fontSize: '0.75rem',
@@ -629,20 +619,10 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Section Divider 2 -> 3 */}
-      <div
-        style={{
-          height: '1px',
-          backgroundColor: 'rgba(255, 255, 255, 0.08)',
-          marginTop: '48px',
-          marginBottom: '48px',
-        }}
-      />
-
       {/* ========================================================= */}
       {/* SECTION 3: WEB DEVELOPMENT                                */}
       {/* ========================================================= */}
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: '56px', marginBottom: '24px' }}>
         <span
           style={{
             fontSize: '0.75rem',
@@ -752,39 +732,18 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Title & Badge Count Row */}
-              <div
+              {/* Title */}
+              <h4
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginBottom: '8px',
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  color: '#ffffff',
+                  lineHeight: 1.3,
+                  margin: '0 0 8px 0',
                 }}
               >
-                <h4
-                  style={{
-                    fontSize: '1rem',
-                    fontWeight: 700,
-                    color: '#ffffff',
-                    lineHeight: 1.3,
-                    margin: 0,
-                  }}
-                >
-                  {item.title}
-                </h4>
-                <span
-                  style={{
-                    fontSize: '0.8125rem',
-                    fontFamily: 'var(--font-mono)',
-                    color: '#71717a',
-                    fontWeight: 600,
-                    marginLeft: '12px',
-                    flexShrink: 0,
-                  }}
-                >
-                  {item.count}
-                </span>
-              </div>
+                {item.title}
+              </h4>
 
               {/* Description */}
               <p
