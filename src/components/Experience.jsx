@@ -71,7 +71,7 @@ export default function Experience() {
               className="company-logo-badge"
             >
               <img
-                src="/images/indomaret-logo-only.png"
+                src="/images/indomaret-official-cropped.png"
                 alt="Indomaret Logo"
               />
             </a>
