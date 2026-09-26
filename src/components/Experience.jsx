@@ -205,7 +205,7 @@ export default function Experience() {
                       {/* Company Overview Callout */}
                       {item.overview && (
                         <div className="overview-callout-box">
-                          <p>{item.overview}</p>
+                          <p>{renderHighlightedSpan(item.overview)}</p>
                         </div>
                       )}
 
@@ -1033,14 +1033,43 @@ function formatAchievement(text) {
 
 function renderHighlightedSpan(content) {
   // Automatically bold key numbers, percentages, and metrics for high visual impact
+  // And render @wyle as a clickable blue link to https://apify.com/wyle
   const regex = /(\b\d+[\d,.]*(?:%|\+|s| reports| stores| departments| SKUs| products)?\b|\b99\.3% efficiency gain\b|OI Save vs\. Indomaret|SPD, APC, and STD|Python-based reporting automation|Apify Marketplace|@xtracto|@wyle)/gi;
   const parts = content.split(regex);
   return (
     <span>
       {parts.map((part, i) => {
         if (!part) return null;
+        if (/^@wyle$/i.test(part)) {
+          return (
+            <a
+              key={i}
+              href="https://apify.com/wyle"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: '#60a5fa',
+                fontWeight: 600,
+                textDecoration: 'none',
+                borderBottom: '1px dashed rgba(96, 165, 250, 0.5)',
+                transition: 'all 0.2s ease',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#93c5fd';
+                e.currentTarget.style.borderBottomColor = '#93c5fd';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#60a5fa';
+                e.currentTarget.style.borderBottomColor = 'rgba(96, 165, 250, 0.5)';
+              }}
+            >
+              {part}
+            </a>
+          );
+        }
         if (
-          /^(?:\d+[\d,.]*(?:%|\+|s| reports| stores| departments| SKUs| products)?|99\.3% efficiency gain|OI Save vs\. Indomaret|SPD, APC, and STD|Python-based reporting automation|Apify Marketplace|@xtracto|@wyle)$/i.test(part)
+          /^(?:\d+[\d,.]*(?:%|\+|s| reports| stores| departments| SKUs| products)?|99\.3% efficiency gain|OI Save vs\. Indomaret|SPD, APC, and STD|Python-based reporting automation|Apify Marketplace|@xtracto)$/i.test(part)
         ) {
           return (
             <strong key={i} style={{ color: '#ffffff', fontWeight: 600 }}>

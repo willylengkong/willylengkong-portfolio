@@ -342,7 +342,7 @@ export const experienceData = [
         location: "Remote (Worldwide)",
         skills: "Python, curl_cffi, primp, scrapling, Apify SDK, MCP",
         achievements: [
-          "Architected and deployed 200+ production scraping engines on Apify Marketplace under @xtracto.",
+          "Architected and deployed 19+ production scraping engines on Apify Marketplace under @wyle.",
           "Custom client engagements - bespoke HTTP-only engines for marketplaces (Tokopedia, Shopee, AliExpress), news publishers, and social platforms.",
           "End-to-end delivery: anti-bot reverse engineering → Apify deployment → monetization."
         ]
