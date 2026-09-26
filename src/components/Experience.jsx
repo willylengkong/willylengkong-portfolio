@@ -130,13 +130,13 @@ export default function Experience() {
                       </h4>
                     </div>
 
-                    {/* 12-Column Experience Card */}
+                    {/* 12-Column Experience Content Flow (No Card Container) */}
                     <motion.div
                       initial={{ opacity: 0, y: 24 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, ease: 'easeOut' }}
-                      className="experience-glass-card"
+                      className="experience-content-flow"
                     >
                       {/* Top Grid: Logo (col 4) + Metadata (col 8) */}
                       <div className="card-top-grid">
@@ -366,8 +366,12 @@ export default function Experience() {
           display: flex;
           justify-content: flex-start;
           gap: 36px;
-          padding: 40px 0;
+          padding: 52px 0;
           position: relative;
+        }
+
+        .timeline-entry-row:first-child {
+          padding-top: 12px;
         }
 
         .timeline-entry-last {
@@ -559,45 +563,34 @@ export default function Experience() {
           z-index: 2;
         }
 
-        /* Experience Glass Card */
-        .experience-glass-card {
-          background: rgba(18, 18, 24, 0.75);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.09);
-          border-radius: 20px;
-          padding: 28px;
-          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-          transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .experience-glass-card:hover {
-          border-color: rgba(96, 165, 250, 0.3);
-          box-shadow: 0 16px 50px rgba(0, 0, 0, 0.55), 0 0 25px rgba(59, 130, 246, 0.1);
+        /* Experience Content Flow (No Card Enclosure) */
+        .experience-content-flow {
+          width: 100%;
+          position: relative;
         }
 
         /* Card Top Grid */
         .card-top-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 24px;
+          gap: 20px;
           align-items: center;
         }
 
         @media (min-width: 680px) {
           .card-top-grid {
-            grid-template-columns: 160px 1fr;
-            gap: 28px;
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
           }
         }
 
         /* Company Logo Box */
         .company-logo-box {
-          height: 120px;
+          height: 96px;
           width: 100%;
           background: #ffffff;
           border-radius: 16px;
-          padding: 14px 18px;
+          padding: 10px 16px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -769,17 +762,17 @@ export default function Experience() {
           margin-top: 2px;
         }
 
-        /* Overview Callout */
+        /* Overview Text (Clean, No Card Enclosure) */
         .overview-callout-box {
-          margin-top: 20px;
-          padding: 14px 18px;
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: #cbd5e1;
-          font-size: 0.84rem;
-          line-height: 1.65;
-          backdrop-filter: blur(6px);
+          margin-top: 18px;
+          margin-bottom: 4px;
+          color: #94a3b8;
+          font-size: 0.88rem;
+          line-height: 1.7;
+        }
+
+        .overview-callout-box p {
+          margin: 0;
         }
 
         /* Roles & Skills */
@@ -966,8 +959,6 @@ export default function Experience() {
           display: flex;
           justify-content: flex-end;
           margin-top: 24px;
-          padding-top: 14px;
-          border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .visit-action-btn {
