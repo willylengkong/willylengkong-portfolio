@@ -436,31 +436,34 @@ export default function Education() {
         /* Node Core & Continuous Spinning Ring */
         .timeline-node-spinner {
           position: absolute;
-          width: 28px;
-          height: 28px;
+          width: 22px;
+          height: 22px;
           border-radius: 50%;
-          border: 2px solid transparent;
+          border: 2px solid rgba(96, 165, 250, 0.2);
           border-top-color: #60a5fa;
-          border-right-color: rgba(96, 165, 250, 0.4);
-          animation: spin 0.85s linear infinite;
+          border-left-color: #60a5fa;
+          border-bottom-color: #60a5fa;
+          animation: spin 0.6s linear infinite;
         }
 
         .timeline-node-spinner-sm {
           position: absolute;
-          width: 22px;
-          height: 22px;
+          width: 18px;
+          height: 18px;
           border-radius: 50%;
-          border: 2px solid transparent;
+          border: 2px solid rgba(96, 165, 250, 0.2);
           border-top-color: #60a5fa;
-          animation: spin 0.85s linear infinite;
+          border-left-color: #60a5fa;
+          border-bottom-color: #60a5fa;
+          animation: spin 0.6s linear infinite;
         }
 
         .timeline-node-core {
-          width: 14px;
-          height: 14px;
+          width: 16px;
+          height: 16px;
           border-radius: 50%;
           background: #18181b;
-          border: 2px solid #3f3f46;
+          border: 1.5px solid #3f3f46;
           position: relative;
           z-index: 2;
         }
@@ -468,7 +471,7 @@ export default function Education() {
         .timeline-node-core-active {
           background: linear-gradient(135deg, #3b82f6, #a855f7);
           border-color: #60a5fa;
-          box-shadow: 0 0 14px rgba(96, 165, 250, 0.9);
+          box-shadow: 0 0 12px rgba(96, 165, 250, 0.85);
         }
 
         .timeline-mobile-node {
@@ -482,11 +485,11 @@ export default function Education() {
         }
 
         .timeline-node-core-sm {
-          width: 12px;
-          height: 12px;
+          width: 13px;
+          height: 13px;
           border-radius: 50%;
           background: #18181b;
-          border: 2px solid #3f3f46;
+          border: 1.5px solid #3f3f46;
           position: relative;
           z-index: 2;
         }
