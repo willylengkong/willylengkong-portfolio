@@ -446,7 +446,7 @@ export const educationData = {
   period: "2025 — 2029 (Expected)",
   mode: "Hybrid",
   faculty: "Faculty of Artificial Intelligence and Data Science",
-  degree: "Bachelor of Information Systems — Data Science and Data Analytics",
+  degree: "Bachelor of Information Systems",
   type: "Undergraduate Degree",
   gpa: "3.78 / 4.00",
   location: "Lippo Karawaci, Tangerang, Indonesia",
