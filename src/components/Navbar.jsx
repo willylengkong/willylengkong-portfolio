@@ -52,7 +52,6 @@ export default function Navbar() {
     { name: 'Home', href: '#home', id: 'home' },
     { name: 'Projects', href: '#projects', id: 'projects' },
     { name: 'About', href: '#about', id: 'about' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
   ];
 
   const scrollTo = (href) => {
