@@ -436,35 +436,46 @@ export default function Education() {
         /* Node Core & Continuous Spinning Ring */
         .timeline-node-spinner {
           position: absolute;
+          inset: 0;
+          margin: auto;
           width: 22px;
           height: 22px;
+          box-sizing: border-box;
           border-radius: 50%;
           border: 2px solid rgba(96, 165, 250, 0.2);
           border-top-color: #60a5fa;
           border-left-color: #60a5fa;
           border-bottom-color: #60a5fa;
           animation: spin 0.6s linear infinite;
+          transform-origin: center center;
         }
 
         .timeline-node-spinner-sm {
           position: absolute;
+          inset: 0;
+          margin: auto;
           width: 18px;
           height: 18px;
+          box-sizing: border-box;
           border-radius: 50%;
           border: 2px solid rgba(96, 165, 250, 0.2);
           border-top-color: #60a5fa;
           border-left-color: #60a5fa;
           border-bottom-color: #60a5fa;
           animation: spin 0.6s linear infinite;
+          transform-origin: center center;
         }
 
         .timeline-node-core {
+          position: absolute;
+          inset: 0;
+          margin: auto;
           width: 16px;
           height: 16px;
+          box-sizing: border-box;
           border-radius: 50%;
           background: #18181b;
           border: 1.5px solid #3f3f46;
-          position: relative;
           z-index: 2;
         }
 
@@ -472,26 +483,26 @@ export default function Education() {
           position: relative;
           width: 24px;
           height: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           flex-shrink: 0;
         }
 
         .timeline-node-core-sm {
-          width: 13px;
-          height: 13px;
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 12px;
+          height: 12px;
+          box-sizing: border-box;
           border-radius: 50%;
           background: #18181b;
           border: 1.5px solid #3f3f46;
-          position: relative;
           z-index: 2;
         }
 
         .timeline-node-core-active {
           background: linear-gradient(135deg, #3b82f6, #a855f7) !important;
           border-color: #60a5fa !important;
-          box-shadow: 0 0 12px rgba(96, 165, 250, 0.85);
+          box-shadow: 0 0 10px rgba(96, 165, 250, 0.85);
         }
 
         /* Education Content Flow (No Outer Card Enclosure) */
