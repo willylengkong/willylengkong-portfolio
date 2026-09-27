@@ -468,12 +468,6 @@ export default function Education() {
           z-index: 2;
         }
 
-        .timeline-node-core-active {
-          background: linear-gradient(135deg, #3b82f6, #a855f7);
-          border-color: #60a5fa;
-          box-shadow: 0 0 12px rgba(96, 165, 250, 0.85);
-        }
-
         .timeline-mobile-node {
           position: relative;
           width: 24px;
@@ -492,6 +486,12 @@ export default function Education() {
           border: 1.5px solid #3f3f46;
           position: relative;
           z-index: 2;
+        }
+
+        .timeline-node-core-active {
+          background: linear-gradient(135deg, #3b82f6, #a855f7) !important;
+          border-color: #60a5fa !important;
+          box-shadow: 0 0 12px rgba(96, 165, 250, 0.85);
         }
 
         /* Education Content Flow (No Outer Card Enclosure) */
