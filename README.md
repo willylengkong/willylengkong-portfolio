@@ -1,4 +1,4 @@
-# Willy Lengkong — Strategic Analyst & Data Engineer Portfolio
+# Willy Lengkong — Portfolio
 
 A modern, high-performance portfolio website showcasing enterprise retail data analytics, automated Python ETL pipelines, specialized data scraping engines, and full-stack web applications.
 
