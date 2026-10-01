@@ -8,8 +8,8 @@
   <!-- Bar 3 (Middle Column) -->
   <rect x="29" y="1" width="10" height="44" rx="0.5" fill="#ffffff" />
   
-  <!-- Bar 4 - Top Accent (Adjusted from Orange to Theme Blue) -->
-  <polygon points="43,0 53,4 53,13 43,9" fill="#3b82f6" />
+  <!-- Bar 4 - Top Accent (Solid White) -->
+  <polygon points="43,0 53,4 53,13 43,9" fill="#ffffff" />
   
   <!-- Bar 4 - Bottom Column -->
   <rect x="43" y="16" width="10" height="29" rx="0.5" fill="#ffffff" />
@@ -17,6 +17,6 @@
   <!-- Bar 5 - Top Column -->
   <rect x="57" y="1" width="10" height="31" rx="0.5" fill="#ffffff" />
   
-  <!-- Bar 5 - Bottom Foot of 'L' Accent (Adjusted from Orange to Theme Blue) -->
-  <rect x="57" y="35" width="25" height="10" rx="0.5" fill="#3b82f6" />
+  <!-- Bar 5 - Bottom Foot of 'L' Accent (Solid White) -->
+  <rect x="57" y="35" width="25" height="10" rx="0.5" fill="#ffffff" />
 </svg>

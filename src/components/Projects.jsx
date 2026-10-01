@@ -11,8 +11,9 @@ import {
   FiGlobe,
   FiCode,
   FiLayers,
-  FiEye,
   FiArrowUpRight,
+  FiBriefcase,
+  FiTrendingUp,
 } from 'react-icons/fi';
 import {
   automationProjects,
@@ -28,6 +29,11 @@ export default function Projects() {
     switch (iconName) {
       case 'cart':
         return <FiShoppingCart size={16} />;
+      case 'briefcase':
+        return <FiBriefcase size={16} />;
+      case 'trending-up':
+      case 'markets':
+        return <FiTrendingUp size={16} />;
       case 'database':
         return <FiDatabase size={16} />;
       case 'users':
@@ -139,7 +145,7 @@ export default function Projects() {
             transition={{ duration: 0.6, delay: index * 0.15 }}
             className="glass-card"
             style={{
-              borderRadius: '20px',
+              borderRadius: '8px',
               padding: '28px',
               display: 'flex',
               flexDirection: 'column',
@@ -162,7 +168,7 @@ export default function Projects() {
                   <div
                     style={{
                       padding: '10px',
-                      borderRadius: '12px',
+                      borderRadius: '8px',
                       backgroundColor: card.isPlaceholder
                         ? 'rgba(255, 255, 255, 0.04)'
                         : 'rgba(59, 130, 246, 0.12)',
@@ -183,12 +189,7 @@ export default function Projects() {
                       className="project-card-title"
                       onClick={() =>
                         !card.isPlaceholder &&
-                        setSelectedProject({
-                          title: card.title,
-                          category: card.category,
-                          builtWith: card.builtWith,
-                          caseStudy: card.caseStudy,
-                        })
+                        setSelectedProject(card)
                       }
                       style={{
                         fontSize: '1.05rem',
@@ -214,48 +215,53 @@ export default function Projects() {
                 </div>
 
                 {/* Status Badge */}
-                <span
-                  style={{
-                    fontSize: '0.6875rem',
-                    fontFamily: 'var(--font-mono)',
-                    fontWeight: 700,
-                    padding: '4px 12px',
-                    borderRadius: '9999px',
-                    backgroundColor: card.isPlaceholder
-                      ? 'rgba(255, 255, 255, 0.04)'
-                      : 'rgba(59, 130, 246, 0.12)',
-                    color: card.isPlaceholder ? '#64748b' : '#93c5fd',
-                    border: card.isPlaceholder
-                      ? '1px solid rgba(255, 255, 255, 0.08)'
-                      : '1px solid rgba(59, 130, 246, 0.3)',
-                    flexShrink: 0,
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {card.badge}
-                </span>
+                {card.badge && (
+                  <span
+                    style={{
+                      fontSize: '0.6875rem',
+                      fontFamily: 'var(--font-mono)',
+                      fontWeight: 700,
+                      padding: '4px 12px',
+                      borderRadius: '9999px',
+                      backgroundColor: card.isPlaceholder
+                        ? 'rgba(255, 255, 255, 0.04)'
+                        : 'rgba(59, 130, 246, 0.12)',
+                      color: card.isPlaceholder ? '#64748b' : '#93c5fd',
+                      border: card.isPlaceholder
+                        ? '1px solid rgba(255, 255, 255, 0.08)'
+                        : '1px solid rgba(59, 130, 246, 0.3)',
+                      flexShrink: 0,
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {card.badge}
+                  </span>
+                )}
               </div>
 
               {/* Punchline */}
-              <p
-                style={{
-                  fontSize: '0.85rem',
-                  fontWeight: 700,
-                  color: card.isPlaceholder ? '#64748b' : '#e2e8f0',
-                  marginTop: '16px',
-                  marginBottom: '10px',
-                  lineHeight: 1.5,
-                }}
-              >
-                {card.punchline}
-              </p>
+              {card.punchline && (
+                <p
+                  style={{
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    color: card.isPlaceholder ? '#64748b' : '#e2e8f0',
+                    marginTop: '16px',
+                    marginBottom: '10px',
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {card.punchline}
+                </p>
+              )}
 
               {/* Description */}
               <p
                 style={{
-                  fontSize: '0.78rem',
+                  fontSize: card.punchline ? '0.78rem' : '0.84rem',
                   color: card.isPlaceholder ? '#475569' : '#94a3b8',
-                  lineHeight: 1.6,
+                  lineHeight: 1.65,
+                  marginTop: card.punchline ? '0' : '16px',
                   marginBottom: '20px',
                 }}
               >
@@ -269,7 +275,7 @@ export default function Projects() {
                   gridTemplateColumns: 'repeat(3, 1fr)',
                   gap: '10px',
                   marginTop: '20px',
-                  marginBottom: '24px',
+                  marginBottom: '16px',
                 }}
               >
                 {card.metrics.map((m, mIdx) => (
@@ -278,7 +284,7 @@ export default function Projects() {
                     style={{
                       backgroundColor: '#0c0f1d',
                       border: '1px solid rgba(255, 255, 255, 0.08)',
-                      borderRadius: '12px',
+                      borderRadius: '8px',
                       padding: '14px 8px',
                       textAlign: 'center',
                     }}
@@ -304,7 +310,7 @@ export default function Projects() {
                         color: card.isPlaceholder ? '#475569' : '#64748b',
                         marginTop: '4px',
                         lineHeight: 1.2,
-                        textTransform: 'lowercase',
+                        textTransform: 'none',
                       }}
                     >
                       {m.label}
@@ -312,6 +318,37 @@ export default function Projects() {
                   </div>
                 ))}
               </div>
+
+              {/* Featured Tech Tags */}
+              {card.tags && (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '6px',
+                    marginBottom: '16px',
+                  }}
+                >
+                  {card.tags.map((tag, tIdx) => (
+                    <span
+                      key={tIdx}
+                      style={{
+                        fontSize: '0.7rem',
+                        fontFamily: 'var(--font-mono)',
+                        padding: '3px 9px',
+                        borderRadius: '6px',
+                        backgroundColor: 'rgba(59, 130, 246, 0.08)',
+                        border: '1px solid rgba(59, 130, 246, 0.22)',
+                        color: '#93c5fd',
+                        lineHeight: 1.4,
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Bottom Button */}
@@ -321,7 +358,7 @@ export default function Projects() {
                 style={{
                   width: '100%',
                   padding: '12px 20px',
-                  borderRadius: '12px',
+                  borderRadius: '8px',
                   backgroundColor: 'rgba(255, 255, 255, 0.04)',
                   color: '#475569',
                   fontWeight: 600,
@@ -343,7 +380,7 @@ export default function Projects() {
                 style={{
                   width: '100%',
                   padding: '12px 20px',
-                  borderRadius: '12px',
+                  borderRadius: '8px',
                   backgroundColor: '#ffffff',
                   color: '#09090b',
                   fontWeight: 700,
@@ -417,7 +454,7 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="glass-card"
             style={{
-              borderRadius: '16px',
+              borderRadius: '8px',
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
@@ -471,7 +508,7 @@ export default function Projects() {
                 style={{
                   width: '40px',
                   height: '40px',
-                  borderRadius: '12px',
+                  borderRadius: '6px',
                   backgroundColor: '#0c0f1d',
                   border: '1px solid rgba(255, 255, 255, 0.08)',
                   display: 'flex',
@@ -509,24 +546,7 @@ export default function Projects() {
                 >
                   <h4
                     className="project-card-title"
-                    onClick={() =>
-                      setSelectedProject({
-                        title: item.title,
-                        category: 'Scraping Architecture',
-                        builtWith: item.tags,
-                        caseStudy: {
-                          subtitle: item.title,
-                          overview: item.description,
-                          architecture: [
-                            'Modular crawler service with dynamic proxy rotation and header emulation',
-                            'Schema normalization pipeline parsing unstructured DOM into sanitized data models',
-                            'Real-time webhook notification delivering delta alerts on competitor changes',
-                          ],
-                          result:
-                            'Architecture blueprint prepared for enterprise retail ingestion and competitive benchmarking.',
-                        },
-                      })
-                    }
+                    onClick={() => setSelectedProject({ ...item, isScrapingNiche: true })}
                     style={{
                       fontSize: '1rem',
                       fontWeight: 700,
@@ -567,28 +587,11 @@ export default function Projects() {
               {/* Bottom 2 Buttons */}
               <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
                 <button
-                  onClick={() =>
-                    setSelectedProject({
-                      title: item.title,
-                      category: 'Scraping Architecture',
-                      builtWith: item.tags,
-                      caseStudy: {
-                        subtitle: item.title,
-                        overview: item.description,
-                        architecture: [
-                          'Modular crawler service with dynamic proxy rotation and header emulation',
-                          'Schema normalization pipeline parsing unstructured DOM into sanitized data models',
-                          'Real-time webhook notification delivering delta alerts on competitor changes',
-                        ],
-                        result:
-                          'Architecture blueprint prepared for enterprise retail ingestion and competitive benchmarking.',
-                      },
-                    })
-                  }
+                  onClick={() => setSelectedProject({ ...item, isScrapingNiche: true })}
                   style={{
                     flex: 1,
                     padding: '9px 12px',
-                    borderRadius: '10px',
+                    borderRadius: '6px',
                     backgroundColor: '#ffffff',
                     color: '#09090b',
                     fontWeight: 700,
@@ -607,33 +610,20 @@ export default function Projects() {
                   <FiLayers size={13} />
                   <span>View Details</span>
                 </button>
-                <button
-                  onClick={() =>
-                    setSelectedProject({
-                      title: `${item.title} • Live Pipeline`,
-                      category: 'Live Demo',
-                      builtWith: item.tags,
-                      caseStudy: {
-                        subtitle: `${item.title} Telemetry Engine`,
-                        overview: item.details?.overview || item.description,
-                        architecture: [
-                          'Ingress webhook streaming target endpoints into queuing worker nodes',
-                          'Automated retry and fallback exponential backoff routines',
-                          'Post-processing validation checking schema sanity before DB commit',
-                        ],
-                        result: 'Demonstration pipeline ready for deployment in testing environment.',
-                      },
-                    })
-                  }
+                <a
+                  href="https://apify.com/wyle"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     flex: 1,
                     padding: '9px 12px',
-                    borderRadius: '10px',
+                    borderRadius: '6px',
                     backgroundColor: '#0c0f1d',
                     color: '#cbd5e1',
                     fontWeight: 600,
                     fontSize: '0.75rem',
                     border: '1px solid rgba(255, 255, 255, 0.12)',
+                    textDecoration: 'none',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -653,8 +643,8 @@ export default function Projects() {
                   }}
                 >
                   <FiArrowUpRight size={13} />
-                  <span>Demo</span>
-                </button>
+                  <span>View on Apify</span>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -688,11 +678,11 @@ export default function Projects() {
         />
       </div>
 
-      {/* 3 Small Web Dev Cards Grid */}
+      {/* Small Web Dev Cards Grid */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 380px))',
           gap: '20px',
         }}
       >
@@ -705,7 +695,7 @@ export default function Projects() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="glass-card"
             style={{
-              borderRadius: '16px',
+              borderRadius: '8px',
               overflow: 'hidden',
               display: 'flex',
               flexDirection: 'column',
@@ -789,30 +779,14 @@ export default function Projects() {
                 {/* Title */}
                 <h4
                   className="project-card-title"
-                  onClick={() =>
-                    setSelectedProject({
-                      title: item.title,
-                      category: 'Web Architecture',
-                      builtWith: item.tags,
-                      caseStudy: {
-                        subtitle: item.title,
-                        overview: item.description,
-                        architecture: [
-                          'Modular UI components following atomic design principles and responsive layouts',
-                          'Client-side state management with resilient async data fetching',
-                          'Optimized asset bundling with sub-second core web vitals performance',
-                        ],
-                        result:
-                          'Architecture blueprint verified for enterprise portal scaling and high concurrent users.',
-                      },
-                    })
-                  }
+                  onClick={() => setSelectedProject(item)}
                   style={{
                     fontSize: '1rem',
                     fontWeight: 700,
                     color: '#ffffff',
                     lineHeight: 1.3,
                     margin: '0 0 8px 0',
+                    cursor: 'pointer',
                   }}
                 >
                   {item.title}
@@ -834,28 +808,11 @@ export default function Projects() {
               {/* Bottom 2 Buttons */}
               <div style={{ display: 'flex', gap: '8px', marginTop: 'auto' }}>
                 <button
-                  onClick={() =>
-                    setSelectedProject({
-                      title: item.title,
-                      category: 'Web Architecture',
-                      builtWith: item.tags,
-                      caseStudy: {
-                        subtitle: item.title,
-                        overview: item.description,
-                        architecture: [
-                          'Modular UI components following atomic design principles and responsive layouts',
-                          'Client-side state management with resilient async data fetching',
-                          'Optimized asset bundling with sub-second core web vitals performance',
-                        ],
-                        result:
-                          'Architecture blueprint verified for enterprise portal scaling and high concurrent users.',
-                      },
-                    })
-                  }
+                  onClick={() => setSelectedProject(item)}
                   style={{
                     flex: 1,
                     padding: '9px 12px',
-                    borderRadius: '10px',
+                    borderRadius: '8px',
                     backgroundColor: '#ffffff',
                     color: '#09090b',
                     fontWeight: 700,
@@ -875,52 +832,27 @@ export default function Projects() {
                   <span>View Details</span>
                 </button>
                 <button
-                  onClick={() =>
-                    setSelectedProject({
-                      title: `${item.title} • Live Demo`,
-                      category: 'Live Demo',
-                      builtWith: item.tags,
-                      caseStudy: {
-                        subtitle: `${item.title} Live Interface`,
-                        overview: item.details?.overview || item.description,
-                        architecture: [
-                          'Server-side rendered hydration layer for rapid initial content paint',
-                          'Integrated telemetry analytics logging user interaction events',
-                          'Automated CI/CD build verifying accessibility and responsiveness',
-                        ],
-                        result: 'Live demonstration application ready for stakeholder review.',
-                      },
-                    })
-                  }
+                  disabled
+                  title="Web belum di-hosting"
                   style={{
                     flex: 1,
                     padding: '9px 12px',
-                    borderRadius: '10px',
-                    backgroundColor: '#0c0f1d',
-                    color: '#cbd5e1',
+                    borderRadius: '8px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                    color: '#64748b',
                     fontWeight: 600,
                     fontSize: '0.75rem',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    cursor: 'pointer',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    cursor: 'not-allowed',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '6px',
                     transition: 'all 0.2s ease',
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#1e293b';
-                    e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
-                    e.currentTarget.style.color = '#ffffff';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#0c0f1d';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
-                    e.currentTarget.style.color = '#cbd5e1';
-                  }}
                 >
-                  <FiArrowUpRight size={13} />
-                  <span>Demo</span>
+                  <FiLock size={13} />
+                  <span>View</span>
                 </button>
               </div>
             </div>

@@ -9,7 +9,7 @@ export default function BrandLogo({
   width = 24,
   height,
   primaryColor = '#ffffff',
-  accentColor = '#3b82f6',
+  accentColor = '#ffffff',
   style = {},
   className = '',
 }) {

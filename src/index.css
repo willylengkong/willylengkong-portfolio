@@ -111,3 +111,128 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Certifications Section - Minimalist & Crisp (Tegas) */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 840px) {
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.cert-card {
+  background: rgba(11, 15, 25, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cert-card:hover {
+  border-color: rgba(96, 165, 250, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(96, 165, 250, 0.15);
+}
+
+/* Certificate Title with Hover Color on Card Hover */
+.cert-title {
+  color: #ffffff;
+  transition: color 0.25s ease;
+}
+
+.cert-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.cert-card:hover .cert-title,
+.cert-card:hover .cert-title a {
+  color: #60a5fa !important;
+}
+
+.cert-title a:hover {
+  color: #93c5fd !important;
+}
+
+.cert-preview-frame {
+  display: block;
+  width: 100%;
+  height: 215px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #070a12;
+  margin-bottom: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.25s ease;
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
+.cert-preview-frame:hover {
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+.cert-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  will-change: transform;
+  transform: scale(1);
+}
+
+.cert-card:hover .cert-preview-img,
+.cert-preview-frame:hover .cert-preview-img {
+  transform: scale(1.06) !important;
+  filter: brightness(1.02);
+}
+
+.cert-verify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #60a5fa;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  padding: 5px 12px;
+  border-radius: 5px;
+  background-color: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+}
+
+.cert-verify-btn:hover {
+  color: #93c5fd;
+  background-color: rgba(59, 130, 246, 0.18);
+  border-color: rgba(96, 165, 250, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Global Keyframe for Smooth Continuous Spinners */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

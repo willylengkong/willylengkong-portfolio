@@ -51,8 +51,10 @@ export default function TumblerSubtitle() {
   const timerRef = useRef(null);
 
   // Keep refs in sync with state for timer callbacks
-  phraseIndexRef.current = phraseIndex;
-  isScramblingRef.current = isScrambling;
+  useEffect(() => {
+    phraseIndexRef.current = phraseIndex;
+    isScramblingRef.current = isScrambling;
+  }, [phraseIndex, isScrambling]);
 
   const startScramble = useCallback((targetIndex) => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current);

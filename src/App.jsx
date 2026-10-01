@@ -3,7 +3,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { theme } from './theme/theme';
 import SpotlightEffect from './components/SpotlightEffect';
-import AudioToggle from './components/AudioToggle';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -70,9 +69,6 @@ export default function App() {
 
           {/* Mouse Follower Cursor Glow */}
           <SpotlightEffect />
-
-          {/* Ambient Audio Toggle */}
-          <AudioToggle />
 
           {/* Sticky Glassmorphic Navigation */}
           <Navbar />

@@ -1,93 +1,161 @@
-# Willy — Data Analyst Portfolio Website
+# Willy Lengkong — Strategic Analyst & Data Engineer Portfolio
 
-A single-page portfolio website showcasing enterprise retail data analytics, automated ETL pipelines, and interactive BI dashboards.
+A modern, high-performance portfolio website showcasing enterprise retail data analytics, automated Python ETL pipelines, specialized data scraping engines, and full-stack web applications.
+
+Built with an atmospheric, cyberpunk-architectural dark theme, rich micro-interactions, decrypted terminal typography, and comprehensive case study modals.
+
+---
+
+## ✨ Key Features
+
+- **Decrypted Tumbler Subtitle**: Cinematic matrix-style decipher animation cycling across core expertise areas.
+- **Interactive Cyber Spotlight**: Dynamic cursor tracking glow responding across responsive glassmorphic cards.
+- **Enterprise Automation & Reporting Showcase**: Production metrics, runtime benchmarks (~30s vs 220m), and comprehensive architecture breakdowns.
+- **Specialized Scraping Engines**: Real-time extraction pipelines with direct Apify profile and actor integrations.
+- **Web Development Project Showcase**: Peer-to-peer campus platform case study with structured workflow, system architecture, and tech stack breakdowns.
+- **Interactive Experience Timeline**: 4-year Indomaret Group career progression with dual-ring concentric spinning indicators and achievements.
+- **Verified Credentials & Honors**: Credly verified IBM Data badges and Dicoding Web Development accreditation.
+- **UPH Academic Journey**: Bachelor of Information Systems academic focus and applied data science curriculum.
+- **Functional Contact Form**: Direct message delivery powered by Web3Forms with client-side status handling.
+
+---
 
 ## 🚀 Tech Stack
 
-* **React 19 + Vite** — High-performance frontend framework and tooling
-* **JavaScript (ES Modules)** — Clean, modern component logic
-* **Material UI (MUI v9)** — ThemeProvider, responsive surfaces, and dialog overlays
-* **Framer Motion** — Smooth page transitions, enter animations, and layout morphing
-* **React Icons** — Feather icons set
-* **Custom Cyber-Architectural CSS** — Atmospheric ambient lighting, masked skyscraper typography, cursor spotlight tracking, and grid backdrop
-* **Git & GitHub** — Version control
-* **Vercel** — Production deployment configuration (`vercel.json`)
+- **Frontend Core**: [React 19](https://react.dev/) + [Vite 8](https://vite.dev/)
+- **UI & Layout**: [Material UI (MUI v9)](https://mui.com/) + Custom Cyber-Architectural CSS
+- **Motion & Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) (Feather, Lucide, Tabler)
+- **Forms & Integration**: [Web3Forms](https://web3forms.com/)
+- **Linting & Code Quality**: [Oxlint](https://oxc.rs/)
+- **Deployment**: [Vercel](https://vercel.com/)
 
 ---
 
 ## 📂 Project Structure
 
 ```
-d:/project/willylengkong/
+willylengkong/
 ├── index.html                   # SEO tags, Google Fonts, and favicon
-├── vercel.json                  # Vercel SPA routing rules
-├── package.json                 # Dependencies & scripts
+├── vercel.json                  # Vercel SPA rewrite rules
+├── package.json                 # Dependencies & build scripts
 ├── vite.config.js               # Vite bundler configuration
-├── stitch-source/               # Downloaded Stitch assets & source screen
-│   ├── stitch_screen.png        # Original screenshot from Stitch project
-│   └── stitch_screen.html       # Original HTML reference
+├── .oxlintrc.json               # Fast linter configuration
+├── .env.example                 # Environment variables template
+├── public/
+│   └── images/                  # Badges, certificate scans, logos & assets
 └── src/
     ├── main.jsx                 # Application entry point
     ├── App.jsx                  # Main component composition
-    ├── index.css                # Atmospheric radial glows, grid & keyframes
+    ├── index.css                # Global cyber-architectural CSS, grid & keyframes
     ├── theme/
-    │   └── theme.js             # MUI dark theme configuration
+    │   └── theme.js             # MUI dark theme tokens
     ├── data/
-    │   └── portfolioData.js     # Structured portfolio information
+    │   └── portfolioData.js     # Centralized portfolio data & case studies
     └── components/
+        ├── Navbar.jsx           # Glassmorphic navbar with mobile menu
+        ├── BrandLogo.jsx        # Monogram brand mark
         ├── SpotlightEffect.jsx  # Interactive mouse follower spotlight
-        ├── AudioToggle.jsx      # Bottom-right ambient audio toggle
-        ├── Navbar.jsx           # Sticky glassmorphic navbar & mobile menu
-        ├── Hero.jsx             # Architectural skyline typography & socials
-        ├── Projects.jsx         # Featured projects, stat counters & sub-projects
+        ├── Hero.jsx             # Skyline typography & CTA buttons
+        ├── TumblerSubtitle.jsx  # Decryption subtitle ticker
+        ├── Projects.jsx         # Automation, scraping & web dev cards
         ├── CaseStudyModal.jsx   # Architectural case study dialog modal
         ├── About.jsx            # Profile card & categorized skill pills
-        ├── Experience.jsx       # Indomaret timeline & strategic analyst roles
-        ├── Achievements.jsx     # Honors & merit certificates grid
+        ├── Experience.jsx       # Indomaret career timeline & strategic roles
+        ├── Achievements.jsx     # Honors, certifications & verified badges
         ├── Education.jsx        # UPH Information Systems degree card
-        ├── Contact.jsx          # Interactive contact form & contact details
-        └── Footer.jsx           # Navigation, copyright & back-to-top
+        ├── Contact.jsx          # Interactive contact form
+        └── Footer.jsx           # Navigation links, copyright & back-to-top
 ```
 
 ---
 
 ## 🛠️ Getting Started Locally
 
-### 1. Install Dependencies
+### 1. Clone & Install Dependencies
 ```bash
+git clone <repository-url>
+cd willylengkong
 npm install
 ```
 
-### 2. Run Local Development Server
+### 2. Configure Environment Variables
+Copy `.env.example` to `.env` and provide your Web3Forms access key:
+```bash
+cp .env.example .env
+```
+
+Edit `.env`:
+```env
+VITE_WEB3FORMS_ACCESS_KEY=your_access_key_here
+```
+*(Get a free access key at [web3forms.com](https://web3forms.com))*
+
+### 3. Run Development Server
 ```bash
 npm run dev
 ```
+Open `http://localhost:5173` in your browser.
 
-### 3. Build for Production
+### 4. Build for Production
 ```bash
 npm run build
 ```
 
-### 4. Preview Production Build
+### 5. Run Linter
 ```bash
-npm run preview
+npm run lint
+```
+
+---
+
+## 📤 Pushing to GitHub
+
+If you haven't linked a remote GitHub repository yet, follow these steps:
+
+### 1. Create a New Repository on GitHub
+Go to [github.com/new](https://github.com/new) and create a repository (e.g. `willylengkong-portfolio`). Do **not** initialize with README or license.
+
+### 2. Connect Remote & Push
+```bash
+# Add the remote repository
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+
+# Verify remote
+git remote -v
+
+# Stage all files
+git add .
+
+# Commit changes
+git commit -m "feat: complete portfolio website with automation, scraping, and web dev projects"
+
+# Push to GitHub
+git branch -M main
+git push -u origin main
 ```
 
 ---
 
 ## 🌐 Deploy to Vercel
 
-### Option 1: Vercel CLI
+### Option 1: GitHub Automatic Deployment (Recommended)
+1. Push this project to your GitHub repository.
+2. Log in to [Vercel Dashboard](https://vercel.com).
+3. Click **Add New** > **Project** and select your GitHub repository.
+4. Add Environment Variable:
+   - Name: `VITE_WEB3FORMS_ACCESS_KEY`
+   - Value: `your_key_here`
+5. Click **Deploy**. Vercel will automatically build using `npm run build` and route through `dist/`.
+
+### Option 2: Vercel CLI
 ```bash
 npm install -g vercel
 vercel
 ```
 
-### Option 2: GitHub Integration
-1. Push this repository to GitHub.
-2. In [Vercel Dashboard](https://vercel.com), click **Add New Project** and import the GitHub repository.
-3. Vercel automatically detects Vite:
-   - **Framework Preset**: `Vite`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. Click **Deploy**.
+---
+
+## 📄 License
+
+Private personal portfolio repository. All rights reserved.

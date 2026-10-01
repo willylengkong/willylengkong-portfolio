@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { FiBriefcase, FiMapPin, FiExternalLink, FiGlobe } from 'react-icons/fi';
 import { LuTrophy } from 'react-icons/lu';
 import { experienceData } from '../data/portfolioData';
@@ -9,6 +9,7 @@ import { experienceData } from '../data/portfolioData';
  * Features:
  * - Consistent project section header (FiBriefcase + clean title divider)
  * - Aceternity UI dynamic scroll-linked timeline with glowing gradient progress beam
+ * - Bi-directional interactive nodes: Node 1 active by default; Node 2 activates smoothly when the beam reaches it
  * - Sticky sidebar with company titles (APIFY / INDOMARET) on desktop
  * - Interactive node circles with continuous spinning ring on active roles
  * - 12-column card layout with crisp white logo badges and hover zoom
@@ -19,7 +20,9 @@ import { experienceData } from '../data/portfolioData';
 export default function Experience() {
   const containerRef = useRef(null);
   const trackRef = useRef(null);
+  const rowRefs = useRef([]);
   const [height, setHeight] = useState(0);
+  const [activeNodes, setActiveNodes] = useState({ 0: true, 1: false });
 
   // Measure content container height for scroll beam
   useEffect(() => {
@@ -41,6 +44,31 @@ export default function Experience() {
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
+
+  // Bi-directional scroll tracking: dynamically activate node when beam touches it
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (!trackRef.current || !rowRefs.current[1] || height === 0) return;
+    const currentBeamPx = latest * height;
+    // Row 1 node is centered at rowRefs.current[1].offsetTop + 18px
+    const node2TargetPx = rowRefs.current[1].offsetTop + 18;
+    const isReached = currentBeamPx >= node2TargetPx;
+
+    setActiveNodes((prev) => {
+      if (prev[1] !== isReached) {
+        return { ...prev, 1: isReached };
+      }
+      return prev;
+    });
+  });
+
+  // Sync initial or restored scroll position
+  useEffect(() => {
+    if (!trackRef.current || !rowRefs.current[1] || height === 0) return;
+    const currentBeamPx = scrollYProgress.get() * height;
+    const node2TargetPx = rowRefs.current[1].offsetTop + 18;
+    const isReached = currentBeamPx >= node2TargetPx;
+    setActiveNodes((prev) => (prev[1] !== isReached ? { ...prev, 1: isReached } : prev));
+  }, [height, scrollYProgress]);
 
   return (
     <section
@@ -89,21 +117,26 @@ export default function Experience() {
           <div ref={trackRef} className="timeline-track-container">
             {experienceData.map((item, index) => {
               const isLast = index === experienceData.length - 1;
+              const isNodeActive = index === 0 ? true : !!activeNodes[index];
+
               return (
                 <div
                   key={item.id || index}
+                  ref={(el) => (rowRefs.current[index] = el)}
                   className={`timeline-entry-row ${isLast ? 'timeline-entry-last' : ''}`}
                 >
                   {/* Sticky Left Column on Desktop (jesky.dev style) */}
                   <div className="timeline-sticky-sidebar">
                     {/* Node with animated spin ring for active entries */}
                     <div className="timeline-node-wrap">
-                      {item.isActive && (
-                        <div className="timeline-node-spinner" />
-                      )}
+                      <div
+                        className={`timeline-node-spinner ${
+                          isNodeActive ? 'timeline-node-spinner-active' : ''
+                        }`}
+                      />
                       <div
                         className={`timeline-node-core ${
-                          item.isActive ? 'timeline-node-core-active' : ''
+                          isNodeActive ? 'timeline-node-core-active' : ''
                         }`}
                       />
                     </div>
@@ -118,10 +151,14 @@ export default function Experience() {
                     {/* Mobile Header (Node + Title) */}
                     <div className="timeline-mobile-header">
                       <div className="timeline-mobile-node">
-                        {item.isActive && <div className="timeline-node-spinner-sm" />}
                         <div
-                          className={`timeline-node-core-sm ${
-                            item.isActive ? 'timeline-node-core-active' : ''
+                          className={`timeline-node-spinner ${
+                            isNodeActive ? 'timeline-node-spinner-active' : ''
+                          }`}
+                        />
+                        <div
+                          className={`timeline-node-core ${
+                            isNodeActive ? 'timeline-node-core-active' : ''
                           }`}
                         />
                       </div>
@@ -505,37 +542,27 @@ export default function Experience() {
           transition: all 0.1s ease-out;
         }
 
-        /* Node Core & Continuous Spinning Ring */
+        /* Node Core & Continuous Spinning Ring (exact jesky.dev style) */
         .timeline-node-spinner {
           position: absolute;
           inset: 0;
           margin: auto;
-          width: 22px;
-          height: 22px;
+          width: 24px;
+          height: 24px;
           box-sizing: border-box;
           border-radius: 50%;
-          border: 2px solid rgba(96, 165, 250, 0.2);
+          border: 2px solid transparent;
           border-top-color: #60a5fa;
-          border-left-color: #60a5fa;
-          border-bottom-color: #60a5fa;
           animation: spin 0.6s linear infinite;
           transform-origin: center center;
+          pointer-events: none;
+          z-index: 1;
+          opacity: 0;
+          transition: opacity 0.4s ease;
         }
 
-        .timeline-node-spinner-sm {
-          position: absolute;
-          inset: 0;
-          margin: auto;
-          width: 18px;
-          height: 18px;
-          box-sizing: border-box;
-          border-radius: 50%;
-          border: 2px solid rgba(96, 165, 250, 0.2);
-          border-top-color: #60a5fa;
-          border-left-color: #60a5fa;
-          border-bottom-color: #60a5fa;
-          animation: spin 0.6s linear infinite;
-          transform-origin: center center;
+        .timeline-node-spinner-active {
+          opacity: 1 !important;
         }
 
         .timeline-node-core {
@@ -546,35 +573,27 @@ export default function Experience() {
           height: 16px;
           box-sizing: border-box;
           border-radius: 50%;
-          background: #18181b;
-          border: 1.5px solid #3f3f46;
+          background: #262626;
+          border: 1px solid #404040;
           z-index: 2;
+          transition: background 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .timeline-mobile-node {
           position: relative;
-          width: 24px;
-          height: 24px;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           flex-shrink: 0;
         }
 
-        .timeline-node-core-sm {
-          position: absolute;
-          inset: 0;
-          margin: auto;
-          width: 12px;
-          height: 12px;
-          box-sizing: border-box;
-          border-radius: 50%;
-          background: #18181b;
-          border: 1.5px solid #3f3f46;
-          z-index: 2;
-        }
-
         .timeline-node-core-active {
-          background: linear-gradient(135deg, #3b82f6, #a855f7) !important;
-          border-color: #60a5fa !important;
-          box-shadow: 0 0 10px rgba(96, 165, 250, 0.85);
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #a855f7 100%) !important;
+          border: 1px solid #60a5fa !important;
+          box-shadow: none !important;
+          transform: scale(1.05);
         }
 
         /* Experience Content Flow (No Card Enclosure) */

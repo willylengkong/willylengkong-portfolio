@@ -112,7 +112,7 @@ export default function Navbar() {
               flexShrink: 0,
             }}
           >
-            <BrandLogo width={48} height={27} accentColor="#3b82f6" primaryColor="#ffffff" />
+            <BrandLogo width={48} height={27} accentColor="#ffffff" primaryColor="#ffffff" />
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
@@ -293,7 +293,7 @@ export default function Navbar() {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <BrandLogo width={36} height={20} accentColor="#3b82f6" primaryColor="#ffffff" />
+                  <BrandLogo width={36} height={20} accentColor="#ffffff" primaryColor="#ffffff" />
                   <span style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>Willy</span>
                 </div>
 

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import { FiBookOpen, FiMapPin, FiExternalLink, FiGlobe } from 'react-icons/fi';
 import { LuTrophy } from 'react-icons/lu';
 import { educationData } from '../data/portfolioData';
@@ -9,6 +9,7 @@ import { educationData } from '../data/portfolioData';
  * Features:
  * - Consistent section header with FiBookOpen
  * - Aceternity UI dynamic scroll-linked timeline with glowing gradient progress beam
+ * - Bi-directional interactive node: activates smoothly when the glowing beam reaches it
  * - Sticky sidebar with institution title (UPH) on desktop
  * - Interactive node circle with continuous spinning ring for active academic status
  * - 12-column open layout without heavy outer card enclosures
@@ -21,7 +22,9 @@ import { educationData } from '../data/portfolioData';
 export default function Education() {
   const containerRef = useRef(null);
   const trackRef = useRef(null);
+  const rowRef = useRef(null);
   const [height, setHeight] = useState(0);
+  const [isNodeActive, setIsNodeActive] = useState(false);
 
   // Measure content container height for scroll beam
   useEffect(() => {
@@ -38,11 +41,27 @@ export default function Education() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 18%', 'end 72%'],
+    offset: ['start 55%', 'end 75%'],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
   const opacityTransform = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
+
+  // Bi-directional scroll tracking: dynamically activate node when beam touches it
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (!trackRef.current || !rowRef.current || height === 0) return;
+    const currentBeamPx = latest * height;
+    const nodeTargetPx = (rowRef.current.offsetTop || 0) + 18;
+    setIsNodeActive(currentBeamPx >= nodeTargetPx);
+  });
+
+  // Sync initial or restored scroll position
+  useEffect(() => {
+    if (!trackRef.current || !rowRef.current || height === 0) return;
+    const currentBeamPx = scrollYProgress.get() * height;
+    const nodeTargetPx = (rowRef.current.offsetTop || 0) + 18;
+    setIsNodeActive(currentBeamPx >= nodeTargetPx);
+  }, [height, scrollYProgress]);
 
   return (
     <section
@@ -89,17 +108,19 @@ export default function Education() {
         {/* Dynamic Timeline Container */}
         <div ref={containerRef} className="timeline-outer-wrap">
           <div ref={trackRef} className="timeline-track-container">
-            <div className="timeline-entry-row timeline-entry-last">
+            <div ref={rowRef} className="timeline-entry-row timeline-entry-last">
               {/* Sticky Left Column on Desktop (jesky.dev style) */}
               <div className="timeline-sticky-sidebar">
                 {/* Node with animated spin ring for active education */}
                 <div className="timeline-node-wrap">
-                  {educationData.isActive && (
-                    <div className="timeline-node-spinner" />
-                  )}
+                  <div
+                    className={`timeline-node-spinner ${
+                      isNodeActive ? 'timeline-node-spinner-active' : ''
+                    }`}
+                  />
                   <div
                     className={`timeline-node-core ${
-                      educationData.isActive ? 'timeline-node-core-active' : ''
+                      isNodeActive ? 'timeline-node-core-active' : ''
                     }`}
                   />
                 </div>
@@ -114,10 +135,14 @@ export default function Education() {
                 {/* Mobile Header (Node + Title) */}
                 <div className="timeline-mobile-header">
                   <div className="timeline-mobile-node">
-                    {educationData.isActive && <div className="timeline-node-spinner-sm" />}
                     <div
-                      className={`timeline-node-core-sm ${
-                        educationData.isActive ? 'timeline-node-core-active' : ''
+                      className={`timeline-node-spinner ${
+                        isNodeActive ? 'timeline-node-spinner-active' : ''
+                      }`}
+                    />
+                    <div
+                      className={`timeline-node-core ${
+                        isNodeActive ? 'timeline-node-core-active' : ''
                       }`}
                     />
                   </div>
@@ -433,37 +458,27 @@ export default function Education() {
           transition: all 0.1s ease-out;
         }
 
-        /* Node Core & Continuous Spinning Ring */
+        /* Node Core & Continuous Spinning Ring (exact jesky.dev style) */
         .timeline-node-spinner {
           position: absolute;
           inset: 0;
           margin: auto;
-          width: 22px;
-          height: 22px;
+          width: 24px;
+          height: 24px;
           box-sizing: border-box;
           border-radius: 50%;
-          border: 2px solid rgba(96, 165, 250, 0.2);
+          border: 2px solid transparent;
           border-top-color: #60a5fa;
-          border-left-color: #60a5fa;
-          border-bottom-color: #60a5fa;
           animation: spin 0.6s linear infinite;
           transform-origin: center center;
+          pointer-events: none;
+          z-index: 1;
+          opacity: 0;
+          transition: opacity 0.4s ease;
         }
 
-        .timeline-node-spinner-sm {
-          position: absolute;
-          inset: 0;
-          margin: auto;
-          width: 18px;
-          height: 18px;
-          box-sizing: border-box;
-          border-radius: 50%;
-          border: 2px solid rgba(96, 165, 250, 0.2);
-          border-top-color: #60a5fa;
-          border-left-color: #60a5fa;
-          border-bottom-color: #60a5fa;
-          animation: spin 0.6s linear infinite;
-          transform-origin: center center;
+        .timeline-node-spinner-active {
+          opacity: 1 !important;
         }
 
         .timeline-node-core {
@@ -474,35 +489,27 @@ export default function Education() {
           height: 16px;
           box-sizing: border-box;
           border-radius: 50%;
-          background: #18181b;
-          border: 1.5px solid #3f3f46;
+          background: #262626;
+          border: 1px solid #404040;
           z-index: 2;
+          transition: background 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .timeline-mobile-node {
           position: relative;
-          width: 24px;
-          height: 24px;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           flex-shrink: 0;
         }
 
-        .timeline-node-core-sm {
-          position: absolute;
-          inset: 0;
-          margin: auto;
-          width: 12px;
-          height: 12px;
-          box-sizing: border-box;
-          border-radius: 50%;
-          background: #18181b;
-          border: 1.5px solid #3f3f46;
-          z-index: 2;
-        }
-
         .timeline-node-core-active {
-          background: linear-gradient(135deg, #3b82f6, #a855f7) !important;
-          border-color: #60a5fa !important;
-          box-shadow: 0 0 10px rgba(96, 165, 250, 0.85);
+          background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #a855f7 100%) !important;
+          border: 1px solid #60a5fa !important;
+          box-shadow: none !important;
+          transform: scale(1.05);
         }
 
         /* Education Content Flow (No Outer Card Enclosure) */
